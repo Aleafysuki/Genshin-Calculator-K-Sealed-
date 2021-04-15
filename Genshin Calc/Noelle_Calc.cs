@@ -10,11 +10,28 @@ using System.Windows.Forms;
 
 namespace Genshin_Calc
 {
-    public partial class Defence_Calc : Form
+    public partial class Noelle_Calc : Form
     {
-        public Defence_Calc()
+        public Noelle_Calc()
         {
             InitializeComponent();
+            TopM();
+            //Form1 read = new Form1();
+            //read.
+        }
+        public void TopM()
+        {
+            Form1 MainF = new Form1();
+            if (MainF.TopMost)
+            {
+                MainF.TopMost = false;
+                TopMost = true;
+            }
+            else
+            {
+                //TopMost = false;
+                //MainF.TopMost = true;
+            }
         }
         double DEF2ATK;
         //白字防御输入
@@ -53,24 +70,7 @@ namespace Genshin_Calc
             }
             DEFCalc();
         }
-        //防御提升百分比
-        private void PlayerDEF1_P_Scroll(object sender, EventArgs e)
-        {
-            PlayerDEF_P.Text = Convert.ToString(Convert.ToDouble(PlayerDEF1_P.Value) / 10);
-            DEFCalc();
-        }
-        private void PlayerDEF_P_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                PlayerDEF1_P.Value = Convert.ToInt32(Convert.ToDouble(PlayerDEF_P.Text) * 10);
-            }
-            catch (Exception)
-            {
 
-            }
-            DEFCalc();
-        }
         //防御转换到攻击的效率
         private void PlayerDEFPlus1_Scroll(object sender, EventArgs e)
         {
@@ -93,27 +93,55 @@ namespace Genshin_Calc
         //防御转换为攻击的算法
         private void DEFCalc()
         {
-            DEF2ATK = PlayerDEFBasic1.Value * (1 + float.Parse(PlayerDEF_P.Text) / 100) + PlayerDEF1.Value;
+            DEF2ATK = PlayerDEFBasic1.Value + PlayerDEF1.Value;
             DEFense.Text = Convert.ToString(DEF2ATK);
             DEF2ATK *= float.Parse(PlayerDEFPlus.Text) / 100;
-            ToATK.Text = Convert.ToString(DEF2ATK);
+
+            ToATK.Text = Convert.ToString(Constellation_Check.Checked == true ? (PlayerDEFBasic1.Value + PlayerDEF1.Value) / 2 + DEF2ATK : DEF2ATK);
         }
         //将数据填入主窗口
         private void Button_Confirm_Click(object sender, EventArgs e)
         {
             ATKAdd();
             Close();
+            TopM();
         }
         public double ATKAdd()
         {
-            return DEF2ATK;
+            return Convert.ToDouble(ToATK.Text);
         }
         private void Button_Cancel_Click(object sender, EventArgs e)
         {
             DEF2ATK = 0;
             Close();
+            TopM();
+        }
+        //保存当前的各项数值
+        public float Output(int i)
+        {
+            float ret = 0;
+            switch (i)
+            {
+                case 1: ret = PlayerDEFBasic1.Value;    break;
+                case 2: ret = PlayerDEF1.Value;         break;
+                case 4: ret = PlayerDEFPlus1.Value;     break;
+            }
+            return ret;
+        }
+        //读取当前的各项数值
+        public void Input(double d1, double d2, double d3)
+        {
+            PlayerDEFBasic1.Value = (int)d1;
+            PlayerDEF1.Value = (int)d2;
+            PlayerDEFPlus1.Value = (int)d3;
+            PlayerDEFBasic.Text = PlayerDEFBasic1.Value.ToString();
+            PlayerDEFPlus.Text = Convert.ToString(Convert.ToDouble(PlayerDEFPlus1.Value) / 10);
+            DEFCalc();
         }
 
-
+        private void Constellation_Check_CheckedChanged(object sender, EventArgs e)
+        {
+            DEFCalc();
+        }
     }
 }
