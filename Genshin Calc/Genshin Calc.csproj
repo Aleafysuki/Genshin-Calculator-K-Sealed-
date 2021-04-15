@@ -26,8 +26,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>0.0.1.0</ApplicationVersion>
+    <ApplicationVersion>0.1.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -52,6 +53,15 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>3F3BCF976E4755F5FD9DB81F8A170E3514919ED1</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Genshin Calc_1_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
@@ -217,6 +227,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="bin\Debug\FZXIANGSU12.TTF" />
     <None Include="bin\FZXIANGSU12.TTF" />
+    <None Include="Genshin Calc_1_TemporaryKey.pfx" />
+    <None Include="Genshin Calc_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DPSCalc.datasource" />
     <None Include="Properties\Settings.settings">
@@ -255,6 +267,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="bin\Debug\ExcelNumberFormat.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Newtonsoft.Json">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Prerequisite</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
