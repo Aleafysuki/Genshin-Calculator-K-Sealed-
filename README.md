@@ -1,3 +1,4 @@
+代码写得屎一般，非必要的话就不用看了。
 # Genshin-Calculator-By-K_vAE
 A Genshin Damage Calculator based on CSharp.  
 基于C#的原神伤害计算器。致力于成为高泛用性的易用计算工具。
