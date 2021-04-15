@@ -2,7 +2,7 @@
 A Genshin Damage Calculator based on CSharp.  
 基于C#的原神伤害计算器。致力于成为高泛用性的易用计算工具。
 
-# What can this Calculator do?
+# 目前已经可以使用的功能
 Calculate all the damage or healing effect.  
 对游戏中的数值进行计算，包括但不限于以下几种：
 * 伤害计算(包括伤害机制特殊的角色)  
@@ -10,7 +10,7 @@ Calculate all the damage or healing effect.
 * 计算护盾量和治疗量
 * 简单的DPS计算
 
-# What new features will be added in the future?
+# 以后可能支持的新功能
 
 ### 以后可能会兼容多种计算/导出工具。  
 计划的兼容列表：
