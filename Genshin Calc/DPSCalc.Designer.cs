@@ -52,6 +52,11 @@ namespace Genshin_Calc
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Tips_Label = new System.Windows.Forms.Label();
             this.CalcTable = new System.Windows.Forms.DataGridView();
+            this.Skill_S = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Skill_P = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DamageBuffType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Reaction = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.DamageStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Skill_Group = new System.Windows.Forms.GroupBox();
             this.Anemo_RES = new System.Windows.Forms.TextBox();
             this.Phys_RES = new System.Windows.Forms.TextBox();
@@ -78,11 +83,6 @@ namespace Genshin_Calc
             this.Hydro_Buff = new System.Windows.Forms.TextBox();
             this.Pyro_RES = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Skill_S = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Skill_P = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DamageBuffType = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Reaction = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.DamageStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Elem_RES_Label = new System.Windows.Forms.Label();
             Phys_RES_Label = new System.Windows.Forms.Label();
             Elem_Buff_Label = new System.Windows.Forms.Label();
@@ -290,359 +290,6 @@ namespace Genshin_Calc
             this.CalcTable.TabStop = false;
             this.CalcTable.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.CalcTable_RowLeave);
             // 
-            // Skill_Group
-            // 
-            this.Skill_Group.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Skill_Group.Controls.Add(this.CalcTable);
-            this.Skill_Group.Location = new System.Drawing.Point(12, 146);
-            this.Skill_Group.Name = "Skill_Group";
-            this.Skill_Group.Size = new System.Drawing.Size(556, 385);
-            this.Skill_Group.TabIndex = 1000;
-            this.Skill_Group.TabStop = false;
-            this.Skill_Group.Text = "倍率填写";
-            // 
-            // Anemo_RES
-            // 
-            this.Anemo_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Anemo_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Anemo_RES.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Anemo_RES.Location = new System.Drawing.Point(216, 55);
-            this.Anemo_RES.MaxLength = 8;
-            this.Anemo_RES.Name = "Anemo_RES";
-            this.Anemo_RES.Size = new System.Drawing.Size(55, 22);
-            this.Anemo_RES.TabIndex = 1006;
-            this.Anemo_RES.Text = "10";
-            this.Anemo_RES.TextChanged += new System.EventHandler(this.Elem_RES_TextChanged);
-            // 
-            // Phys_RES
-            // 
-            this.Phys_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Phys_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Phys_RES.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Phys_RES.Location = new System.Drawing.Point(216, 29);
-            this.Phys_RES.MaxLength = 8;
-            this.Phys_RES.Name = "Phys_RES";
-            this.Phys_RES.Size = new System.Drawing.Size(55, 22);
-            this.Phys_RES.TabIndex = 1004;
-            this.Phys_RES.Text = "10";
-            this.Phys_RES.TextChanged += new System.EventHandler(this.Phys_RES_TextChanged);
-            // 
-            // Anemo_Buff
-            // 
-            this.Anemo_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Anemo_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Anemo_Buff.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Anemo_Buff.Location = new System.Drawing.Point(70, 55);
-            this.Anemo_Buff.MaxLength = 8;
-            this.Anemo_Buff.Name = "Anemo_Buff";
-            this.Anemo_Buff.Size = new System.Drawing.Size(56, 22);
-            this.Anemo_Buff.TabIndex = 1002;
-            this.Anemo_Buff.Text = "0";
-            this.Anemo_Buff.TextChanged += new System.EventHandler(this.Elem_Buff_TextChanged);
-            // 
-            // Phys_Buff
-            // 
-            this.Phys_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Phys_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Phys_Buff.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Phys_Buff.Location = new System.Drawing.Point(70, 29);
-            this.Phys_Buff.MaxLength = 8;
-            this.Phys_Buff.Name = "Phys_Buff";
-            this.Phys_Buff.Size = new System.Drawing.Size(56, 22);
-            this.Phys_Buff.TabIndex = 1000;
-            this.Phys_Buff.Text = "0";
-            this.Phys_Buff.TextChanged += new System.EventHandler(this.Phys_Buff_TextChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.DPS_Disp);
-            this.groupBox1.Controls.Add(this.DMG_Disp);
-            this.groupBox1.Controls.Add(this.DPS_Label);
-            this.groupBox1.Controls.Add(this.Time_Input);
-            this.groupBox1.Controls.Add(this.Damage_Label);
-            this.groupBox1.Controls.Add(this.Time_Label);
-            this.groupBox1.Location = new System.Drawing.Point(574, 237);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(318, 260);
-            this.groupBox1.TabIndex = 1003;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "结果计算";
-            // 
-            // DPS_Disp
-            // 
-            this.DPS_Disp.AutoEllipsis = true;
-            this.DPS_Disp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.DPS_Disp.Font = new System.Drawing.Font("方正像素12", 21F);
-            this.DPS_Disp.ForeColor = System.Drawing.Color.Firebrick;
-            this.DPS_Disp.Location = new System.Drawing.Point(105, 166);
-            this.DPS_Disp.Name = "DPS_Disp";
-            this.DPS_Disp.Size = new System.Drawing.Size(207, 81);
-            this.DPS_Disp.TabIndex = 1011;
-            this.DPS_Disp.Text = "0\r\n0\r\n0";
-            this.DPS_Disp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // DMG_Disp
-            // 
-            this.DMG_Disp.AutoEllipsis = true;
-            this.DMG_Disp.BackColor = System.Drawing.Color.Transparent;
-            this.DMG_Disp.Font = new System.Drawing.Font("方正像素12", 21F);
-            this.DMG_Disp.ForeColor = System.Drawing.Color.Gray;
-            this.DMG_Disp.Location = new System.Drawing.Point(105, 69);
-            this.DMG_Disp.Name = "DMG_Disp";
-            this.DMG_Disp.Size = new System.Drawing.Size(207, 85);
-            this.DMG_Disp.TabIndex = 1002;
-            this.DMG_Disp.Text = "0\r\n0\r\n0";
-            this.DMG_Disp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // DPS_Label
-            // 
-            this.DPS_Label.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F);
-            this.DPS_Label.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DPS_Label.Location = new System.Drawing.Point(6, 165);
-            this.DPS_Label.Name = "DPS_Label";
-            this.DPS_Label.Size = new System.Drawing.Size(106, 81);
-            this.DPS_Label.TabIndex = 1010;
-            this.DPS_Label.Text = "DPS\r\nDPS(物理)\r\nDPS(元素)";
-            this.DPS_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Time_Input
-            // 
-            this.Time_Input.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Time_Input.Location = new System.Drawing.Point(120, 27);
-            this.Time_Input.MaxLength = 4;
-            this.Time_Input.Name = "Time_Input";
-            this.Time_Input.Size = new System.Drawing.Size(71, 29);
-            this.Time_Input.TabIndex = 1008;
-            this.Time_Input.Text = "20";
-            this.Time_Input.TextChanged += new System.EventHandler(this.Time_Input_TextChanged);
-            // 
-            // Damage_Label
-            // 
-            this.Damage_Label.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F);
-            this.Damage_Label.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Damage_Label.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Damage_Label.Location = new System.Drawing.Point(6, 68);
-            this.Damage_Label.Name = "Damage_Label";
-            this.Damage_Label.Size = new System.Drawing.Size(106, 85);
-            this.Damage_Label.TabIndex = 1001;
-            this.Damage_Label.Text = "总伤害\r\n物理伤害\r\n元素伤害";
-            this.Damage_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Time_Label
-            // 
-            this.Time_Label.AutoSize = true;
-            this.Time_Label.Font = new System.Drawing.Font("微软雅黑", 15F);
-            this.Time_Label.Location = new System.Drawing.Point(13, 28);
-            this.Time_Label.Name = "Time_Label";
-            this.Time_Label.Size = new System.Drawing.Size(210, 27);
-            this.Time_Label.TabIndex = 1009;
-            this.Time_Label.Text = "输出总用时             秒";
-            // 
-            // ExitButton
-            // 
-            this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.ExitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.ExitButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ExitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.ExitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExitButton.Location = new System.Drawing.Point(735, 503);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(157, 28);
-            this.ExitButton.TabIndex = 1004;
-            this.ExitButton.Text = "完成";
-            this.ExitButton.UseVisualStyleBackColor = false;
-            // 
-            // CalculateButton
-            // 
-            this.CalculateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CalculateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.CalculateButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.CalculateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.CalculateButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.CalculateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CalculateButton.Location = new System.Drawing.Point(574, 503);
-            this.CalculateButton.Name = "CalculateButton";
-            this.CalculateButton.Size = new System.Drawing.Size(157, 28);
-            this.CalculateButton.TabIndex = 1005;
-            this.CalculateButton.Text = "计算";
-            this.CalculateButton.UseVisualStyleBackColor = false;
-            this.CalculateButton.Click += new System.EventHandler(this.CalculateButton_Click);
-            // 
-            // Cryo_Buff
-            // 
-            this.Cryo_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Cryo_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Cryo_Buff.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Cryo_Buff.Location = new System.Drawing.Point(70, 81);
-            this.Cryo_Buff.MaxLength = 8;
-            this.Cryo_Buff.Name = "Cryo_Buff";
-            this.Cryo_Buff.Size = new System.Drawing.Size(56, 22);
-            this.Cryo_Buff.TabIndex = 1008;
-            this.Cryo_Buff.Text = "0";
-            // 
-            // Electro_Buff
-            // 
-            this.Electro_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Electro_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Electro_Buff.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Electro_Buff.Location = new System.Drawing.Point(70, 107);
-            this.Electro_Buff.MaxLength = 8;
-            this.Electro_Buff.Name = "Electro_Buff";
-            this.Electro_Buff.Size = new System.Drawing.Size(56, 22);
-            this.Electro_Buff.TabIndex = 1010;
-            this.Electro_Buff.Text = "0";
-            // 
-            // Cryo_RES
-            // 
-            this.Cryo_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Cryo_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Cryo_RES.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Cryo_RES.Location = new System.Drawing.Point(216, 81);
-            this.Cryo_RES.MaxLength = 8;
-            this.Cryo_RES.Name = "Cryo_RES";
-            this.Cryo_RES.Size = new System.Drawing.Size(55, 22);
-            this.Cryo_RES.TabIndex = 1012;
-            this.Cryo_RES.Text = "10";
-            // 
-            // Electro_RES
-            // 
-            this.Electro_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Electro_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Electro_RES.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Electro_RES.Location = new System.Drawing.Point(216, 107);
-            this.Electro_RES.MaxLength = 8;
-            this.Electro_RES.Name = "Electro_RES";
-            this.Electro_RES.Size = new System.Drawing.Size(55, 22);
-            this.Electro_RES.TabIndex = 1014;
-            this.Electro_RES.Text = "10";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.Geo_RES);
-            this.groupBox2.Controls.Add(this.Hydro_RES);
-            this.groupBox2.Controls.Add(this.Geo_Buff);
-            this.groupBox2.Controls.Add(this.Pyro_Buff);
-            this.groupBox2.Controls.Add(this.Hydro_Buff);
-            this.groupBox2.Controls.Add(this.Pyro_RES);
-            this.groupBox2.Controls.Add(label5);
-            this.groupBox2.Controls.Add(label6);
-            this.groupBox2.Controls.Add(label7);
-            this.groupBox2.Controls.Add(label8);
-            this.groupBox2.Controls.Add(label9);
-            this.groupBox2.Controls.Add(label10);
-            this.groupBox2.Controls.Add(this.Electro_RES);
-            this.groupBox2.Controls.Add(this.Cryo_RES);
-            this.groupBox2.Controls.Add(this.Phys_Buff);
-            this.groupBox2.Controls.Add(this.Electro_Buff);
-            this.groupBox2.Controls.Add(this.Anemo_Buff);
-            this.groupBox2.Controls.Add(this.Phys_RES);
-            this.groupBox2.Controls.Add(this.Cryo_Buff);
-            this.groupBox2.Controls.Add(this.Anemo_RES);
-            this.groupBox2.Controls.Add(Phys_Buff_Label);
-            this.groupBox2.Controls.Add(Elem_Buff_Label);
-            this.groupBox2.Controls.Add(label4);
-            this.groupBox2.Controls.Add(Phys_RES_Label);
-            this.groupBox2.Controls.Add(Elem_RES_Label);
-            this.groupBox2.Controls.Add(label3);
-            this.groupBox2.Controls.Add(label2);
-            this.groupBox2.Controls.Add(label1);
-            this.groupBox2.Location = new System.Drawing.Point(574, 9);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(318, 222);
-            this.groupBox2.TabIndex = 1016;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "敌我属性填写";
-            // 
-            // Geo_RES
-            // 
-            this.Geo_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Geo_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Geo_RES.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Geo_RES.Location = new System.Drawing.Point(216, 185);
-            this.Geo_RES.MaxLength = 8;
-            this.Geo_RES.Name = "Geo_RES";
-            this.Geo_RES.Size = new System.Drawing.Size(55, 22);
-            this.Geo_RES.TabIndex = 1026;
-            this.Geo_RES.Text = "10";
-            // 
-            // Hydro_RES
-            // 
-            this.Hydro_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Hydro_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Hydro_RES.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Hydro_RES.Location = new System.Drawing.Point(216, 159);
-            this.Hydro_RES.MaxLength = 8;
-            this.Hydro_RES.Name = "Hydro_RES";
-            this.Hydro_RES.Size = new System.Drawing.Size(55, 22);
-            this.Hydro_RES.TabIndex = 1024;
-            this.Hydro_RES.Text = "10";
-            // 
-            // Geo_Buff
-            // 
-            this.Geo_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Geo_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Geo_Buff.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Geo_Buff.Location = new System.Drawing.Point(70, 185);
-            this.Geo_Buff.MaxLength = 8;
-            this.Geo_Buff.Name = "Geo_Buff";
-            this.Geo_Buff.Size = new System.Drawing.Size(56, 22);
-            this.Geo_Buff.TabIndex = 1022;
-            this.Geo_Buff.Text = "0";
-            // 
-            // Pyro_Buff
-            // 
-            this.Pyro_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Pyro_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Pyro_Buff.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Pyro_Buff.Location = new System.Drawing.Point(70, 133);
-            this.Pyro_Buff.MaxLength = 8;
-            this.Pyro_Buff.Name = "Pyro_Buff";
-            this.Pyro_Buff.Size = new System.Drawing.Size(56, 22);
-            this.Pyro_Buff.TabIndex = 1016;
-            this.Pyro_Buff.Text = "0";
-            // 
-            // Hydro_Buff
-            // 
-            this.Hydro_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Hydro_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Hydro_Buff.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Hydro_Buff.Location = new System.Drawing.Point(70, 159);
-            this.Hydro_Buff.MaxLength = 8;
-            this.Hydro_Buff.Name = "Hydro_Buff";
-            this.Hydro_Buff.Size = new System.Drawing.Size(56, 22);
-            this.Hydro_Buff.TabIndex = 1020;
-            this.Hydro_Buff.Text = "0";
-            // 
-            // Pyro_RES
-            // 
-            this.Pyro_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
-            this.Pyro_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Pyro_RES.Font = new System.Drawing.Font("Consolas", 14F);
-            this.Pyro_RES.Location = new System.Drawing.Point(216, 133);
-            this.Pyro_RES.MaxLength = 8;
-            this.Pyro_RES.Name = "Pyro_RES";
-            this.Pyro_RES.Size = new System.Drawing.Size(55, 22);
-            this.Pyro_RES.TabIndex = 1018;
-            this.Pyro_RES.Text = "10";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.Tips_Label);
-            this.groupBox3.Location = new System.Drawing.Point(12, 9);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(551, 131);
-            this.groupBox3.TabIndex = 1017;
-            this.groupBox3.TabStop = false;
-            // 
             // Skill_S
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -740,6 +387,369 @@ namespace Genshin_Calc
             this.DamageStat.MaxInputLength = 8;
             this.DamageStat.Name = "DamageStat";
             this.DamageStat.ReadOnly = true;
+            // 
+            // Skill_Group
+            // 
+            this.Skill_Group.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Skill_Group.Controls.Add(this.CalcTable);
+            this.Skill_Group.Location = new System.Drawing.Point(12, 146);
+            this.Skill_Group.Name = "Skill_Group";
+            this.Skill_Group.Size = new System.Drawing.Size(556, 385);
+            this.Skill_Group.TabIndex = 1000;
+            this.Skill_Group.TabStop = false;
+            this.Skill_Group.Text = "倍率填写";
+            // 
+            // Anemo_RES
+            // 
+            this.Anemo_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Anemo_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Anemo_RES.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Anemo_RES.Location = new System.Drawing.Point(216, 55);
+            this.Anemo_RES.MaxLength = 8;
+            this.Anemo_RES.Name = "Anemo_RES";
+            this.Anemo_RES.Size = new System.Drawing.Size(55, 22);
+            this.Anemo_RES.TabIndex = 1006;
+            this.Anemo_RES.Text = "10";
+            this.Anemo_RES.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // Phys_RES
+            // 
+            this.Phys_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Phys_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Phys_RES.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Phys_RES.Location = new System.Drawing.Point(216, 29);
+            this.Phys_RES.MaxLength = 8;
+            this.Phys_RES.Name = "Phys_RES";
+            this.Phys_RES.Size = new System.Drawing.Size(55, 22);
+            this.Phys_RES.TabIndex = 1004;
+            this.Phys_RES.Text = "10";
+            this.Phys_RES.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // Anemo_Buff
+            // 
+            this.Anemo_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Anemo_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Anemo_Buff.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Anemo_Buff.Location = new System.Drawing.Point(70, 55);
+            this.Anemo_Buff.MaxLength = 8;
+            this.Anemo_Buff.Name = "Anemo_Buff";
+            this.Anemo_Buff.Size = new System.Drawing.Size(56, 22);
+            this.Anemo_Buff.TabIndex = 1002;
+            this.Anemo_Buff.Text = "0";
+            this.Anemo_Buff.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // Phys_Buff
+            // 
+            this.Phys_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Phys_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Phys_Buff.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Phys_Buff.Location = new System.Drawing.Point(70, 29);
+            this.Phys_Buff.MaxLength = 8;
+            this.Phys_Buff.Name = "Phys_Buff";
+            this.Phys_Buff.Size = new System.Drawing.Size(56, 22);
+            this.Phys_Buff.TabIndex = 1000;
+            this.Phys_Buff.Text = "0";
+            this.Phys_Buff.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.DPS_Disp);
+            this.groupBox1.Controls.Add(this.DMG_Disp);
+            this.groupBox1.Controls.Add(this.DPS_Label);
+            this.groupBox1.Controls.Add(this.Time_Input);
+            this.groupBox1.Controls.Add(this.Damage_Label);
+            this.groupBox1.Controls.Add(this.Time_Label);
+            this.groupBox1.Location = new System.Drawing.Point(574, 237);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(318, 260);
+            this.groupBox1.TabIndex = 1003;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "结果计算";
+            // 
+            // DPS_Disp
+            // 
+            this.DPS_Disp.AutoEllipsis = true;
+            this.DPS_Disp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.DPS_Disp.Font = new System.Drawing.Font("方正像素12", 21F);
+            this.DPS_Disp.ForeColor = System.Drawing.Color.Firebrick;
+            this.DPS_Disp.Location = new System.Drawing.Point(105, 166);
+            this.DPS_Disp.Name = "DPS_Disp";
+            this.DPS_Disp.Size = new System.Drawing.Size(207, 81);
+            this.DPS_Disp.TabIndex = 1011;
+            this.DPS_Disp.Text = "0\r\n0\r\n0";
+            this.DPS_Disp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // DMG_Disp
+            // 
+            this.DMG_Disp.AutoEllipsis = true;
+            this.DMG_Disp.BackColor = System.Drawing.Color.Transparent;
+            this.DMG_Disp.Font = new System.Drawing.Font("方正像素12", 21F);
+            this.DMG_Disp.ForeColor = System.Drawing.Color.Gray;
+            this.DMG_Disp.Location = new System.Drawing.Point(105, 69);
+            this.DMG_Disp.Name = "DMG_Disp";
+            this.DMG_Disp.Size = new System.Drawing.Size(207, 85);
+            this.DMG_Disp.TabIndex = 1002;
+            this.DMG_Disp.Text = "0\r\n0\r\n0";
+            this.DMG_Disp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // DPS_Label
+            // 
+            this.DPS_Label.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F);
+            this.DPS_Label.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DPS_Label.Location = new System.Drawing.Point(6, 165);
+            this.DPS_Label.Name = "DPS_Label";
+            this.DPS_Label.Size = new System.Drawing.Size(106, 81);
+            this.DPS_Label.TabIndex = 1010;
+            this.DPS_Label.Text = "DPS\r\nDPS(物理)\r\nDPS(元素)";
+            this.DPS_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Time_Input
+            // 
+            this.Time_Input.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Time_Input.Location = new System.Drawing.Point(120, 27);
+            this.Time_Input.MaxLength = 4;
+            this.Time_Input.Name = "Time_Input";
+            this.Time_Input.Size = new System.Drawing.Size(71, 29);
+            this.Time_Input.TabIndex = 1008;
+            this.Time_Input.Text = "20";
+            this.Time_Input.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // Damage_Label
+            // 
+            this.Damage_Label.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F);
+            this.Damage_Label.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Damage_Label.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Damage_Label.Location = new System.Drawing.Point(6, 68);
+            this.Damage_Label.Name = "Damage_Label";
+            this.Damage_Label.Size = new System.Drawing.Size(106, 85);
+            this.Damage_Label.TabIndex = 1001;
+            this.Damage_Label.Text = "总伤害\r\n物理伤害\r\n元素伤害";
+            this.Damage_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Time_Label
+            // 
+            this.Time_Label.AutoSize = true;
+            this.Time_Label.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.Time_Label.Location = new System.Drawing.Point(13, 28);
+            this.Time_Label.Name = "Time_Label";
+            this.Time_Label.Size = new System.Drawing.Size(210, 27);
+            this.Time_Label.TabIndex = 1009;
+            this.Time_Label.Text = "输出总用时             秒";
+            // 
+            // ExitButton
+            // 
+            this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.ExitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.ExitButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ExitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.ExitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Location = new System.Drawing.Point(735, 503);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(157, 28);
+            this.ExitButton.TabIndex = 1004;
+            this.ExitButton.Text = "完成";
+            this.ExitButton.UseVisualStyleBackColor = false;
+            // 
+            // CalculateButton
+            // 
+            this.CalculateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CalculateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.CalculateButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.CalculateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.CalculateButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.CalculateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CalculateButton.Location = new System.Drawing.Point(574, 503);
+            this.CalculateButton.Name = "CalculateButton";
+            this.CalculateButton.Size = new System.Drawing.Size(157, 28);
+            this.CalculateButton.TabIndex = 1005;
+            this.CalculateButton.Text = "计算";
+            this.CalculateButton.UseVisualStyleBackColor = false;
+            this.CalculateButton.Click += new System.EventHandler(this.ReCalculator);
+            // 
+            // Cryo_Buff
+            // 
+            this.Cryo_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Cryo_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Cryo_Buff.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Cryo_Buff.Location = new System.Drawing.Point(70, 81);
+            this.Cryo_Buff.MaxLength = 8;
+            this.Cryo_Buff.Name = "Cryo_Buff";
+            this.Cryo_Buff.Size = new System.Drawing.Size(56, 22);
+            this.Cryo_Buff.TabIndex = 1008;
+            this.Cryo_Buff.Text = "0";
+            this.Cryo_Buff.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // Electro_Buff
+            // 
+            this.Electro_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Electro_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Electro_Buff.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Electro_Buff.Location = new System.Drawing.Point(70, 107);
+            this.Electro_Buff.MaxLength = 8;
+            this.Electro_Buff.Name = "Electro_Buff";
+            this.Electro_Buff.Size = new System.Drawing.Size(56, 22);
+            this.Electro_Buff.TabIndex = 1010;
+            this.Electro_Buff.Text = "0";
+            this.Electro_Buff.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // Cryo_RES
+            // 
+            this.Cryo_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Cryo_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Cryo_RES.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Cryo_RES.Location = new System.Drawing.Point(216, 81);
+            this.Cryo_RES.MaxLength = 8;
+            this.Cryo_RES.Name = "Cryo_RES";
+            this.Cryo_RES.Size = new System.Drawing.Size(55, 22);
+            this.Cryo_RES.TabIndex = 1012;
+            this.Cryo_RES.Text = "10";
+            this.Cryo_RES.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // Electro_RES
+            // 
+            this.Electro_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Electro_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Electro_RES.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Electro_RES.Location = new System.Drawing.Point(216, 107);
+            this.Electro_RES.MaxLength = 8;
+            this.Electro_RES.Name = "Electro_RES";
+            this.Electro_RES.Size = new System.Drawing.Size(55, 22);
+            this.Electro_RES.TabIndex = 1014;
+            this.Electro_RES.Text = "10";
+            this.Electro_RES.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.Geo_RES);
+            this.groupBox2.Controls.Add(this.Hydro_RES);
+            this.groupBox2.Controls.Add(this.Geo_Buff);
+            this.groupBox2.Controls.Add(this.Pyro_Buff);
+            this.groupBox2.Controls.Add(this.Hydro_Buff);
+            this.groupBox2.Controls.Add(this.Pyro_RES);
+            this.groupBox2.Controls.Add(label5);
+            this.groupBox2.Controls.Add(label6);
+            this.groupBox2.Controls.Add(label7);
+            this.groupBox2.Controls.Add(label8);
+            this.groupBox2.Controls.Add(label9);
+            this.groupBox2.Controls.Add(label10);
+            this.groupBox2.Controls.Add(this.Electro_RES);
+            this.groupBox2.Controls.Add(this.Cryo_RES);
+            this.groupBox2.Controls.Add(this.Phys_Buff);
+            this.groupBox2.Controls.Add(this.Electro_Buff);
+            this.groupBox2.Controls.Add(this.Anemo_Buff);
+            this.groupBox2.Controls.Add(this.Phys_RES);
+            this.groupBox2.Controls.Add(this.Cryo_Buff);
+            this.groupBox2.Controls.Add(this.Anemo_RES);
+            this.groupBox2.Controls.Add(Phys_Buff_Label);
+            this.groupBox2.Controls.Add(Elem_Buff_Label);
+            this.groupBox2.Controls.Add(label4);
+            this.groupBox2.Controls.Add(Phys_RES_Label);
+            this.groupBox2.Controls.Add(Elem_RES_Label);
+            this.groupBox2.Controls.Add(label3);
+            this.groupBox2.Controls.Add(label2);
+            this.groupBox2.Controls.Add(label1);
+            this.groupBox2.Location = new System.Drawing.Point(574, 9);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(318, 222);
+            this.groupBox2.TabIndex = 1016;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "敌我属性填写";
+            // 
+            // Geo_RES
+            // 
+            this.Geo_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Geo_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Geo_RES.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Geo_RES.Location = new System.Drawing.Point(216, 185);
+            this.Geo_RES.MaxLength = 8;
+            this.Geo_RES.Name = "Geo_RES";
+            this.Geo_RES.Size = new System.Drawing.Size(55, 22);
+            this.Geo_RES.TabIndex = 1026;
+            this.Geo_RES.Text = "10";
+            this.Geo_RES.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // Hydro_RES
+            // 
+            this.Hydro_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Hydro_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Hydro_RES.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Hydro_RES.Location = new System.Drawing.Point(216, 159);
+            this.Hydro_RES.MaxLength = 8;
+            this.Hydro_RES.Name = "Hydro_RES";
+            this.Hydro_RES.Size = new System.Drawing.Size(55, 22);
+            this.Hydro_RES.TabIndex = 1024;
+            this.Hydro_RES.Text = "10";
+            this.Hydro_RES.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // Geo_Buff
+            // 
+            this.Geo_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Geo_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Geo_Buff.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Geo_Buff.Location = new System.Drawing.Point(70, 185);
+            this.Geo_Buff.MaxLength = 8;
+            this.Geo_Buff.Name = "Geo_Buff";
+            this.Geo_Buff.Size = new System.Drawing.Size(56, 22);
+            this.Geo_Buff.TabIndex = 1022;
+            this.Geo_Buff.Text = "0";
+            this.Geo_Buff.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // Pyro_Buff
+            // 
+            this.Pyro_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Pyro_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Pyro_Buff.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Pyro_Buff.Location = new System.Drawing.Point(70, 133);
+            this.Pyro_Buff.MaxLength = 8;
+            this.Pyro_Buff.Name = "Pyro_Buff";
+            this.Pyro_Buff.Size = new System.Drawing.Size(56, 22);
+            this.Pyro_Buff.TabIndex = 1016;
+            this.Pyro_Buff.Text = "0";
+            this.Pyro_Buff.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // Hydro_Buff
+            // 
+            this.Hydro_Buff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Hydro_Buff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Hydro_Buff.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Hydro_Buff.Location = new System.Drawing.Point(70, 159);
+            this.Hydro_Buff.MaxLength = 8;
+            this.Hydro_Buff.Name = "Hydro_Buff";
+            this.Hydro_Buff.Size = new System.Drawing.Size(56, 22);
+            this.Hydro_Buff.TabIndex = 1020;
+            this.Hydro_Buff.Text = "0";
+            this.Hydro_Buff.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // Pyro_RES
+            // 
+            this.Pyro_RES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))));
+            this.Pyro_RES.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Pyro_RES.Font = new System.Drawing.Font("Consolas", 14F);
+            this.Pyro_RES.Location = new System.Drawing.Point(216, 133);
+            this.Pyro_RES.MaxLength = 8;
+            this.Pyro_RES.Name = "Pyro_RES";
+            this.Pyro_RES.Size = new System.Drawing.Size(55, 22);
+            this.Pyro_RES.TabIndex = 1018;
+            this.Pyro_RES.Text = "10";
+            this.Pyro_RES.TextChanged += new System.EventHandler(this.ReCalculator);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.Tips_Label);
+            this.groupBox3.Location = new System.Drawing.Point(12, 9);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(551, 131);
+            this.groupBox3.TabIndex = 1017;
+            this.groupBox3.TabStop = false;
             // 
             // DPSCalc
             // 

@@ -157,24 +157,11 @@ namespace Genshin_Calc
         {
             return CalcTable.Rows[i - 1].Cells[j - 1];
         }
-
-        private void Elem_RES_TextChanged(object sender, EventArgs e)
-        {
-            Calculate();
-        }
-        private void Time_Input_TextChanged(object sender, EventArgs e)
-        {
-            Calculate();
-        }
-        private void Phys_RES_TextChanged(object sender, EventArgs e)
-        {
-            Calculate();
-        }
-        private void CalculateButton_Click(object sender, EventArgs e)
-        {
-            Calculate();
-        }
         private void CalcTable_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            Calculate();
+        }
+        private void ReCalculator(object sender, EventArgs e)
         {
             Calculate();
         }
