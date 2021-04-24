@@ -102,15 +102,15 @@ namespace Genshin_Calc
                                 default: e = 0; break;
                             }
                             break;//不反应
-                        case "超导": e = React1 * 0.25 * Res[2]; elem += Convert.ToDouble(e); break;//超导
-                        case "扩散": e = React1 * 0.30 * Res[1]; elem += Convert.ToDouble(e); break;//扩散
-                        case "感电": e = React1 * 0.60 * Res[3]; elem += Convert.ToDouble(e); break;//感电
-                        case "碎冰": e = React1 * 0.75 * Res[0]; elem += Convert.ToDouble(e); break;//碎冰
-                        case "超载": e = React1 * 1.00 * Res[4]; elem += Convert.ToDouble(e); break;//超载
-                        case "火蒸发": e = React2 * 0.15 * Buffcheck(4) * ab * Res[4]; elem += Convert.ToDouble(e); break;//1.5倍增幅
-                        case "水蒸发": e = React2 * 0.20 * Buffcheck(5) * ab * Res[5]; elem += Convert.ToDouble(e); break;//2.0倍增幅
-                        case "火融化": e = React2 * 0.20 * Buffcheck(4) * ab * Res[4]; elem += Convert.ToDouble(e); break;//2.0倍增幅
-                        case "冰融化": e = React2 * 0.15 * Buffcheck(2) * ab * Res[2]; elem += Convert.ToDouble(e); break;//1.5倍增幅
+                        case "超导": e = React1 * 0.25 * RESCalc(Res[2]); elem += Convert.ToDouble(e); break;//超导
+                        case "扩散": e = React1 * 0.30 * RESCalc(Res[1]); elem += Convert.ToDouble(e); break;//扩散
+                        case "感电": e = React1 * 0.60 * RESCalc(Res[3]); elem += Convert.ToDouble(e); break;//感电
+                        case "碎冰": e = React1 * 0.75 * RESCalc(Res[0]); elem += Convert.ToDouble(e); break;//碎冰
+                        case "超载": e = React1 * 1.00 * RESCalc(Res[4]); elem += Convert.ToDouble(e); break;//超载
+                        case "火蒸发": e = React2 * 0.15 * Buffcheck(4) * ab * RESCalc(Res[4]); elem += Convert.ToDouble(e); break;//1.5倍增幅
+                        case "水蒸发": e = React2 * 0.20 * Buffcheck(5) * ab * RESCalc(Res[5]); elem += Convert.ToDouble(e); break;//2.0倍增幅
+                        case "火融化": e = React2 * 0.20 * Buffcheck(4) * ab * RESCalc(Res[4]); elem += Convert.ToDouble(e); break;//2.0倍增幅
+                        case "冰融化": e = React2 * 0.15 * Buffcheck(2) * ab * RESCalc(Res[2]); elem += Convert.ToDouble(e); break;//1.5倍增幅
                         default: React1 = 0; React2 = 0; break;
                     }
                     f[i] = Convert.ToDouble(e);
