@@ -49,6 +49,7 @@ namespace Genshin_Calc
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.角色与武器快捷输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.敌人抗性快速查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Cocogoat圣遗物导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.特殊计算ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.诺艾尔防御转攻击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.阿贝多防御值加伤替换攻击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -151,7 +152,6 @@ namespace Genshin_Calc
             this.panel2 = new System.Windows.Forms.Panel();
             this.OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
-            this.Cocogoat圣遗物导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ATK1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CritRate1)).BeginInit();
@@ -357,6 +357,12 @@ namespace Genshin_Calc
             this.敌人抗性快速查询ToolStripMenuItem.Size = new System.Drawing.Size(244, 28);
             this.敌人抗性快速查询ToolStripMenuItem.Text = "敌人抗性快速查询";
             this.敌人抗性快速查询ToolStripMenuItem.Click += new System.EventHandler(this.敌人抗性快速查询ToolStripMenuItem_Click_1);
+            // 
+            // Cocogoat圣遗物导入ToolStripMenuItem
+            // 
+            this.Cocogoat圣遗物导入ToolStripMenuItem.Name = "Cocogoat圣遗物导入ToolStripMenuItem";
+            this.Cocogoat圣遗物导入ToolStripMenuItem.Size = new System.Drawing.Size(244, 28);
+            this.Cocogoat圣遗物导入ToolStripMenuItem.Text = "Cocogoat圣遗物导入";
             // 
             // 特殊计算ToolStripMenuItem
             // 
@@ -1621,12 +1627,6 @@ namespace Genshin_Calc
             // 
             this.SaveFile.DefaultExt = "ysdata";
             // 
-            // Cocogoat圣遗物导入ToolStripMenuItem
-            // 
-            this.Cocogoat圣遗物导入ToolStripMenuItem.Name = "Cocogoat圣遗物导入ToolStripMenuItem";
-            this.Cocogoat圣遗物导入ToolStripMenuItem.Size = new System.Drawing.Size(244, 28);
-            this.Cocogoat圣遗物导入ToolStripMenuItem.Text = "Cocogoat圣遗物导入";
-            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -1650,7 +1650,7 @@ namespace Genshin_Calc
             this.Name = "Form1";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Genshin DMG Calculator Trial";
+            this.Text = "原神计算器 0.1.1.0";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
             this.menuStrip1.ResumeLayout(false);
