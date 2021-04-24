@@ -59,6 +59,7 @@
             this.RESSelectorBox.Name = "RESSelectorBox";
             this.RESSelectorBox.Size = new System.Drawing.Size(274, 279);
             this.RESSelectorBox.TabIndex = 34;
+            this.RESSelectorBox.SelectedIndexChanged += new System.EventHandler(this.Enemy_RES_SelectedIndexChanged);
             // 
             // Confirm_Button
             // 

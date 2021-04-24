@@ -227,8 +227,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="bin\Debug\FZXIANGSU12.TTF" />
     <None Include="bin\FZXIANGSU12.TTF" />
-    <None Include="Genshin Calc_1_TemporaryKey.pfx" />
-    <None Include="Genshin Calc_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DPSCalc.datasource" />
     <None Include="Properties\Settings.settings">

@@ -162,7 +162,7 @@ namespace Genshin_Calc
                 rt = rx*(1 + ((float)rp / (1 + 1400 / (double)element) + rebuff / 100));
                 switch (ReactBox.SelectedIndex)
                 {
-                    case 0: rp = 0;     rt  = 1; break;//无反应
+                    case 0: rp = 0;     rt = 1; break;//无反应
                     case 1: rp = 6.66;  rx = 0.25; break;//超导
                     case 2: rp = 6.66;  rx = 0.3; break;//扩散
                     case 3: rp = 6.66;  rx = 0.6; break;//感电
@@ -218,6 +218,8 @@ namespace Genshin_Calc
         }
         private void CRcalc()//暴击率计算：已完成
         {
+            var temp = (dmg / ((1 + dmgbuff / 100) * skill * atk * indi * rt * res * defence * critornot / 10000
+                    * (critdmg / 100)) - 2) * 100;
             switch (DmgType.SelectedIndex)
             {
                 case 0:
@@ -227,14 +229,9 @@ namespace Genshin_Calc
                     Attribute_Text.Text = "无法通过改变暴击率而改变已暴击的伤害";
                     break;
                 case 2:
-                    if ((dmg / ((1 + dmgbuff / 100) * skill * atk * indi * rt * res * defence * critornot / 10000
-                    * (critdmg / 100)) - 2) * 100 >= 0
-                    && (dmg / ((1 + dmgbuff / 100) * skill * atk * indi * rt * res * defence * critornot / 10000
-                    * (critdmg / 100)) - 2) * 100 <= 100)
+                    if (temp >= 0 && temp <= 100)
                     {
-                        Attribute_Text.Text = Convert.ToString(
-                        (dmg / ((1 + dmgbuff / 100) * skill * atk * indi * rt * res * defence * critornot / 10000
-                        * (critdmg / 100)) - 2) * 100) + "%";
+                        Attribute_Text.Text = Convert.ToString(string.Format("{0:N2}", temp)) + "%";
                     }
                     else
                     {
@@ -247,20 +244,17 @@ namespace Genshin_Calc
         }
         private void CDcalc()//暴击伤害计算：已完成
         {
+            var temp = (dmg / (atk * (1 + dmgbuff / 100) * skill * indi * rt * res * defence * critornot / 10000) - 1) *100;
             switch (DmgType.SelectedIndex)
             {
                 case 0:
-                    Attribute_Text.Text = "暴击伤害只对已暴击的情况起效";
+                    Attribute_Text.Text = "暴击伤害不对未暴击的情况起效";
                     break;
                 case 1:
-
-                    Attribute_Text.Text = (dmg / (atk * (1 + dmgbuff / 100) * skill * indi * rt * res * defence * critornot / 10000) - 1)
-                * 100 >= 0 ? Convert.ToString(
-                (dmg / (atk * (1 + dmgbuff / 100) * skill * indi * rt * res * defence * critornot / 10000) - 1)
-                * 100) + "%" : "要求的伤害过低\n请输入更大的数";
+                    Attribute_Text.Text = temp >= 0 ? Convert.ToString(string.Format("{0:N4}", temp)) + "%" : "要求的伤害过低\n请输入更大的伤害值";
                     break;
                 case 2:
-                    Attribute_Text.Text = "暴击伤害只对已暴击的情况起效";
+                    Attribute_Text.Text = temp >= 0 ? Convert.ToString(string.Format("{0:N4}", temp / critrate * 100)) + "%" : "要求的伤害过低\n请输入更大的伤害值";
                     break;
             }
         }
@@ -274,23 +268,31 @@ namespace Genshin_Calc
                     temp = dmg / (atk * skill * indi * (1 + dmgbuff / 100) * res * defence * critornot / 10000);
                     break;
                 case 1:
-                    temp = dmg / ((atk * skill * indi * (1 + dmgbuff / 100) * res * defence * critornot / 10000) * (1 + critdmg / 100));
+                    temp = dmg / (atk * skill * indi * (1 + dmgbuff / 100) * res * defence * critornot / 10000 * (1 + critdmg / 100));
                     break;
                 case 2:
                     temp = dmg / (atk * skill * indi * (1 + dmgbuff / 100) * res * defence * critornot / 10000
                     * (critrate * (100 + critdmg) / 10000 + (1 - critrate / 100)));
                     break;
-                default:
-                    temp = dmg / (atk * skill * indi * (1 + dmgbuff / 100) * res * defence * critornot / 10000);
-                    break;
+                default:temp = 0; break;
             }
-            Attribute_Text.Text = 1400
-                / (rp / (temp / 2 - 1 - rebuff/100) - 1) + 0.5 > 0 ? 
-                Convert.ToString((int)(
-                1400
-                / (rp
-                / (temp / 2 - 1 - rebuff/100) - 1) + 0.5))
-                : "0\n指定的伤害过低\n请提升伤害需求";
+            if (ReactBox.SelectedIndex == 0)
+            {
+                Attribute_Text.Text = "未触发元素反应时\n元素精通为无效属性";
+            }
+            else if (ReactBox.SelectedIndex >= 1 && ReactBox.SelectedIndex <= 5)
+            {
+                Attribute_Text.Text = "暂不支持剧变反应期望计算";
+            }
+            else if (1400 / (2.78 / (temp / 2 - 1 - rebuff / 100) - 1) > 0)
+            {
+                Attribute_Text.Text = Convert.ToString((int)(1400 / (2.78 / (temp / 2 - 1 - rebuff / 100) - 1) + 0.5));
+            }
+            else
+            {
+                Attribute_Text.Text = "计算结果为负\n需增大伤害需求";
+            }
+
         }
         private void Buffcalc()//伤害乘区计算：已完成
         {
@@ -496,18 +498,6 @@ namespace Genshin_Calc
                 case 11: ReactTypecalc(); break;
                 case 12: ReactBuffcalc(); break;
                 default: Attribute_Text.Text = "请在左侧列表中选择需要计算的项目"; break;
-            }
-            switch (ReactBox.SelectedIndex)
-            {
-                case 0:; break;//无反应
-                case 1: Attribute_Text.Text = "暂不支持剧变反应期望计算"; break;//超导
-                case 2: Attribute_Text.Text = "暂不支持剧变反应期望计算"; break;//扩散
-                case 3: Attribute_Text.Text = "暂不支持剧变反应期望计算"; break;//感电
-                case 4: Attribute_Text.Text = "暂不支持剧变反应期望计算"; break;//碎冰
-                case 5: Attribute_Text.Text = "暂不支持剧变反应期望计算"; break;//超载
-                case 6:; break;//1.5倍增幅
-                case 7:; break;//2.0倍增幅
-                default:; break;
             }
         }
         private void DmgType_SelectedIndexChanged(object sender, EventArgs e)

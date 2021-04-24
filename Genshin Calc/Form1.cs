@@ -819,7 +819,7 @@ namespace Genshin_Calc
                     , double.Parse(Other.Text)
                     , PlayerLevel1.Value
                     , EnemyLevel1.Value
-                    , EnemyRES1.Value / 10 - 100
+                    , EnemyRES1.Value / 10
                     , double.Parse(Defense.Text)
                     , Reaction_Choose.SelectedIndex
                     , double.Parse(ReactBuff.Text)
@@ -1105,6 +1105,13 @@ namespace Genshin_Calc
                     check = true;
                     Normal = React * upheaval.Upheaval_Damage(PlayerLevel1.Value) * Resistance;
                     Avg = Normal;
+                }
+                //免疫相关显示
+                if (EnemyRES.Text.Contains("∞"))
+                {
+                    Normal = 0;
+                    Avg = 0;
+                    Crit = 0;
                 }
                 //伤害数值转为文本
                 Normal_DMG.Text = Convert.ToString(Normal);

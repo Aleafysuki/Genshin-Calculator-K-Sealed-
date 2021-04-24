@@ -52,9 +52,11 @@ namespace Genshin_Calc
             try
             {
                 Enemy_Select.Items.AddRange(Enemyname);
+                Confirm_Button.Enabled = true;
             }
             catch (ArgumentNullException)
             {
+                Confirm_Button.Enabled = !(Enemy_Select.SelectedIndex < 0);
             }
             RESSelectorBox.Items.AddRange(new object[] {
             "风\t"     + 0 +"%",
@@ -119,6 +121,10 @@ namespace Genshin_Calc
         private void Enemy_Select_SelectedIndexChanged(object sender, EventArgs e)
         {
             ResLookup();
+        }
+        private void Enemy_RES_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Confirm_Button.Enabled = !(Enemy_Select.SelectedIndex < 0);
         }
 
         private void CancelButton_Click(object sender, EventArgs e)

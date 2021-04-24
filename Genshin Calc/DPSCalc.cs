@@ -51,7 +51,7 @@ namespace Genshin_Calc
             Buff[4] = Convert.ToDouble(Pyro_Buff.Text) / 100;
             Buff[5] = Convert.ToDouble(Hydro_Buff.Text) / 100;
             Buff[6] = Convert.ToDouble(Geo_Buff.Text) / 100;
-            //Buff[7]= Convert.ToDouble(Dendro_Buff.Text)/100;  
+            //Buff[7]=Convert.ToDouble(Dendro_Buff.Text)/100;  
             Res[0] = Convert.ToDouble(Phys_RES.Text);
             Res[1] = Convert.ToDouble(Anemo_RES.Text);
             Res[2] = Convert.ToDouble(Cryo_RES.Text);
@@ -59,10 +59,10 @@ namespace Genshin_Calc
             Res[4] = Convert.ToDouble(Pyro_RES.Text);
             Res[5] = Convert.ToDouble(Hydro_RES.Text);
             Res[6] = Convert.ToDouble(Geo_RES.Text);
-            //Res[7]= Convert.ToDouble(Dendro_RES.Text);
+            //Res[7]=Convert.ToDouble(Dendro_RES.Text);
             if (bufftype >= 0 && bufftype <= 6)
             {
-                return basic * (1 + Buff[bufftype] + OtherBuff) * RESCalc(Res[bufftype]) / 100;
+                return basic * ((1 + Buff[bufftype] + OtherBuff / 100) * RESCalc(Res[bufftype])) / 100;
             }
             else return 0;
         }
