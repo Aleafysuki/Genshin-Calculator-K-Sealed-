@@ -11,12 +11,10 @@ Calculate all the damage or healing effect.
 * 计算护盾量和治疗量
 * 简单的DPS计算
 
-# 以后可能支持的新功能
-
-### 以后可能会兼容多种计算/导出工具。  
+# 以后可能会兼容多种计算/导出工具。  
 计划的兼容列表：
 * [Cocogoat圣遗物提取](https://github.com/YuehaiTeam/cocogoat)与[莫娜占卜铺](https://github.com/wormtql/genshin_artifact)(两者共用同一种文件)
-* [玩家信息查询工具](https://github.com/Azure99/GenshinPlayerQuery)
 * [伤害计算器 by 氟氯溴碘砹](https://bbs.nga.cn/read.php?tid=25093894)
 
-### 以后有移植到移动端或网页端的可能。
+# 以后有移植到移动端或网页端的可能。
+我尽量学js或ASP.NET，学会了就开始做。咕咕。
