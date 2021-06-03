@@ -17,4 +17,4 @@ Calculate all the damage or healing effect.
 * [伤害计算器 by 氟氯溴碘砹](https://bbs.nga.cn/read.php?tid=25093894)
 
 # 以后有移植到移动端或网页端的可能。
-我尽量学js或ASP.NET，学会了就开始做。咕咕。
+我尽量学js或H5，学会了就开始做。咕咕。
