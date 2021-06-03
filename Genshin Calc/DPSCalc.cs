@@ -167,14 +167,19 @@ namespace Genshin_Calc
         }
         private void Phys_Buff_TextChanged(object sender, EventArgs e)
         {
-            PhysBuff = Convert.ToDouble(Phys_Buff.Text) / 100;
+            PhysBuff = Buff[0];
             Calculate();
         }
-        private void Elem_Buff_TextChanged(object sender, EventArgs e)
+        private void Elem_Buff_TextChanged(int buffchecker, object sender, EventArgs e)
         {
-            ElemBuff = Convert.ToDouble(Anemo_Buff.Text) / 100;
+            ElemBuff = Buff[buffchecker];
             Calculate();
         }
+        //private void Elem_Buff_TextChanged(object sender, EventArgs e)
+        //{
+        //    ElemBuff = Convert.ToDouble(Anemo_Buff.Text) / 100;
+        //    Calculate();
+        //}
         private double RESCalc(double rs)
         {
             var Resistance = 0D;
