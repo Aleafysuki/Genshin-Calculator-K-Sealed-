@@ -107,6 +107,12 @@
     <Compile Include="Albedo_Calc.Designer.cs">
       <DependentUpon>Albedo_Calc.cs</DependentUpon>
     </Compile>
+    <Compile Include="ArtifactCompare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArtifactCompare.Designer.cs">
+      <DependentUpon>ArtifactCompare.cs</DependentUpon>
+    </Compile>
     <Compile Include="CalculatorPro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     </Compile>
     <EmbeddedResource Include="Albedo_Calc.resx">
       <DependentUpon>Albedo_Calc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArtifactCompare.resx">
+      <DependentUpon>ArtifactCompare.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CalculatorPro.resx">
       <DependentUpon>CalculatorPro.cs</DependentUpon>

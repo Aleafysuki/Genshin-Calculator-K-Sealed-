@@ -152,6 +152,7 @@ namespace Genshin_Calc
             this.panel2 = new System.Windows.Forms.Panel();
             this.OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
+            this.圣遗物简易比较器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ATK1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CritRate1)).BeginInit();
@@ -295,7 +296,8 @@ namespace Genshin_Calc
             this.windows计算器ToolStripMenuItem,
             this.锚定伤害计算器ToolStripMenuItem,
             this.治疗量计算器ToolStripMenuItem,
-            this.DPS简易计算ToolStripMenuItem});
+            this.DPS简易计算ToolStripMenuItem,
+            this.圣遗物简易比较器ToolStripMenuItem});
             this.工具ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.工具ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
@@ -1627,6 +1629,13 @@ namespace Genshin_Calc
             // 
             this.SaveFile.DefaultExt = "ysdata";
             // 
+            // 圣遗物简易比较器ToolStripMenuItem
+            // 
+            this.圣遗物简易比较器ToolStripMenuItem.Name = "圣遗物简易比较器ToolStripMenuItem";
+            this.圣遗物简易比较器ToolStripMenuItem.Size = new System.Drawing.Size(240, 28);
+            this.圣遗物简易比较器ToolStripMenuItem.Text = "圣遗物简易比较器";
+            this.圣遗物简易比较器ToolStripMenuItem.Click += new System.EventHandler(this.圣遗物简易比较器ToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -1650,7 +1659,7 @@ namespace Genshin_Calc
             this.Name = "Form1";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "原神计算器 0.1.1.0";
+            this.Text = "原神计算器 15.0.0.0";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
             this.menuStrip1.ResumeLayout(false);
@@ -1828,6 +1837,7 @@ namespace Genshin_Calc
         private OpenFileDialog OpenFile;
         private SaveFileDialog SaveFile;
         private ToolStripMenuItem Cocogoat圣遗物导入ToolStripMenuItem;
+        private ToolStripMenuItem 圣遗物简易比较器ToolStripMenuItem;
     }
 }
 

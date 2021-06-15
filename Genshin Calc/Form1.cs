@@ -33,6 +33,7 @@ namespace Genshin_Calc
             catch (Exception)
             { }
             InitializeComponent();
+            Text = "原神计算器 " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             if (File.Exists(FileLocation + "Configuration.Config"))
             {
                 SettingsChange(true);
@@ -819,7 +820,7 @@ namespace Genshin_Calc
                     , double.Parse(Other.Text)
                     , PlayerLevel1.Value
                     , EnemyLevel1.Value
-                    , EnemyRES1.Value / 10
+                    , double.Parse(EnemyRES.Text)
                     , double.Parse(Defense.Text)
                     , Reaction_Choose.SelectedIndex
                     , double.Parse(ReactBuff.Text)
@@ -1033,6 +1034,22 @@ namespace Genshin_Calc
             toolStrips.Visible = toolStrips.Visible ? false : true;
         }
 
+        private void 圣遗物简易比较器ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool topmosted = false;
+            if (TopMost)
+            {
+                TopMost = false;
+                topmosted = true;
+            }
+            ArtifactCompare CompareTool = new ArtifactCompare();
+            CompareTool.ShowDialog();
+            if (topmosted)
+            {
+                TopMost = true;
+            }
+        }
+
 
         ////////////计算过程////////////
         Upheaval upheaval = new Upheaval();
@@ -1043,7 +1060,7 @@ namespace Genshin_Calc
 
         public void ReactionCalculator(int index)
         {
-            switch (index)
+            /*switch (index)//1.6之前的反应倍率
             {
                 case 0: rp = 0; React = 1; break;//无反应
                 case 1: rp = 6.66; React *= 0.25; break;//超导
@@ -1054,7 +1071,25 @@ namespace Genshin_Calc
                 case 6: rp = 2.78; React *= 1.5; break;//1.5倍增幅
                 case 7: rp = 2.78; React *= 2; break;//2.0倍增幅
                 default: Reaction_Choose.Text = "不触发反应"; break;
+            }*/
+            //
+            //1.6及以后的反应倍率:是一坨shit，不要轻易改动
+            //
+            var ReactType = 1400;
+            React = 1 + ((float)rp / (1 + ReactType / (float)EM1.Value) + (float)ReactBuff1.Value / 1000);
+            switch (index)
+            {
+                case 0: rp = 0.00; React = 1.000; ReactType = 0001; break;  //无反应
+                case 1: rp = 16.0; React *= 0.25; ReactType = 2000; break;  //超导
+                case 2: rp = 16.0; React *= 0.30; ReactType = 2000; break;  //扩散
+                case 3: rp = 16.0; React *= 0.60; ReactType = 2000; break;  //感电
+                case 4: rp = 16.0; React *= 0.75; ReactType = 2000; break;  //碎冰
+                case 5: rp = 16.0; React *= 1.00; ReactType = 2000; break;  //超载
+                case 6: rp = 2.78; React *= 1.50; ReactType = 1400; break;  //1.5倍增幅
+                case 7: rp = 2.78; React *= 2.00; ReactType = 1400; break;  //2.0倍增幅
+                default: Reaction_Choose.Text = "不触发反应"; break;
             }
+            if (ReactType != 1400) React = 1 + ((float)rp / (1 + ReactType / (float)EM1.Value) + (float)ReactBuff1.Value / 1000);
         }
         public void Calculate()
         {
@@ -1067,7 +1102,7 @@ namespace Genshin_Calc
                 ELMLV = float.Parse(EP.Text);
                 BUFLV = float.Parse(DMGBuff.Text)//伤害提升
                         + float.Parse(DMGBuff_S.Text) * DMGBuff1_Sf.Value;//伤害提升(层数) 
-                React = 1 + ((float)rp / (1 + 1400 / (float)EM1.Value) + (float)ReactBuff1.Value / 1000);
+                
                 //反应伤害相关计算
                 ReactionCalculator(Reaction_Choose.SelectedIndex);
                 if (Reaction_Choose.SelectedIndex >= 6 || Reaction_Choose.SelectedIndex == 0)
@@ -1103,7 +1138,7 @@ namespace Genshin_Calc
                 else    //剧变反应伤害相关计算
                 {
                     check = true;
-                    Normal = React * upheaval.Upheaval_Damage(PlayerLevel1.Value) * Resistance;
+                    Normal = React * upheaval.Upheaval_Damage(PlayerLevel1.Value, false) * Resistance;
                     Avg = Normal;
                 }
                 //免疫相关显示
@@ -1126,102 +1161,207 @@ namespace Genshin_Calc
     //参考：https://bbs.mihoyo.com/ys/article/2215872
     public class Upheaval
     {
-        public int Upheaval_Damage(int level)
+        public int Upheaval_Damage(int level,bool Type)
         {
-            switch (level)
+            if (Type)
+                switch (level)
+                {
+                    case 1: return 33;
+                    case 2: return 37;
+                    case 3: return 38;
+                    case 4: return 42;
+                    case 5: return 44;
+                    case 6: return 49;
+                    case 7: return 52;
+                    case 8: return 57;
+                    case 9: return 62;
+                    case 10: return 68;
+                    case 11: return 73;
+                    case 12: return 81;
+                    case 13: return 89;
+                    case 14: return 97;
+                    case 15: return 107;
+                    case 16: return 118;
+                    case 17: return 128;
+                    case 18: return 139;
+                    case 19: return 150;
+                    case 20: return 161;
+                    case 21: return 172;
+                    case 22: return 183;
+                    case 23: return 194;
+                    case 24: return 206;
+                    case 25: return 217;
+                    case 26: return 226;
+                    case 27: return 236;
+                    case 28: return 246;
+                    case 29: return 259;
+                    case 30: return 272;
+                    case 31: return 284;
+                    case 32: return 298;
+                    case 33: return 310;
+                    case 34: return 323;
+                    case 35: return 338;
+                    case 36: return 352;
+                    case 37: return 368;
+                    case 38: return 383;
+                    case 39: return 399;
+                    case 40: return 414;
+                    case 41: return 430;
+                    case 42: return 448;
+                    case 43: return 467;
+                    case 44: return 487;
+                    case 45: return 511;
+                    case 46: return 537;
+                    case 47: return 562;
+                    case 48: return 590;
+                    case 49: return 618;
+                    case 50: return 647;
+                    case 51: return 673;
+                    case 52: return 700;
+                    case 53: return 729;
+                    case 54: return 757;
+                    case 55: return 797;
+                    case 56: return 832;
+                    case 57: return 868;
+                    case 58: return 904;
+                    case 59: return 942;
+                    case 60: return 980;
+                    case 61: return 1019;
+                    case 62: return 1064;
+                    case 63: return 1112;
+                    case 64: return 1160;
+                    case 65: return 1216;
+                    case 66: return 1260;
+                    case 67: return 1306;
+                    case 68: return 1350;
+                    case 69: return 1394;
+                    case 70: return 1440;
+                    case 71: return 1484;
+                    case 72: return 1530;
+                    case 73: return 1568;
+                    case 74: return 1607;
+                    case 75: return 1661;
+                    case 76: return 1708;
+                    case 77: return 1754;
+                    case 78: return 1800;
+                    case 79: return 1847;
+                    case 80: return 1892;
+                    case 81: return 1937;
+                    case 82: return 1981;
+                    case 83: return 2027;
+                    case 84: return 2072;
+                    case 85: return 2132;
+                    case 86: return 2179;
+                    case 87: return 2229;
+                    case 88: return 2282;
+                    case 89: return 2343;
+                    case 90: return 2406;
+                    default: return 0;
+                }
+            else
             {
-                case 1:  return 33; 
-                case 2:  return 37; 
-                case 3:  return 38; 
-                case 4:  return 42; 
-                case 5:  return 44; 
-                case 6:  return 49; 
-                case 7:  return 52; 
-                case 8:  return 57; 
-                case 9:  return 62; 
-                case 10: return 68;
-                case 11: return 73;
-                case 12: return 81;
-                case 13: return 89;
-                case 14: return 97;
-                case 15: return 107; 
-                case 16: return 118; 
-                case 17: return 128; 
-                case 18: return 139; 
-                case 19: return 150; 
-                case 20: return 161; 
-                case 21: return 172; 
-                case 22: return 183; 
-                case 23: return 194; 
-                case 24: return 206; 
-                case 25: return 217; 
-                case 26: return 226; 
-                case 27: return 236; 
-                case 28: return 246; 
-                case 29: return 259; 
-                case 30: return 272; 
-                case 31: return 284; 
-                case 32: return 298; 
-                case 33: return 310; 
-                case 34: return 323; 
-                case 35: return 338; 
-                case 36: return 352; 
-                case 37: return 368; 
-                case 38: return 383; 
-                case 39: return 399; 
-                case 40: return 414; 
-                case 41: return 430; 
-                case 42: return 448; 
-                case 43: return 467; 
-                case 44: return 487; 
-                case 45: return 511; 
-                case 46: return 537; 
-                case 47: return 562; 
-                case 48: return 590; 
-                case 49: return 618; 
-                case 50: return 647; 
-                case 51: return 673; 
-                case 52: return 700; 
-                case 53: return 729; 
-                case 54: return 757; 
-                case 55: return 797; 
-                case 56: return 832; 
-                case 57: return 868; 
-                case 58: return 904; 
-                case 59: return 942; 
-                case 60: return 980; 
-                case 61: return 1019; 
-                case 62: return 1064; 
-                case 63: return 1112; 
-                case 64: return 1160; 
-                case 65: return 1216; 
-                case 66: return 1260; 
-                case 67: return 1306; 
-                case 68: return 1350; 
-                case 69: return 1394; 
-                case 70: return 1440; 
-                case 71: return 1484; 
-                case 72: return 1530; 
-                case 73: return 1568; 
-                case 74: return 1607; 
-                case 75: return 1661; 
-                case 76: return 1708; 
-                case 77: return 1754; 
-                case 78: return 1800; 
-                case 79: return 1847; 
-                case 80: return 1892; 
-                case 81: return 1937; 
-                case 82: return 1981; 
-                case 83: return 2027; 
-                case 84: return 2072; 
-                case 85: return 2132; 
-                case 86: return 2179; 
-                case 87: return 2229; 
-                case 88: return 2282; 
-                case 89: return 2343; 
-                case 90: return 2406;
-                default: return 0;
+                switch (level)
+                {
+                    case 1: return 33;
+                    case 2: return 37;
+                    case 3: return 38;
+                    case 4: return 42;
+                    case 5: return 44;
+                    case 6: return 49;
+                    case 7: return 52;
+                    case 8: return 57;
+                    case 9: return 62;
+                    case 10: return 68;
+                    case 11: return 73;
+                    case 12: return 81;
+                    case 13: return 89;
+                    case 14: return 97;
+                    case 15: return 107;
+                    case 16: return 118;
+                    case 17: return 128;
+                    case 18: return 139;
+                    case 19: return 150;
+                    case 20: return 161;
+                    case 21: return 172;
+                    case 22: return 183;
+                    case 23: return 194;
+                    case 24: return 206;
+                    case 25: return 217;
+                    case 26: return 226;
+                    case 27: return 236;
+                    case 28: return 246;
+                    case 29: return 259;
+                    case 30: return 272;
+                    case 31: return 284;
+                    case 32: return 298;
+                    case 33: return 310;
+                    case 34: return 323;
+                    case 35: return 338;
+                    case 36: return 352;
+                    case 37: return 368;
+                    case 38: return 383;
+                    case 39: return 399;
+                    case 40: return 414;
+                    case 41: return 430;
+                    case 42: return 448;
+                    case 43: return 467;
+                    case 44: return 487;
+                    case 45: return 511;
+                    case 46: return 537;
+                    case 47: return 562;
+                    case 48: return 590;
+                    case 49: return 618;
+                    case 50: return 647;
+                    case 51: return 673;
+                    case 52: return 700;
+                    case 53: return 729;
+                    case 54: return 757;
+                    case 55: return 797;
+                    case 56: return 832;
+                    case 57: return 868;
+                    case 58: return 906;
+                    case 59: return 944;
+                    case 60: return 986;
+                    case 61: return 1027;
+                    case 62: return 1078;
+                    case 63: return 1130;
+                    case 64: return 1184;
+                    case 65: return 1248;
+                    case 66: return 1302;
+                    case 67: return 1359;
+                    case 68: return 1416;
+                    case 69: return 1472;
+                    case 70: return 1531;
+                    case 71: return 1589;
+                    case 72: return 1649;
+                    case 73: return 1702;
+                    case 74: return 1754;
+                    case 75: return 1828;
+                    case 76: return 1893;
+                    case 77: return 1958;
+                    case 78: return 2022;
+                    case 79: return 2089;
+                    case 80: return 2154;
+                    case 81: return 2219;
+                    case 82: return 2286;
+                    case 83: return 2352;
+                    case 84: return 2420;
+                    case 85: return 2507;
+                    case 86: return 2578;
+                    case 87: return 2650;
+                    case 88: return 2727;
+                    case 89: return 2810;
+                    case 90: return 2893;
+                    default: return 0;
+                }
             }
+        }
+    }
+    public class Outputer
+    {
+        public void Output()
+        {
+
         }
     }
     //文字说明

@@ -27,6 +27,8 @@ namespace Genshin_Calc
             Phys = new double[20];
         }
 
+
+
         private void DPSCalc_Load(object sender, EventArgs e)
         {
 
@@ -85,34 +87,41 @@ namespace Genshin_Calc
                     var d = Tablex(i, 4).Value;  // |  a   |   b   |   c  |   d   |  e   |
                     var e = Tablex(i, 5).Value;  // +------+-------+------+-------+------+
                     var ab = Convert.ToDouble(a) * Convert.ToDouble(b);
-                    var React1 = (1 + (6.66 * EM / (1400 + EM) + ReactionBuff)) * upheaval.Upheaval_Damage(Level);
-                    var React2 = 1 + (2.78 * EM / (1400 + EM) + ReactionBuff);
+                    var React1 = (1 + (16 * EM / (2000 + EM) + ReactionBuff)) * upheaval.Upheaval_Damage(Level, false) * Convert.ToDouble(b);   //剧变反应
+                    var React2 = 1 + (2.78 * EM / (1400 + EM) + ReactionBuff);                                                                  //增幅反应
                     switch (d.ToString())
                     {
                         case "不反应":
                             switch (c.ToString())
                             {
-                                case "物理": e = Buffcheck(0) * ab; phys += Convert.ToDouble(e); break;
-                                case "风": e = Buffcheck(1) * ab; elem += Convert.ToDouble(e); break;
-                                case "冰": e = Buffcheck(2) * ab; elem += Convert.ToDouble(e); break;
-                                case "雷": e = Buffcheck(3) * ab; elem += Convert.ToDouble(e); break;
-                                case "火": e = Buffcheck(4) * ab; elem += Convert.ToDouble(e); break;
-                                case "水": e = Buffcheck(5) * ab; elem += Convert.ToDouble(e); break;
-                                case "岩": e = Buffcheck(6) * ab; elem += Convert.ToDouble(e); break;
+                                case "物理": e = Buffcheck(0) * ab; break;
+                                case "风": e = Buffcheck(1) * ab; break;
+                                case "冰": e = Buffcheck(2) * ab; break;
+                                case "雷": e = Buffcheck(3) * ab; break;
+                                case "火": e = Buffcheck(4) * ab; break;
+                                case "水": e = Buffcheck(5) * ab; break;
+                                case "岩": e = Buffcheck(6) * ab; break;
                                 default: e = 0; break;
                             }
                             break;//不反应
-                        case "超导": e = React1 * 0.25 * RESCalc(Res[2]); elem += Convert.ToDouble(e); break;//超导
-                        case "扩散": e = React1 * 0.30 * RESCalc(Res[1]); elem += Convert.ToDouble(e); break;//扩散
-                        case "感电": e = React1 * 0.60 * RESCalc(Res[3]); elem += Convert.ToDouble(e); break;//感电
-                        case "碎冰": e = React1 * 0.75 * RESCalc(Res[0]); elem += Convert.ToDouble(e); break;//碎冰
-                        case "超载": e = React1 * 1.00 * RESCalc(Res[4]); elem += Convert.ToDouble(e); break;//超载
-                        case "火蒸发": e = React2 * 0.15 * Buffcheck(4) * ab * RESCalc(Res[4]); elem += Convert.ToDouble(e); break;//1.5倍增幅
-                        case "水蒸发": e = React2 * 0.20 * Buffcheck(5) * ab * RESCalc(Res[5]); elem += Convert.ToDouble(e); break;//2.0倍增幅
-                        case "火融化": e = React2 * 0.20 * Buffcheck(4) * ab * RESCalc(Res[4]); elem += Convert.ToDouble(e); break;//2.0倍增幅
-                        case "冰融化": e = React2 * 0.15 * Buffcheck(2) * ab * RESCalc(Res[2]); elem += Convert.ToDouble(e); break;//1.5倍增幅
+                        case "超导": e = React1 * 0.25 * RESCalc(Res[2]); break;//超导
+                        case "扩散": e = React1 * 0.30 * RESCalc(Res[1]); break;//扩散
+                        case "感电": e = React1 * 0.60 * RESCalc(Res[3]); break;//感电
+                        case "碎冰": e = React1 * 0.75 * RESCalc(Res[0]); break;//碎冰
+                        case "超载": e = React1 * 1.00 * RESCalc(Res[4]); break;//超载
+                        case "火蒸发": e = React2 * 1.5 * Buffcheck(4) * ab; break;//1.5倍增幅
+                        case "水蒸发": e = React2 * 2.0 * Buffcheck(5) * ab; break;//2.0倍增幅
+                        case "火融化": e = React2 * 2.0 * Buffcheck(4) * ab; break;//2.0倍增幅
+                        case "冰融化": e = React2 * 1.5 * Buffcheck(2) * ab; break;//1.5倍增幅
                         default: React1 = 0; React2 = 0; break;
                     }
+                    if (d.ToString() == "不反应" && c.ToString() == "物理")
+                    {
+                        phys += Convert.ToDouble(e);
+                    }
+                    else
+                        elem += Convert.ToDouble(e);
+
                     f[i] = Convert.ToDouble(e);
                 }
                 for (int i = 1; i < f.Length; i++)
@@ -158,6 +167,10 @@ namespace Genshin_Calc
             return CalcTable.Rows[i - 1].Cells[j - 1];
         }
         private void CalcTable_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            Calculate();
+        }
+        private void CalcTable_RowLeave(object sender, EventArgs e)
         {
             Calculate();
         }
