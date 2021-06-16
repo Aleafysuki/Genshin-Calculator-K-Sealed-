@@ -10,6 +10,7 @@ Calculate all the damage or healing effect.
 * 达到某种伤害值所需要的面板
 * 计算护盾量和治疗量
 * 简单的DPS计算
+* 简要对比哪个圣遗物更有利于输出
 
 # 以后可能会兼容多种计算/导出工具。  
 计划的兼容列表：
