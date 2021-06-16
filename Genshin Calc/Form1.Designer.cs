@@ -46,6 +46,7 @@ namespace Genshin_Calc
             this.锚定伤害计算器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.治疗量计算器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DPS简易计算ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.圣遗物简易比较器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.角色与武器快捷输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.敌人抗性快速查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -152,7 +153,6 @@ namespace Genshin_Calc
             this.panel2 = new System.Windows.Forms.Panel();
             this.OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
-            this.圣遗物简易比较器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ATK1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CritRate1)).BeginInit();
@@ -331,6 +331,13 @@ namespace Genshin_Calc
             this.DPS简易计算ToolStripMenuItem.Size = new System.Drawing.Size(240, 28);
             this.DPS简易计算ToolStripMenuItem.Text = "DPS简易计算";
             this.DPS简易计算ToolStripMenuItem.Click += new System.EventHandler(this.DPS简易计算ToolStripMenuItem_Click);
+            // 
+            // 圣遗物简易比较器ToolStripMenuItem
+            // 
+            this.圣遗物简易比较器ToolStripMenuItem.Name = "圣遗物简易比较器ToolStripMenuItem";
+            this.圣遗物简易比较器ToolStripMenuItem.Size = new System.Drawing.Size(240, 28);
+            this.圣遗物简易比较器ToolStripMenuItem.Text = "圣遗物简易比较器";
+            this.圣遗物简易比较器ToolStripMenuItem.Click += new System.EventHandler(this.圣遗物简易比较器ToolStripMenuItem_Click);
             // 
             // 查询ToolStripMenuItem
             // 
@@ -1629,13 +1636,6 @@ namespace Genshin_Calc
             // 
             this.SaveFile.DefaultExt = "ysdata";
             // 
-            // 圣遗物简易比较器ToolStripMenuItem
-            // 
-            this.圣遗物简易比较器ToolStripMenuItem.Name = "圣遗物简易比较器ToolStripMenuItem";
-            this.圣遗物简易比较器ToolStripMenuItem.Size = new System.Drawing.Size(240, 28);
-            this.圣遗物简易比较器ToolStripMenuItem.Text = "圣遗物简易比较器";
-            this.圣遗物简易比较器ToolStripMenuItem.Click += new System.EventHandler(this.圣遗物简易比较器ToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -1660,8 +1660,9 @@ namespace Genshin_Calc
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "原神计算器 15.0.0.0";
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragComplete);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
+            this.DragLeave += new System.EventHandler(this.DragBreak);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ATK1)).EndInit();

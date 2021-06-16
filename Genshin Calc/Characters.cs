@@ -14,7 +14,7 @@ namespace Genshin_Calc
         object[] Character = new object[16];
         object[] Level = new object[96];
         object[] Weapon = new object[64];
-        bool init;
+        bool init,canceled;
         string NameOfCharacter;
         XLWorkbook book;
         IXLRange CharacterRange;
@@ -99,7 +99,7 @@ namespace Genshin_Calc
                     if (CharacterLevel.Cell(i, 1).Value.ToString() == lvl)
                     {
                         r = i;
-                        Character_Result.Text = CharacterLevel.Cell(r, c).Value.ToString();
+                        Character_Result.Text = Convert.ToInt32(CharacterLevel.Cell(r, c).Value).ToString();
                         break;
                     }
                 }
@@ -246,14 +246,23 @@ namespace Genshin_Calc
         /// </summary>
         public int Output()
         {
-            return int.Parse(Character_Result.Text) + int.Parse(Weapon_Result.Text);
+            if (canceled)
+            {
+                return -1;
+            }
+            else
+            {
+                return int.Parse(Character_Result.Text) + int.Parse(Weapon_Result.Text);
+            }
         }
         private void Confirm_Click(object sender, EventArgs e)
         {
+            canceled = false;
             Close();
         }
         private void Cancel_Click(object sender, EventArgs e)
         {
+            canceled = true;
             Character_Result.Text = "0";
             Weapon_Result.Text = "0";
             Close();

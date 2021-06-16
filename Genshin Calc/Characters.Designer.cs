@@ -219,7 +219,7 @@
             this.Character_Result.Name = "Character_Result";
             this.Character_Result.Size = new System.Drawing.Size(63, 32);
             this.Character_Result.TabIndex = 45;
-            this.Character_Result.Text = "1";
+            this.Character_Result.Text = "0";
             this.Character_Result.TextChanged += new System.EventHandler(this.Character_Result_TextChanged);
             // 
             // Weapon_Result
@@ -230,7 +230,7 @@
             this.Weapon_Result.Name = "Weapon_Result";
             this.Weapon_Result.Size = new System.Drawing.Size(63, 32);
             this.Weapon_Result.TabIndex = 46;
-            this.Weapon_Result.Text = "1";
+            this.Weapon_Result.Text = "0";
             this.Weapon_Result.TextChanged += new System.EventHandler(this.Weapon_Result_TextChanged);
             // 
             // label2
@@ -298,6 +298,7 @@
             this.Controls.Add(this.武器属性);
             this.Controls.Add(this.角色属性);
             this.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(805, 235);
@@ -305,6 +306,7 @@
             this.MinimumSize = new System.Drawing.Size(805, 235);
             this.Name = "Characters_Weapons";
             this.ShowIcon = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "角色/武器属性填写";
             this.角色属性.ResumeLayout(false);

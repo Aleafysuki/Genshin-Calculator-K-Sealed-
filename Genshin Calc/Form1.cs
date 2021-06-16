@@ -10,7 +10,7 @@ namespace Genshin_Calc
     {
         bool /*Saved = false,*/ check = false;
         bool FileEx_xlsx = false, FileEx_conf = false;
-        bool SettingsChanged = false;
+        bool SettingsChanged = false,Filesave = false;
         string FileLocation = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Genshin Calculator\";
         string FileLocation2 = "";
         int DEF2ATK, HP2ATK;
@@ -658,12 +658,25 @@ namespace Genshin_Calc
         //读取
         private void OpenFiles_Drag(object sender, DragEventArgs e)
         {
+            Filesave = false;
+            SaveFiles();
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 e.Effect = DragDropEffects.All;                                                              //重要代码：表明是所有类型的数据，比如文件路径
             else
                 e.Effect = DragDropEffects.None;
             ReadFromFile(File.ReadAllText(((Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString()));
+        }
+        private void DragComplete(object sender, DragEventArgs e)
+        {
+            Filesave = true;
             Calculate();
+        }
+        private void DragBreak(object sender, EventArgs e)
+        {
+            ReadFromFile(File.ReadAllText(FileLocation + "Temp.yschar"));
+            Filesave = false;
+            Calculate();
+            File.Delete(FileLocation + "Temp.yschar");
         }
         private void OpenFiles(object sender, EventArgs e)
         {
@@ -748,21 +761,33 @@ namespace Genshin_Calc
             return rtn;
         }
         //写入
-        private void SaveFiles(object sender, EventArgs e)
+        private void SaveFiles( object sender, EventArgs e)
         {
-            SaveFile.Filter = "计算器角色文件|*.yschar";
-            SaveFile.ShowDialog();
+            SaveFiles();
+        }
+        private void SaveFiles()
+        {
+            string[] text = new string[8];
+            text[0] = string.Format("<面板>\t[白攻]{0}\t[绿攻]{1}\t[暴率]{2}\t[暴伤]{3}\t[精通]{4}\t[元素]{5}", ATK.Text, ATKPlus.Text, CritRate.Text, CritDMG.Text, EM.Text, EP.Text);
+            text[1] = string.Format("<加攻>\t[固定攻击]{0}\t[比率攻击]{1}\t[防御收益]{2}\t[生命收益]{3}\t[叠加攻击]{4}\t[叠攻层数]{5}", ATKBuff.Text, ATKBuff_P.Text, ATKBuff_DEF.Text, ATKBuff_HP.Text, ATKBuff_S.Text, ATKBuff_Sf.Text);
+            text[2] = string.Format("<等级>\t[我方等级]{0}\t[敌方等级]{1}\t[防御变化]{2}\t[敌人抗性]{3}", PlayerLevel.Text, EnemyLevel.Text, Defense.Text, EnemyRES.Text);
+            text[3] = string.Format("<加伤>\t[伤害提升]{0}\t[叠加伤害]{1}\t[叠伤层数]{2}\t[反应加剧]{3}", DMGBuff.Text, DMGBuff_S.Text, DMGBuff_Sf.Text, ReactBuff.Text);
+            text[4] = string.Format("<其他>\t[天赋倍率]{0}\t[额外乘区]{1}\t[反应类型]{2}", Skill.Text, Other.Text, Reaction_Choose.SelectedItem.ToString());
+            text[5] = string.Format("<输出>\t[未暴击]{0}\t[已暴击]{1}\t[平均值]{2}", Normal, Crit, Avg);
+            text[6] = string.Format("<注解>\t[备注]文件创建于{0}", DateTime.Now);
             try
             {
-                string[] text = new string[8];
-                text[0] = string.Format("<面板>\t[白攻]{0}\t[绿攻]{1}\t[暴率]{2}\t[暴伤]{3}\t[精通]{4}\t[元素]{5}", ATK.Text, ATKPlus.Text, CritRate.Text, CritDMG.Text, EM.Text, EP.Text);
-                text[1] = string.Format("<加攻>\t[固定攻击]{0}\t[比率攻击]{1}\t[防御收益]{2}\t[生命收益]{3}\t[叠加攻击]{4}\t[叠攻层数]{5}", ATKBuff.Text, ATKBuff_P.Text, ATKBuff_DEF.Text, ATKBuff_HP.Text, ATKBuff_S.Text, ATKBuff_Sf.Text);
-                text[2] = string.Format("<等级>\t[我方等级]{0}\t[敌方等级]{1}\t[防御变化]{2}\t[敌人抗性]{3}", PlayerLevel.Text, EnemyLevel.Text, Defense.Text, EnemyRES.Text);
-                text[3] = string.Format("<加伤>\t[伤害提升]{0}\t[叠加伤害]{1}\t[叠伤层数]{2}\t[反应加剧]{3}", DMGBuff.Text, DMGBuff_S.Text, DMGBuff_Sf.Text, ReactBuff.Text);
-                text[4] = string.Format("<其他>\t[天赋倍率]{0}\t[额外乘区]{1}\t[反应类型]{2}", Skill.Text, Other.Text, Reaction_Choose.SelectedItem.ToString());
-                text[5] = string.Format("<输出>\t[未暴击]{0}\t[已暴击]{1}\t[平均值]{2}", Normal, Crit, Avg);
-                text[6] = string.Format("<注解>\t[备注]文件创建于{0}", DateTime.Now);
-                File.WriteAllLines(SaveFile.FileName, text);
+                if (Filesave)
+                {
+                    SaveFile.Filter = "计算器角色文件|*.yschar";
+                    SaveFile.ShowDialog();
+                    File.WriteAllLines(SaveFile.FileName, text);
+
+                }
+                else
+                {
+                    File.WriteAllLines(FileLocation + "Temp.yschar", text);
+                }
             }
             catch (Exception)
             {
@@ -772,7 +797,7 @@ namespace Genshin_Calc
         //“帮助”项//
         private void 计算公式来源ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://bbs.nga.cn/read.php?tid=25564438");
+            Process.Start("https://bbs.nga.cn/read.php?tid=25564438");
         }
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1010,7 +1035,10 @@ namespace Genshin_Calc
             try
             {
                 cw.ShowDialog();
-                ATK1.Value = cw.Output();
+                if (cw.Output() != -1)
+                {
+                    ATK1.Value = cw.Output();
+                }
                 ATK.Text = ATK1.Value.ToString();
             }
             catch (NullReferenceException)
@@ -1033,6 +1061,8 @@ namespace Genshin_Calc
         {
             toolStrips.Visible = toolStrips.Visible ? false : true;
         }
+
+
 
         private void 圣遗物简易比较器ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1356,17 +1386,5 @@ namespace Genshin_Calc
                 }
             }
         }
-    }
-    public class Outputer
-    {
-        public void Output()
-        {
-
-        }
-    }
-    //文字说明
-    public class Tips
-    {
-
     }
 }
