@@ -761,9 +761,15 @@ namespace Genshin_Calc
             return rtn;
         }
         //写入
-        private void SaveFiles( object sender, EventArgs e)
+        private void SaveFiles(object sender, EventArgs e)
         {
-            SaveFiles();
+            if (!Filesave)
+            {
+                Filesave = true;
+                SaveFiles();
+                Filesave = false;
+            }
+            else SaveFiles();
         }
         private void SaveFiles()
         {
@@ -1119,7 +1125,7 @@ namespace Genshin_Calc
                 case 7: rp = 2.78; React *= 2.00; ReactType = 1400; break;  //2.0倍增幅
                 default: Reaction_Choose.Text = "不触发反应"; break;
             }
-            if (ReactType != 1400) React = 1 + ((float)rp / (1 + ReactType / (float)EM1.Value) + (float)ReactBuff1.Value / 1000);
+            if (ReactType != 2000) React = 1 + ((float)rp / (1 + ReactType / (float)EM1.Value) + (float)ReactBuff1.Value / 1000);
         }
         public void Calculate()
         {
