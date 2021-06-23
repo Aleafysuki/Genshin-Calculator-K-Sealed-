@@ -510,7 +510,8 @@
             // Tip
             // 
             this.Tip.AutoSize = true;
-            this.Tip.Location = new System.Drawing.Point(21, 25);
+            this.Tip.ForeColor = System.Drawing.Color.Red;
+            this.Tip.Location = new System.Drawing.Point(21, 27);
             this.Tip.Name = "Tip";
             this.Tip.Size = new System.Drawing.Size(266, 21);
             this.Tip.TabIndex = 42;
@@ -586,9 +587,9 @@
             "不触发反应",
             "触发增幅反应(小)",
             "触发增幅反应(大)"});
-            this.Reaction_Choose.Location = new System.Drawing.Point(135, 382);
+            this.Reaction_Choose.Location = new System.Drawing.Point(114, 382);
             this.Reaction_Choose.Name = "Reaction_Choose";
-            this.Reaction_Choose.Size = new System.Drawing.Size(152, 33);
+            this.Reaction_Choose.Size = new System.Drawing.Size(173, 33);
             this.Reaction_Choose.TabIndex = 9;
             this.Reaction_Choose.SelectedIndexChanged += new System.EventHandler(this.Text_Changed);
             // 

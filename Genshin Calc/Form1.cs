@@ -3,12 +3,14 @@ using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Data;
+
 
 namespace Genshin_Calc
 {
     public partial class Form1 : Form
     {
-        bool /*Saved = false,*/ check = false;
+        bool Sw = true, check = false;
         bool FileEx_xlsx = false, FileEx_conf = false;
         bool SettingsChanged = false,Filesave = false;
         string FileLocation = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Genshin Calculator\";
@@ -18,8 +20,10 @@ namespace Genshin_Calc
         double Resistance = 1;
         double React = 1, rp = 1;
         double def1, def2, defu;//防御计算区所需变量
+        double[] Contents=new double[8], Tmp = new double[8];
         string[] Attributes;
         string[] Values;
+        DataTable Comtable = new DataTable();
         private void Form1_Load(object sender, EventArgs e)
         {
         }
@@ -62,27 +66,6 @@ namespace Genshin_Calc
             EM1.Maximum = (int)settings.Output(7, "MAX");
             ReactBuff1.Maximum = (int)settings.Output(8, "MAX");
             Other1.Maximum = (int)settings.Output(9, "MAX");
-            //if (SettingsChanged)
-            //{ 
-            //    ATK1.Value = (int)settings.Output(0, "DFT");
-            //    ATK.Text = ATK1.Value.ToString();
-            //    ATKPlus1.Value = (int)settings.Output(1, "DFT");
-            //    ATKPlus.Text = ATKPlus1.Value.ToString();
-            //    CritDMG1.Value = (int)settings.Output(2, "DFT");
-            //    CritDMG.Text = Convert.ToString(Convert.ToDouble(CritDMG1.Value) / 10);
-            //    EP1.Value = (int)settings.Output(3, "DFT");
-            //    EP.Text = Convert.ToString(Convert.ToDouble(EP1.Value) / 10);
-            //    Skill1.Value = (int)settings.Output(4, "DFT");
-            //    Skill.Text = Convert.ToString(Convert.ToDouble(Skill1.Value) / 10);
-            //    EnemyRES1.Value = (int)settings.Output(5, "DFT");
-            //    EnemyRES.Text = Convert.ToString(Convert.ToDouble(EnemyRES1.Value) / 10);
-            //    EM1.Value = (int)settings.Output(7, "DFT");
-            //    EM.Text = EM1.Value.ToString();
-            //    ReactBuff1.Value = (int)settings.Output(8, "DFT");
-            //    ReactBuff.Text = Convert.ToString(Convert.ToDouble(ReactBuff1.Value) / 10);
-            //    Other1.Value = (int)settings.Output(9, "DFT");
-            //    Other.Text = Convert.ToString(Convert.ToDouble(Other1.Value) / 10);
-            //}
         }
         /// <summary>
         /// 读取文件中的值
@@ -1089,6 +1072,8 @@ namespace Genshin_Calc
 
         ////////////计算过程////////////
         Upheaval upheaval = new Upheaval();
+
+
         double DEFLC;//总防御
         double ATKLC;//总攻击
         double ELMLV;//元素加伤
@@ -1096,36 +1081,32 @@ namespace Genshin_Calc
 
         public void ReactionCalculator(int index)
         {
-            /*switch (index)//1.6之前的反应倍率
-            {
-                case 0: rp = 0; React = 1; break;//无反应
-                case 1: rp = 6.66; React *= 0.25; break;//超导
-                case 2: rp = 6.66; React *= 0.3; break;//扩散
-                case 3: rp = 6.66; React *= 0.6; break;//感电
-                case 4: rp = 6.66; React *= 0.75; break;//碎冰
-                case 5: rp = 6.66; React *= 1; break;//超载
-                case 6: rp = 2.78; React *= 1.5; break;//1.5倍增幅
-                case 7: rp = 2.78; React *= 2; break;//2.0倍增幅
-                default: Reaction_Choose.Text = "不触发反应"; break;
-            }*/
-            //
-            //1.6及以后的反应倍率:是一坨shit，不要轻易改动
-            //
             var ReactType = 1400;
+
+            switch (index)
+            {
+                case 1: rp = 16.0; ReactType = 2000; break;  //超导
+                case 2: rp = 16.0; ReactType = 2000; break;  //扩散
+                case 3: rp = 16.0; ReactType = 2000; break;  //感电
+                case 4: rp = 16.0; ReactType = 2000; break;  //碎冰
+                case 5: rp = 16.0; ReactType = 2000; break;  //超载
+                case 6: rp = 2.78; ReactType = 1400; break;  //1.5倍增幅
+                case 7: rp = 2.78; ReactType = 1400; break;  //2.0倍增幅
+                default: Reaction_Choose.Text = "不触发反应"; break;
+            }
             React = 1 + ((float)rp / (1 + ReactType / (float)EM1.Value) + (float)ReactBuff1.Value / 1000);
             switch (index)
             {
-                case 0: rp = 0.00; React = 1.000; ReactType = 0001; break;  //无反应
-                case 1: rp = 16.0; React *= 0.25; ReactType = 2000; break;  //超导
-                case 2: rp = 16.0; React *= 0.30; ReactType = 2000; break;  //扩散
-                case 3: rp = 16.0; React *= 0.60; ReactType = 2000; break;  //感电
-                case 4: rp = 16.0; React *= 0.75; ReactType = 2000; break;  //碎冰
-                case 5: rp = 16.0; React *= 1.00; ReactType = 2000; break;  //超载
-                case 6: rp = 2.78; React *= 1.50; ReactType = 1400; break;  //1.5倍增幅
-                case 7: rp = 2.78; React *= 2.00; ReactType = 1400; break;  //2.0倍增幅
+                case 1:  React *= 0.25; break;  //超导
+                case 2:  React *= 0.30; break;  //扩散
+                case 3:  React *= 0.60; break;  //感电
+                case 4:  React *= 0.75; break;  //碎冰
+                case 5:  React *= 1.00; break;  //超载
+                case 6:  React *= 1.50; break;  //1.5倍增幅
+                case 7:  React *= 2.00; break;  //2.0倍增幅
                 default: Reaction_Choose.Text = "不触发反应"; break;
             }
-            if (ReactType != 2000) React = 1 + ((float)rp / (1 + ReactType / (float)EM1.Value) + (float)ReactBuff1.Value / 1000);
+            if (index == 0) React = 1;
         }
         public void Calculate()
         {
@@ -1183,6 +1164,7 @@ namespace Genshin_Calc
                     Normal = 0;
                     Avg = 0;
                     Crit = 0;
+                    Resistance = 0;
                 }
                 //伤害数值转为文本
                 Normal_DMG.Text = Convert.ToString(Normal);
@@ -1190,6 +1172,96 @@ namespace Genshin_Calc
                 Avg_DMG.Text = Convert.ToString(Avg);
             }
             catch { }
+            if (P1.SelectedTab == tabPage5)
+            {
+                DetailedCalculate();
+            }
+        }
+        private void DetailedCalculate()
+        {
+            #region 数据处理
+            var CritValue = 1D;
+            var ContentsTemp = new double[8];
+            if (DMGType0.Checked)
+            {
+                CritValue = 1d;
+            }
+            else if (DMGType1.Checked)
+            {
+                CritValue = 1 + Convert.ToDouble(CritDMG1.Value) / 1000;
+            }
+            else
+            {
+                CritValue = 1 + float.Parse(CritRate.Text) * float.Parse(CritDMG.Text) / 10000;
+            }
+            AttributeList.BeginUpdate();
+            if (Reaction_Choose.SelectedIndex <= 5 && Reaction_Choose.SelectedIndex >= 1)
+            {
+                Contents = new double[8] { 0, 0, 0, 0, 0, Resistance, React, 0 };
+                AttributeList.Items[0].SubItems[1].Text = upheaval.Upheaval_Damage(PlayerLevel1.Value, false).ToString();
+            }
+            else
+            {
+                Contents = new double[8]
+                {
+                    (ATKLC - ATK1.Value) / ATK1.Value
+                    ,Convert.ToDouble(Skill1.Value) / 1000
+                    ,((ELMLV + BUFLV) / 100) + 1
+                    ,CritValue
+                    ,DEFLC
+                    ,Resistance
+                    ,React
+                    ,Convert.ToDouble(Other1.Value) / 1000
+                };
+                AttributeList.Items[0].SubItems[1].Text = ATK.Text;
+
+            }
+            for (int i = 1; i <= 8; i++)
+            {
+                ListProvider(i);
+                ContentsTemp[i - 1] = 100 * Contents[i - 1] / Contents.Sum();
+                Tmp[i - 1] = 100 * (Contents[i - 1] - 1) / (Contents.Sum() - 8);
+            }
+            AttributeList.EndUpdate();
+
+            #endregion
+            #region 数据转化为表格
+
+            ComChart.Series[0].Points.DataBindXY(new string[] { "攻击加成", "天赋倍率", "伤害加深", "暴击伤害", "防御计算", "抗性计算", "元素反应", "额外乘区" }, Sw ?  ContentsTemp:Tmp);
+            for (int i = 1; i <= 8; i++)
+            {
+                AttributeList.Items[i].SubItems[2].Text = OutStr2(i, !Sw);
+            }
+            #endregion
+        }
+
+        private void ComChart_Click(object sender, EventArgs e)
+        {
+            if (Sw)
+            {
+                Sw = false;
+            }
+            else if (!Sw) Sw = true;
+            DetailedCalculate();
+            ComChart.Annotations[1].Visible = Sw;
+            ComChart.Annotations[2].Visible = !Sw;
+        }
+        private void ListProvider(int x)
+        {
+            var OutputString1 = Convert.ToString(string.Format("{0:N7}", Contents[x - 1]));
+            var OutputString2 = OutStr2(x, false);
+            if (OutputString1.Contains("."))
+            {
+                OutputString1 = OutputString1.TrimEnd('0').TrimEnd('.');
+                OutputString2 = OutputString2.TrimEnd('0').TrimEnd('.');
+            }
+            AttributeList.Items[x].SubItems[1].Text = OutputString1 + "x";
+            AttributeList.Items[x].SubItems[2].Text = OutputString2 ;
+        }
+        private string OutStr2(int x,bool sw)
+        {
+            if(sw)return Convert.ToString(string.Format("{0:N4}", 100 * (Contents[x - 1] - 1) / (Contents.Sum() - 8))) + "%";
+            else return Convert.ToString(string.Format("{0:N4}", 100 * (Contents[x - 1]) / (Contents.Sum()))) + "%";
         }
         //////////计算部分结束///////////
     }

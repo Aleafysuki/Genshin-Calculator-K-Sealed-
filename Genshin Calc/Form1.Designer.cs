@@ -31,6 +31,50 @@ namespace Genshin_Calc
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            "基础攻击",
+            "0",
+            "---"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            "攻击加成",
+            "1x",
+            "0%"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            "天赋倍率",
+            "1x",
+            "0%"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            "伤害加深",
+            "1x",
+            "0%"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            "暴击伤害",
+            "1x",
+            "0%"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+            "防御计算",
+            "1x",
+            "0%"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            "抗性计算",
+            "1x",
+            "0%"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            "元素反应",
+            "1x",
+            "0%"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
+            "额外乘区",
+            "1x",
+            "0%"}, -1);
+            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation1 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation2 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation3 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn1 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
+            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn2 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据存放文件夹ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,6 +176,16 @@ namespace Genshin_Calc
             this.DMGBuff1 = new System.Windows.Forms.TrackBar();
             this.DMGBuff = new System.Windows.Forms.TextBox();
             this.DMG_Buff = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.Spliter = new System.Windows.Forms.SplitContainer();
+            this.DMGType2 = new System.Windows.Forms.RadioButton();
+            this.DMGType1 = new System.Windows.Forms.RadioButton();
+            this.DMGType0 = new System.Windows.Forms.RadioButton();
+            this.AttributeList = new System.Windows.Forms.ListView();
+            this.ColumnA = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ComChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.NormalDMG_Text = new System.Windows.Forms.Label();
             this.CritDMG_Text = new System.Windows.Forms.Label();
             this.AvgDMG_Text = new System.Windows.Forms.Label();
@@ -185,6 +239,12 @@ namespace Genshin_Calc
             ((System.ComponentModel.ISupportInitialize)(this.DMGBuff1_S)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DMGBuff1)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Spliter)).BeginInit();
+            this.Spliter.Panel1.SuspendLayout();
+            this.Spliter.Panel2.SuspendLayout();
+            this.Spliter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ComChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Skill1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Other1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -541,7 +601,7 @@ namespace Genshin_Calc
             this.CritDMG1.Size = new System.Drawing.Size(566, 45);
             this.CritDMG1.TabIndex = 8;
             this.CritDMG1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.CritDMG1.Value = 1000;
+            this.CritDMG1.Value = 500;
             this.CritDMG1.Scroll += new System.EventHandler(this.CritDMG1_Scroll);
             // 
             // CritDMG
@@ -715,12 +775,14 @@ namespace Genshin_Calc
             this.P1.Controls.Add(this.tabPage2);
             this.P1.Controls.Add(this.tabPage4);
             this.P1.Controls.Add(this.tabPage3);
+            this.P1.Controls.Add(this.tabPage5);
             this.P1.Font = new System.Drawing.Font("微软雅黑 Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.P1.Location = new System.Drawing.Point(12, 34);
             this.P1.Name = "P1";
             this.P1.SelectedIndex = 0;
             this.P1.Size = new System.Drawing.Size(920, 367);
             this.P1.TabIndex = 12;
+            this.P1.SelectedIndexChanged += new System.EventHandler(this.Skill_TextChanged);
             // 
             // tabPage1
             // 
@@ -1386,6 +1448,225 @@ namespace Genshin_Calc
             this.DMG_Buff.TabIndex = 8;
             this.DMG_Buff.Text = "伤害提升百分比                  %";
             // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.Spliter);
+            this.tabPage5.Location = new System.Drawing.Point(4, 30);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(912, 333);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "面板分析";
+            // 
+            // Spliter
+            // 
+            this.Spliter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Spliter.Font = new System.Drawing.Font("微软雅黑", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Spliter.Location = new System.Drawing.Point(3, 3);
+            this.Spliter.Name = "Spliter";
+            // 
+            // Spliter.Panel1
+            // 
+            this.Spliter.Panel1.Controls.Add(this.DMGType2);
+            this.Spliter.Panel1.Controls.Add(this.DMGType1);
+            this.Spliter.Panel1.Controls.Add(this.DMGType0);
+            this.Spliter.Panel1.Controls.Add(this.AttributeList);
+            // 
+            // Spliter.Panel2
+            // 
+            this.Spliter.Panel2.Controls.Add(this.ComChart);
+            this.Spliter.Size = new System.Drawing.Size(906, 327);
+            this.Spliter.SplitterDistance = 364;
+            this.Spliter.TabIndex = 0;
+            // 
+            // DMGType2
+            // 
+            this.DMGType2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DMGType2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.DMGType2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DMGType2.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.DMGType2.FlatAppearance.CheckedBackColor = System.Drawing.Color.PaleTurquoise;
+            this.DMGType2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.DMGType2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.DMGType2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DMGType2.Font = new System.Drawing.Font("微软雅黑", 13.5F);
+            this.DMGType2.Location = new System.Drawing.Point(241, 290);
+            this.DMGType2.Name = "DMGType2";
+            this.DMGType2.Size = new System.Drawing.Size(123, 36);
+            this.DMGType2.TabIndex = 47;
+            this.DMGType2.Text = "伤害期望";
+            this.DMGType2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DMGType2.UseVisualStyleBackColor = true;
+            this.DMGType2.CheckedChanged += new System.EventHandler(this.Other1_Scroll);
+            // 
+            // DMGType1
+            // 
+            this.DMGType1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.DMGType1.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DMGType1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.DMGType1.FlatAppearance.CheckedBackColor = System.Drawing.Color.PaleTurquoise;
+            this.DMGType1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.DMGType1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.DMGType1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DMGType1.Font = new System.Drawing.Font("微软雅黑", 13.5F);
+            this.DMGType1.Location = new System.Drawing.Point(120, 290);
+            this.DMGType1.Name = "DMGType1";
+            this.DMGType1.Size = new System.Drawing.Size(123, 36);
+            this.DMGType1.TabIndex = 46;
+            this.DMGType1.Text = "已暴击";
+            this.DMGType1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DMGType1.UseVisualStyleBackColor = true;
+            this.DMGType1.CheckedChanged += new System.EventHandler(this.Other1_Scroll);
+            // 
+            // DMGType0
+            // 
+            this.DMGType0.Appearance = System.Windows.Forms.Appearance.Button;
+            this.DMGType0.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DMGType0.Checked = true;
+            this.DMGType0.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.DMGType0.FlatAppearance.CheckedBackColor = System.Drawing.Color.PaleTurquoise;
+            this.DMGType0.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.DMGType0.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.DMGType0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DMGType0.Font = new System.Drawing.Font("微软雅黑", 13.5F);
+            this.DMGType0.Location = new System.Drawing.Point(0, 290);
+            this.DMGType0.Name = "DMGType0";
+            this.DMGType0.Size = new System.Drawing.Size(123, 36);
+            this.DMGType0.TabIndex = 45;
+            this.DMGType0.TabStop = true;
+            this.DMGType0.Text = "未暴击";
+            this.DMGType0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DMGType0.UseVisualStyleBackColor = true;
+            this.DMGType0.CheckedChanged += new System.EventHandler(this.Other1_Scroll);
+            // 
+            // AttributeList
+            // 
+            this.AttributeList.BackColor = System.Drawing.SystemColors.Control;
+            this.AttributeList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ColumnA,
+            this.ColumnB,
+            this.ColumnC});
+            this.AttributeList.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AttributeList.Font = new System.Drawing.Font("微软雅黑", 13.5F);
+            this.AttributeList.HideSelection = false;
+            this.AttributeList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9});
+            this.AttributeList.Location = new System.Drawing.Point(0, 0);
+            this.AttributeList.Name = "AttributeList";
+            this.AttributeList.Size = new System.Drawing.Size(364, 292);
+            this.AttributeList.TabIndex = 0;
+            this.AttributeList.UseCompatibleStateImageBehavior = false;
+            this.AttributeList.View = System.Windows.Forms.View.Details;
+            // 
+            // ColumnA
+            // 
+            this.ColumnA.Text = "计算乘区";
+            this.ColumnA.Width = 105;
+            // 
+            // ColumnB
+            // 
+            this.ColumnB.Text = "算术比率";
+            this.ColumnB.Width = 135;
+            // 
+            // ColumnC
+            // 
+            this.ColumnC.Text = "乘区占比";
+            this.ColumnC.Width = 120;
+            // 
+            // ComChart
+            // 
+            textAnnotation1.AllowAnchorMoving = true;
+            textAnnotation1.AnchorAlignment = System.Drawing.ContentAlignment.BottomRight;
+            textAnnotation1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            textAnnotation1.Name = "TextAnnotation1";
+            textAnnotation1.Text = "在本页中，乘区占比越低的部分，提升后收益越高。双击此图可切换乘区计算逻辑。";
+            textAnnotation1.X = 0D;
+            textAnnotation1.Y = 93D;
+            textAnnotation2.Name = "TextAnnotation2";
+            textAnnotation2.Text = "当前：所有乘区（包括扣减伤害的乘区）均累加";
+            textAnnotation2.X = 50D;
+            textAnnotation2.Y = 1D;
+            textAnnotation3.Name = "TextAnnotation3";
+            textAnnotation3.Text = "当前：扣减伤害的乘区会表现为负数";
+            textAnnotation3.Visible = false;
+            textAnnotation3.X = 61D;
+            textAnnotation3.Y = 1D;
+            this.ComChart.Annotations.Add(textAnnotation1);
+            this.ComChart.Annotations.Add(textAnnotation2);
+            this.ComChart.Annotations.Add(textAnnotation3);
+            this.ComChart.BackColor = System.Drawing.SystemColors.Control;
+            chartArea1.Area3DStyle.Inclination = 3;
+            chartArea1.Area3DStyle.Rotation = 10;
+            chartArea1.Area3DStyle.WallWidth = 2;
+            chartArea1.BackColor = System.Drawing.SystemColors.Control;
+            chartArea1.BackSecondaryColor = System.Drawing.SystemColors.ControlDark;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 75F;
+            chartArea1.Position.Width = 75F;
+            chartArea1.Position.Y = 10F;
+            this.ComChart.ChartAreas.Add(chartArea1);
+            this.ComChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.AutoFitMinFontSize = 9;
+            legend1.BackColor = System.Drawing.SystemColors.Control;
+            legendCellColumn1.ColumnType = System.Windows.Forms.DataVisualization.Charting.LegendCellColumnType.SeriesSymbol;
+            legendCellColumn1.Name = "Column1";
+            legendCellColumn2.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            legendCellColumn2.Name = "Column2";
+            legendCellColumn2.Text = "#VALX : #PERCENT";
+            legend1.CellColumns.Add(legendCellColumn1);
+            legend1.CellColumns.Add(legendCellColumn2);
+            legend1.Name = "Legend1";
+            legend1.Position.Auto = false;
+            legend1.Position.Height = 45F;
+            legend1.Position.Width = 30F;
+            legend1.Position.X = 70F;
+            legend1.Position.Y = 50F;
+            legend1.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
+            this.ComChart.Legends.Add(legend1);
+            this.ComChart.Location = new System.Drawing.Point(0, 0);
+            this.ComChart.Name = "ComChart";
+            this.ComChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.ComChart.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(235)))), ((int)(((byte)(205))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(244)))), ((int)(((byte)(255))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(238)))), ((int)(((byte)(108))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(204)))), ((int)(((byte)(234))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(248)))), ((int)(((byte)(195))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(185)))), ((int)(((byte)(255))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))))};
+            series1.BackSecondaryColor = System.Drawing.SystemColors.HighlightText;
+            series1.BorderColor = System.Drawing.SystemColors.ControlDark;
+            series1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Color = System.Drawing.SystemColors.AppWorkspace;
+            series1.CustomProperties = "PieLineColor=ControlDark, MinimumRelativePieSize=50, DoughnutRadius=30, PieLabelS" +
+    "tyle=Outside";
+            series1.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            series1.LabelForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            series1.Legend = "Legend1";
+            series1.MarkerBorderColor = System.Drawing.SystemColors.ControlDark;
+            series1.MarkerColor = System.Drawing.SystemColors.ControlDark;
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 4;
+            this.ComChart.Series.Add(series1);
+            this.ComChart.Size = new System.Drawing.Size(538, 327);
+            this.ComChart.TabIndex = 0;
+            this.ComChart.Text = "chart1";
+            this.ComChart.DoubleClick += new System.EventHandler(this.ComChart_Click);
+            // 
             // NormalDMG_Text
             // 
             this.NormalDMG_Text.AutoSize = true;
@@ -1704,6 +1985,12 @@ namespace Genshin_Calc
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DMGBuff1)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.Spliter.Panel1.ResumeLayout(false);
+            this.Spliter.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Spliter)).EndInit();
+            this.Spliter.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ComChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Skill1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Other1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -1839,6 +2126,16 @@ namespace Genshin_Calc
         private SaveFileDialog SaveFile;
         private ToolStripMenuItem Cocogoat圣遗物导入ToolStripMenuItem;
         private ToolStripMenuItem 圣遗物简易比较器ToolStripMenuItem;
+        private TabPage tabPage5;
+        private SplitContainer Spliter;
+        private ListView AttributeList;
+        private ColumnHeader ColumnA;
+        private ColumnHeader ColumnB;
+        private ColumnHeader ColumnC;
+        private RadioButton DMGType2;
+        private RadioButton DMGType1;
+        private RadioButton DMGType0;
+        private System.Windows.Forms.DataVisualization.Charting.Chart ComChart;
     }
 }
 
