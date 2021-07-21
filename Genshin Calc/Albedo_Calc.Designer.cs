@@ -60,10 +60,6 @@ namespace Genshin_Calc
             this.SkillA_Label = new System.Windows.Forms.Label();
             this.Skill_Level = new System.Windows.Forms.DomainUpDown();
             this.Constellation_Check = new System.Windows.Forms.CheckBox();
-            this.DMG_Group = new System.Windows.Forms.GroupBox();
-            this.NormalDMG_Text = new System.Windows.Forms.Label();
-            this.CritDMG_Text = new System.Windows.Forms.Label();
-            this.AvgDMG_Text = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
             this.ElemBurst_Box = new System.Windows.Forms.GroupBox();
             this.BurstCount_Label = new System.Windows.Forms.Label();
@@ -88,7 +84,6 @@ namespace Genshin_Calc
             ((System.ComponentModel.ISupportInitialize)(this.PlayerDEF1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerDEFBasic1)).BeginInit();
             this.ElemSkill_Box.SuspendLayout();
-            this.DMG_Group.SuspendLayout();
             this.ElemBurst_Box.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -178,7 +173,6 @@ namespace Genshin_Calc
             // 
             // PlayerDEF1
             // 
-            this.PlayerDEF1.AllowDrop = true;
             this.PlayerDEF1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PlayerDEF1.BackColor = System.Drawing.SystemColors.Control;
@@ -203,7 +197,6 @@ namespace Genshin_Calc
             // 
             // PlayerDEFBasic1
             // 
-            this.PlayerDEFBasic1.AllowDrop = true;
             this.PlayerDEFBasic1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PlayerDEFBasic1.BackColor = System.Drawing.SystemColors.Control;
@@ -258,9 +251,8 @@ namespace Genshin_Calc
             this.EnemyHP_Check.Appearance = System.Windows.Forms.Appearance.Button;
             this.EnemyHP_Check.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.EnemyHP_Check.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.EnemyHP_Check.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.EnemyHP_Check.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.EnemyHP_Check.ForeColor = System.Drawing.SystemColors.Control;
+            this.EnemyHP_Check.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.EnemyHP_Check.Location = new System.Drawing.Point(15, 33);
             this.EnemyHP_Check.Name = "EnemyHP_Check";
             this.EnemyHP_Check.Size = new System.Drawing.Size(460, 32);
@@ -457,9 +449,8 @@ namespace Genshin_Calc
             this.Constellation_Check.Appearance = System.Windows.Forms.Appearance.Button;
             this.Constellation_Check.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Constellation_Check.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Constellation_Check.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Constellation_Check.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.Constellation_Check.ForeColor = System.Drawing.SystemColors.Control;
+            this.Constellation_Check.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Constellation_Check.Location = new System.Drawing.Point(15, 33);
             this.Constellation_Check.Name = "Constellation_Check";
             this.Constellation_Check.Size = new System.Drawing.Size(293, 32);
@@ -468,49 +459,6 @@ namespace Genshin_Calc
             this.Constellation_Check.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Constellation_Check.UseVisualStyleBackColor = true;
             this.Constellation_Check.CheckedChanged += new System.EventHandler(this.Constellation_Check_CheckedChanged);
-            // 
-            // DMG_Group
-            // 
-            this.DMG_Group.Controls.Add(this.NormalDMG_Text);
-            this.DMG_Group.Controls.Add(this.CritDMG_Text);
-            this.DMG_Group.Controls.Add(this.AvgDMG_Text);
-            this.DMG_Group.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.DMG_Group.Location = new System.Drawing.Point(493, 288);
-            this.DMG_Group.Name = "DMG_Group";
-            this.DMG_Group.Size = new System.Drawing.Size(295, 147);
-            this.DMG_Group.TabIndex = 26;
-            this.DMG_Group.TabStop = false;
-            this.DMG_Group.Text = "计算输出结果";
-            // 
-            // NormalDMG_Text
-            // 
-            this.NormalDMG_Text.AutoSize = true;
-            this.NormalDMG_Text.Font = new System.Drawing.Font("方正像素18", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.NormalDMG_Text.Location = new System.Drawing.Point(11, 35);
-            this.NormalDMG_Text.Name = "NormalDMG_Text";
-            this.NormalDMG_Text.Size = new System.Drawing.Size(82, 24);
-            this.NormalDMG_Text.TabIndex = 19;
-            this.NormalDMG_Text.Text = "未暴击";
-            // 
-            // CritDMG_Text
-            // 
-            this.CritDMG_Text.AutoSize = true;
-            this.CritDMG_Text.Font = new System.Drawing.Font("方正像素18", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CritDMG_Text.Location = new System.Drawing.Point(11, 72);
-            this.CritDMG_Text.Name = "CritDMG_Text";
-            this.CritDMG_Text.Size = new System.Drawing.Size(82, 24);
-            this.CritDMG_Text.TabIndex = 20;
-            this.CritDMG_Text.Text = "已暴击";
-            // 
-            // AvgDMG_Text
-            // 
-            this.AvgDMG_Text.AutoSize = true;
-            this.AvgDMG_Text.Font = new System.Drawing.Font("方正像素18", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.AvgDMG_Text.Location = new System.Drawing.Point(11, 109);
-            this.AvgDMG_Text.Name = "AvgDMG_Text";
-            this.AvgDMG_Text.Size = new System.Drawing.Size(82, 24);
-            this.AvgDMG_Text.TabIndex = 21;
-            this.AvgDMG_Text.Text = "平均值";
             // 
             // ExitButton
             // 
@@ -529,7 +477,6 @@ namespace Genshin_Calc
             this.ElemBurst_Box.Controls.Add(this.BurstCount_Label);
             this.ElemBurst_Box.Controls.Add(this.BurstCount);
             this.ElemBurst_Box.Controls.Add(this.BurstB);
-            this.ElemBurst_Box.Controls.Add(this.DMG_Group);
             this.ElemBurst_Box.Controls.Add(this.BurstA);
             this.ElemBurst_Box.Controls.Add(this.BurstMultiplier_Label);
             this.ElemBurst_Box.Controls.Add(this.label20);
@@ -626,7 +573,7 @@ namespace Genshin_Calc
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("微软雅黑", 15.75F);
-            this.label21.Location = new System.Drawing.Point(90, 209);
+            this.label21.Location = new System.Drawing.Point(90, 203);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(75, 28);
             this.label21.TabIndex = 55;
@@ -779,7 +726,7 @@ namespace Genshin_Calc
             this.Name = "Albedo_Calc";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "防御转换/增加伤害计算（当前适用于阿贝多）";
             this.DEFInput_Box.ResumeLayout(false);
             this.DEFInput_Box.PerformLayout();
@@ -787,8 +734,6 @@ namespace Genshin_Calc
             ((System.ComponentModel.ISupportInitialize)(this.PlayerDEFBasic1)).EndInit();
             this.ElemSkill_Box.ResumeLayout(false);
             this.ElemSkill_Box.PerformLayout();
-            this.DMG_Group.ResumeLayout(false);
-            this.DMG_Group.PerformLayout();
             this.ElemBurst_Box.ResumeLayout(false);
             this.ElemBurst_Box.PerformLayout();
             this.ResumeLayout(false);
@@ -806,13 +751,9 @@ namespace Genshin_Calc
         private System.Windows.Forms.TextBox PlayerDEFBasic;
         private System.Windows.Forms.GroupBox ElemSkill_Box;
         private System.Windows.Forms.CheckBox Constellation_Check;
-        private System.Windows.Forms.GroupBox DMG_Group;
         private System.Windows.Forms.Label SA_Normal;
         private System.Windows.Forms.Label SA_Crit;
         private System.Windows.Forms.Label SA_Avg;
-        private System.Windows.Forms.Label NormalDMG_Text;
-        private System.Windows.Forms.Label CritDMG_Text;
-        private System.Windows.Forms.Label AvgDMG_Text;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.GroupBox ElemBurst_Box;
         private System.Windows.Forms.TextBox GeoBuff;

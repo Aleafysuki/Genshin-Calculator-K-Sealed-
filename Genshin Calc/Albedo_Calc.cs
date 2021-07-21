@@ -77,6 +77,10 @@ namespace Genshin_Calc
         }
         private void Burst_Level_SelectedItemChanged(object sender, EventArgs e)
         {
+            if (Burst_Level.SelectedIndex < 3)
+            {
+                Constellation_Check.Checked = true;
+            }
             BurstA.Text = Convert.ToString(BurstA_Multiplier[12 - Burst_Level.SelectedIndex] * 100) + "%";
             BurstB.Text = Convert.ToString(BurstB_Multiplier[12 - Burst_Level.SelectedIndex] * 100) + "%";
             UpdateIndex();
@@ -133,21 +137,27 @@ namespace Genshin_Calc
             other = otherCon;
             Crited = crit;
             Average = avg;
+            UpdateIndex();
         }
         private void Constellation_Check_CheckedChanged(object sender, EventArgs e)//确认命座2是否解锁的复选框
         {
+            Constellation_Check.BackColor = Constellation_Check.Checked ? Color.FromArgb(222, 222, 255) : SystemColors.Control;
+            Constellation_Check.ForeColor = Constellation_Check.Checked ? Color.Black : SystemColors.ControlDark;
             BurstCount.Enabled = Constellation_Check.Checked;
             BurstCount_Label.Enabled = Constellation_Check.Checked;
             UpdateIndex();
         }
         private void ContentChanged(object sender, EventArgs e)
         {
+            EnemyHP_Check.BackColor = EnemyHP_Check.Checked ? Color.FromArgb(222, 222, 255) : SystemColors.Control;
+            EnemyHP_Check.ForeColor = EnemyHP_Check.Checked ? Color.Black : SystemColors.ControlDark;
+
             UpdateIndex();
         }
-        public void ContentChanged_Pub()
-        {
-            UpdateIndex();
-        }
+        //public void ContentChanged_Pub()
+        //{
+        //    UpdateIndex();
+        //}
         private void ExitButton_Click(object sender, EventArgs e)//退出按钮
         {
             Close();

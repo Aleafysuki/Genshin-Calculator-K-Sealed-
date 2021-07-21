@@ -4,26 +4,57 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Data;
-
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Genshin_Calc
 {
     public partial class Form1 : Form
     {
+        #region 初始化各变量
         bool Sw = true, check = false;
+        /// <summary>
+        /// 文件操作相关变量
+        /// </summary>
         bool FileEx_xlsx = false, FileEx_conf = false;
-        bool SettingsChanged = false,Filesave = false;
+        bool SettingsChanged = false, Filesave = false;
         string FileLocation = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Genshin Calculator\";
         string FileLocation2 = "";
+        /// <summary>
+        /// 攻击乘区的特殊数据
+        /// </summary>
         int DEF2ATK, HP2ATK;
+        /// <summary>
+        /// 伤害计算结果
+        /// </summary>
         double Normal = 0, Crit = 0, Avg = 0;
+        /// <summary>
+        /// 抗性计算区所需变量
+        /// </summary>
         double Resistance = 1;
+        /// <summary>
+        /// 反应乘区所需变量
+        /// </summary>
         double React = 1, rp = 1;
-        double def1, def2, defu;//防御计算区所需变量
-        double[] Contents=new double[8], Tmp = new double[8];
+        /// <summary>
+        /// 防御计算区所需变量
+        /// </summary>
+        double def1, def2, defu;
+        /// <summary>
+        /// 数值可视化图表所需变量
+        /// </summary>
+        double[] Contents = new double[8], Tmp = new double[8];
         string[] Attributes;
         string[] Values;
+        /// <summary>
+        /// 在各窗口之间进行数据传递用的变量组
+        /// </summary>
+        double[] DataStream = new double[20];
         DataTable Comtable = new DataTable();
+        Thread ChartDrawing;
+        #endregion
+
+        #region 初始化窗体
         private void Form1_Load(object sender, EventArgs e)
         {
         }
@@ -37,6 +68,7 @@ namespace Genshin_Calc
             catch (Exception)
             { }
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
             Text = "原神计算器 " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             if (File.Exists(FileLocation + "Configuration.Config"))
             {
@@ -48,11 +80,12 @@ namespace Genshin_Calc
             RESCalc();
             FileCheck();
             Cocogoat圣遗物导入ToolStripMenuItem.Visible = false;
+            ChartDrawing = new Thread(DetailedCalculate);
+            ChartDrawing.Start();
         }
-        public void SettingsChange(bool s)
-        {
-            SettingsChanged = s;
-        }
+        #endregion
+
+        #region 录入设置项
         private void LoadSettings()
         {
             Settings settings = new Settings();
@@ -67,12 +100,18 @@ namespace Genshin_Calc
             ReactBuff1.Maximum = (int)settings.Output(8, "MAX");
             Other1.Maximum = (int)settings.Output(9, "MAX");
         }
+        public void SettingsChange(bool s)
+        {
+            SettingsChanged = s;
+        }
+        #endregion
+
+        #region 文件相关操作
         /// <summary>
         /// 读取文件中的值
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         public void FileWriter()
         {
             var xlsx_url = "https://genshincalc.oss-cn-beijing.aliyuncs.com/xlsx/%E8%AF%A6%E7%BB%86%E6%95%B0%E6%8D%AE.xlsx";
@@ -151,29 +190,7 @@ namespace Genshin_Calc
             数值上下限设置ToolStripMenuItem.Visible = FileEx_conf;
             数值上下限设置ToolStripMenuItem.Enabled = FileEx_conf;
         }
-        //public void FontIn()
-        //{
-        //    try
-        //    {
-        //        PrivateFontCollection Mfonts = new PrivateFontCollection();
-        //        Mfonts.AddFontFile(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Genshin_Calculator\FZXIANGSU12.TTF");
-        //        Font Nums = new Font(Mfonts.Families[0], 16);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        DialogResult FontCheck;
-        //        FontCheck = MessageBox.Show("缺少相应字体文件，可能导致显示效果变化。", "提示", MessageBoxButtons.YesNoCancel);
-        //        if (FontCheck == DialogResult.Yes)
-        //        {
-        //            //下载文件到指定文件夹
-        //        }
-        //        else if (FontCheck == DialogResult.No)
-        //        { }
-        //        else if (FontCheck == DialogResult.Cancel)
-        //        { }
-        //    }
-        //}
-        //SaveFileDialog ctrl_s = null;
+
         private void 数据存放文件夹ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Genshin Calculator\");
@@ -193,7 +210,6 @@ namespace Genshin_Calc
         private void 数值上下限设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Settings settingwindow = new Settings();
-
             if (ATKLC <= 5000)
             {
                 settingwindow.Input(
@@ -257,7 +273,9 @@ namespace Genshin_Calc
 
 
         }
+        #endregion
 
+        #region 输入各项数据
         //白字攻击力：角色+武器//
         private void ATK1_Scroll(object sender, EventArgs e)
         {
@@ -266,15 +284,7 @@ namespace Genshin_Calc
         }
         private void ATK_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                ATK1.Value = Convert.ToInt32(ATK.Text);
-            }
-            catch (Exception)
-            {
-
-            }
-            Calculate();
+            TrackBarSync(ATK1, ATK);
         }
         //绿字攻击力：圣遗物等加成//
         private void ATKPlus1_Scroll(object sender, EventArgs e)
@@ -284,15 +294,7 @@ namespace Genshin_Calc
         }
         private void ATKPlus_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                ATKPlus1.Value = Convert.ToInt32(ATKPlus.Text);
-            }
-            catch (Exception)
-            {
-
-            }
-            Calculate();
+            TrackBarSync(ATKPlus1, ATKPlus);
         }
         //暴击率输入//
         private void CritRate1_Scroll(object sender, EventArgs e)
@@ -302,15 +304,7 @@ namespace Genshin_Calc
         }
         private void CritRate_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                CritRate1.Value = Convert.ToInt32(Convert.ToDouble(CritRate.Text) * 10);
-            }
-            catch (Exception)
-            {
-
-            }
-            Calculate();
+            TrackBarSync(CritRate1, CritRate, "5", 5, 10);
         }
         //暴击伤害输入//
         private void CritDMG1_Scroll(object sender, EventArgs e)
@@ -322,13 +316,19 @@ namespace Genshin_Calc
         {
             try
             {
-                CritDMG1.Value = Convert.ToInt32(Convert.ToDouble(CritDMG.Text) * 10);
+                if (Convert.ToDouble(CritDMG.Text) < 50 && CritDMG.Text != null)
+                {
+                    CritDMG.BackColor = System.Drawing.SystemColors.Control;
+                }
+                else
+                {
+                    CritDMG.BackColor = System.Drawing.SystemColors.Window;
+                    TrackBarSync(CritDMG1, CritDMG, "50", 50, 10);
+                }
             }
             catch (Exception)
             {
-                
             }
-            Calculate();
         }
         //元素精通//
         private void EM1_Scroll(object sender, EventArgs e)
@@ -338,14 +338,7 @@ namespace Genshin_Calc
         }
         private void EM_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                EM1.Value = Convert.ToInt32(EM.Text);
-            }
-            catch (Exception)
-            {
-                EP1.Value = 0;
-            }
+            TrackBarSync(EM1, EM);
             Calculate();
         }
         //元素伤害加成//
@@ -356,15 +349,7 @@ namespace Genshin_Calc
         }
         private void EP_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                EP1.Value = Convert.ToInt32(Convert.ToDouble(EP.Text) * 10);
-            }
-            catch (Exception)
-            {
-                EP1.Value = 0;
-            }
-            Calculate();
+            TrackBarSync(EP1, EP, "0", 0, 10);
         }
         //伤害加深：百分比//
         private void DMGBuff1_Scroll(object sender, EventArgs e)
@@ -374,15 +359,7 @@ namespace Genshin_Calc
         }
         private void DMGBuff_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                DMGBuff1.Value = Convert.ToInt32(Convert.ToDouble(DMGBuff.Text) * 10);
-            }
-            catch (Exception)
-            {
-                DMGBuff1.Value = 0;
-            }
-            Calculate();
+            TrackBarSync(DMGBuff1, DMGBuff, "0", 0, 10);
         }
         //伤害加深：按层数的百分比//
         private void DMGBuff1_S_Scroll(object sender, EventArgs e)
@@ -392,13 +369,7 @@ namespace Genshin_Calc
         }
         private void DMGBuff_S_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                DMGBuff1_S.Value = Convert.ToInt32(Convert.ToDouble(DMGBuff_S.Text) * 10);
-            }
-            catch (Exception)
-            { }
-            Calculate();
+            TrackBarSync(DMGBuff1_S, DMGBuff_S, "0", 0, 10);
         }
         //伤害加深：层数//
         private void DMGBuff1_Sf_Scroll(object sender, EventArgs e)
@@ -408,15 +379,7 @@ namespace Genshin_Calc
         }
         private void DMGBuff_Sf_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                DMGBuff1_Sf.Value = Convert.ToInt32(DMGBuff_Sf.Text);
-            }
-            catch (Exception)
-            {
-
-            }
-            Calculate();
+            TrackBarSync(DMGBuff1_Sf, DMGBuff_Sf, "0", 0, 10);
         }
         //攻击加成：固定值//
         private void ATKBuff1_Scroll_1(object sender, EventArgs e)
@@ -426,15 +389,7 @@ namespace Genshin_Calc
         }
         private void ATKBuff_TextChanged_1(object sender, EventArgs e)
         {
-            try
-            {
-                ATKBuff1.Value = Convert.ToInt32(ATKBuff.Text);
-            }
-            catch (Exception)
-            {
-
-            }
-            Calculate();
+            TrackBarSync(ATKBuff1, ATKBuff);
         }
         //攻击加成：百分比//
         private void ATKBuff1_P_Scroll(object sender, EventArgs e)
@@ -444,15 +399,7 @@ namespace Genshin_Calc
         }
         private void ATKBuff_P_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                ATKBuff1_P.Value = Convert.ToInt32(Convert.ToDouble(ATKBuff_P.Text) * 10);
-            }
-            catch (Exception)
-            {
-
-            }
-            Calculate();
+            TrackBarSync(ATKBuff1_P, ATKBuff_P, "0", 0, 10);
         }
         //攻击加成：百分比（算层数）//
         private void ATKBuff1_S_Scroll_1(object sender, EventArgs e)
@@ -462,13 +409,7 @@ namespace Genshin_Calc
         }
         private void ATKBuff_S_TextChanged_1(object sender, EventArgs e)
         {
-            try
-            {
-                ATKBuff1_S.Value = Convert.ToInt32(Convert.ToDouble(ATKBuff_S.Text) * 10);
-            }
-            catch (Exception)
-            { }
-            Calculate();
+            TrackBarSync(ATKBuff1_S, ATKBuff_S, "0", 0, 10);
         }
         //攻击加成：层数//
         private void ATKBuff1_Sf_Scroll_1(object sender, EventArgs e)
@@ -478,15 +419,7 @@ namespace Genshin_Calc
         }
         private void ATKBuff_Sf_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                ATKBuff1_Sf.Value = Convert.ToInt32(ATKBuff_Sf.Text);
-            }
-            catch (Exception)
-            {
-
-            }
-            Calculate();
+            TrackBarSync(ATKBuff1_Sf, ATKBuff_Sf);
         }
         //等级和抗性输入：我方//
         private void PlayerLevel1_Scroll(object sender, EventArgs e)
@@ -496,15 +429,7 @@ namespace Genshin_Calc
         }
         private void PlayerLevel_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                PlayerLevel1.Value = Convert.ToInt32(PlayerLevel.Text);
-            }
-            catch (Exception)
-            {
-
-            }
-            Calculate();
+            TrackBarSync(PlayerLevel1, PlayerLevel, "1", 1, 1);
         }
         //等级和抗性输入：敌方//
         private void EnemyLevel1_Scroll(object sender, EventArgs e)
@@ -514,15 +439,7 @@ namespace Genshin_Calc
         }
         private void EnemyLevel_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                EnemyLevel1.Value = Convert.ToInt32(EnemyLevel.Text);
-            }
-            catch (Exception)
-            {
-
-            }
-            Calculate();
+            TrackBarSync(EnemyLevel1, EnemyLevel, "1", 1, 1);
         }
         //防御增减效果//
         private void Defense1_Scroll(object sender, EventArgs e)
@@ -532,15 +449,7 @@ namespace Genshin_Calc
         }
         private void Defense_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                Defense1.Value = Convert.ToInt32(Convert.ToDouble(Defense.Text) * 10 + 1000);
-            }
-            catch (Exception)
-            {
-
-            }
-            Calculate();
+            TrackBarSync(Defense1, Defense, "0", 0, 10);
         }
         //抗性计算//
         private void RESCalc()
@@ -566,13 +475,8 @@ namespace Genshin_Calc
         }
         private void EnemyRES_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                EnemyRES1.Value = Convert.ToInt32(Convert.ToDouble(EnemyRES.Text) * 10);
-                RESCalc();
-            }
-            catch (Exception)
-            { }
+            TrackBarSync(EnemyRES1, EnemyRES, "0", 0, 10);
+            RESCalc();
         }
         //技能倍率//
         private void Skill1_Scroll(object sender, EventArgs e)
@@ -582,13 +486,7 @@ namespace Genshin_Calc
         }
         private void Skill_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                Skill1.Value = Convert.ToInt32(Convert.ToDouble(Skill.Text) * 10);
-            }
-            catch (Exception)
-            { }
-            Calculate();
+            TrackBarSync(Skill1, Skill, "0", 0, 10);
         }
         //其他额外的乘算加伤//
         private void Other1_Scroll(object sender, EventArgs e)
@@ -598,13 +496,7 @@ namespace Genshin_Calc
         }
         private void Other_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                Other1.Value = Convert.ToInt32(Convert.ToDouble(Other.Text) * 10);
-            }
-            catch (Exception)
-            { }
-            Calculate();
+            TrackBarSync(Other1, Other, "0", 0, 10);
         }
         //反应伤害增强//
         private void ReactBuff1_Scroll(object sender, EventArgs e)
@@ -614,13 +506,7 @@ namespace Genshin_Calc
         }
         private void ReactBuff_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                ReactBuff1.Value = Convert.ToInt32(Convert.ToDouble(ReactBuff.Text) * 10);
-            }
-            catch (Exception)
-            { }
-            Calculate();
+            TrackBarSync(ReactBuff1, ReactBuff, "0", 0, 10);
         }
         //确定反应倍率//
         private void Reaction_Choose_SelectedIndexChanged(object sender, EventArgs e)
@@ -628,6 +514,64 @@ namespace Genshin_Calc
             Calculate();
             Calculate();
         }
+        /// <summary>
+        /// 检测到输入框有误时进行纠正操作。 
+        /// 1.输入框为空或格式有误(FormatException) 时将其设为0，且将对应的trackBar设为零值；
+        /// 2.输入越界(ArgumentOutOfRangeException) 时将其设为对应trackbar的最大值。
+        /// </summary>
+        /// <param name="Val">TrackBar</param>
+        /// <param name="Txt">Textbox</param>
+        public void TrackBarSync(TrackBar Val, TextBox Txt)
+        {
+            try
+            {
+                if (Txt.Text == "")
+                {
+                    Txt.Text = "0";
+                }
+                Val.Value = Convert.ToInt32(Txt.Text);
+            }
+            catch (FormatException)
+            {
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Txt.Text = Val.Maximum.ToString();
+            }
+            Streamer();
+            Calculate();
+        }
+        /// <summary>
+        /// TrackBarSync的重载
+        /// </summary>
+        /// <param name="Val">TrackBar</param>
+        /// <param name="Txt">Textbox</param>
+        /// <param name="DefaultText">文本框的默认值</param>
+        /// <param name="DefaultValue">数值条的默认位置</param>
+        public void TrackBarSync(TrackBar Val, TextBox Txt, string DefaultText, int DefaultValue, float Scale)
+        {
+            try
+            {
+                if (Txt.Text == "")
+                {
+                    Txt.Text = DefaultText;
+                }
+                Val.Value = Convert.ToInt32(float.Parse(Txt.Text) * Scale);
+            }
+            catch (FormatException)
+            {
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Txt.Text = Convert.ToDouble(Txt.Text) < Val.Minimum / Scale ?
+                    (Val.Minimum / Scale).ToString() :
+                    (Val.Maximum / Scale).ToString();
+            }
+            Streamer();
+            Calculate();
+        }
+        #endregion 
+
         //窗口透明化//
         private void TransButton_MouseDown(object sender, MouseEventArgs e)
         {
@@ -637,7 +581,7 @@ namespace Genshin_Calc
         {
             Opacity = 1;
         }
-        //文件操作（施工中）//
+        #region 对文件的读取和写入
         //读取
         private void OpenFiles_Drag(object sender, DragEventArgs e)
         {
@@ -763,7 +707,7 @@ namespace Genshin_Calc
             text[3] = string.Format("<加伤>\t[伤害提升]{0}\t[叠加伤害]{1}\t[叠伤层数]{2}\t[反应加剧]{3}", DMGBuff.Text, DMGBuff_S.Text, DMGBuff_Sf.Text, ReactBuff.Text);
             text[4] = string.Format("<其他>\t[天赋倍率]{0}\t[额外乘区]{1}\t[反应类型]{2}", Skill.Text, Other.Text, Reaction_Choose.SelectedItem.ToString());
             text[5] = string.Format("<输出>\t[未暴击]{0}\t[已暴击]{1}\t[平均值]{2}", Normal, Crit, Avg);
-            text[6] = string.Format("<注解>\t[备注]文件创建于{0}", DateTime.Now);
+            text[6] = string.Format("<注解>\t[备注]{0}", toolStrips.Text == "点击此处添加备注" ? "文件创建于" + DateTime.Now : toolStrips.Text);
             try
             {
                 if (Filesave)
@@ -771,7 +715,6 @@ namespace Genshin_Calc
                     SaveFile.Filter = "计算器角色文件|*.yschar";
                     SaveFile.ShowDialog();
                     File.WriteAllLines(SaveFile.FileName, text);
-
                 }
                 else
                 {
@@ -782,7 +725,34 @@ namespace Genshin_Calc
             {
             }
         }
-
+        private void Notes(object sender, EventArgs e)//添加备注
+        {
+            bool topmosted = false;
+            if (TopMost)
+            {
+                TopMost = false;
+                topmosted = true;
+            }
+            NoteAdd note = new NoteAdd();
+            note.RecvNote(toolStrips.Text);
+            note.ShowDialog();
+            if (note.ReturnedText() == null)
+            {
+            }
+            else if (note.ReturnedText() != " ")
+            {
+                toolStrips.Text = note.ReturnedText();
+            }
+            else if (note.ReturnedText() == " ")
+            {
+                toolStrips.Text = "点击此处添加备注";
+            }
+            if (topmosted)
+            {
+                TopMost = true;
+            }
+        }
+        #endregion
         //“帮助”项//
         private void 计算公式来源ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -790,12 +760,11 @@ namespace Genshin_Calc
         }
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult wip;
-            wip = MessageBox.Show("此试验版本由K_vAE发布于2020/4/15，目前可实现最基本的计算功能\n本人是菜逼，难免有不准之处，一切以游戏本身为主");
-
+            About AboutForm = new About();
+            AboutForm.ShowDialog();
         }
 
-        //其他计算器//
+        #region 其他计算器
         private void 治疗量计算器ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool topmosted = false;
@@ -804,12 +773,22 @@ namespace Genshin_Calc
                 TopMost = false;
                 topmosted = true;
             }
-            Heal Healing = new Heal();
-            Healing.ShowDialog();
+            try
+            {
+                Thread HealThread = new Thread(new ThreadStart(_Healing));
+                HealThread.Start();
+            }
+            catch (Exception)
+            { }
             if (topmosted)
             {
                 TopMost = true;
             }
+        }
+        private void _Healing()
+        {
+            Heal Healing = new Heal();
+            Healing.ShowDialog();
         }
         private void 锚定伤害计算器ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -819,6 +798,20 @@ namespace Genshin_Calc
                 TopMost = false;
                 topmosted = true;
             }
+            try
+            {
+                Thread TargetedThread = new Thread(new ThreadStart(_TargetedCalc));
+                TargetedThread.Start();
+            }
+            catch (Exception)
+            { }
+            if (topmosted)
+            {
+                TopMost = true;
+            }
+        }
+        private void _TargetedCalc()
+        {
             CalculatorPro p = new CalculatorPro();
             p.Input((int)(ATK1.Value + ATKPlus1.Value //攻击力
                         + ATKBuff1.Value + DEF2ATK + HP2ATK
@@ -840,14 +833,10 @@ namespace Genshin_Calc
                     , double.Parse(ReactBuff.Text)
                     );
             p.ShowDialog();
-            if (topmosted)
-            {
-                TopMost = true;
-            }
         }
         private void Windows计算器ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("calc");
+            Process.Start("calc");
         }
         private void DPS简易计算ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -857,6 +846,20 @@ namespace Genshin_Calc
                 TopMost = false;
                 topmosted = true;
             }
+            try
+            {
+                Thread DPSThread = new Thread(new ThreadStart(_DPSCalc));
+                DPSThread.Start();
+            }
+            catch (Exception)
+            { }
+            if (topmosted)
+            {
+                TopMost = true;
+            }
+        }
+        private void _DPSCalc()
+        {
             DPSCalc _Calc = new DPSCalc();
             _Calc.Input(
                 Convert.ToDouble(Skill.Text) / 100,
@@ -866,14 +869,36 @@ namespace Genshin_Calc
                 , EM1.Value
                 , PlayerLevel1.Value);
             _Calc.ShowDialog();
-
+        }
+        private void 圣遗物简易比较器ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool topmosted = false;
+            if (TopMost)
+            {
+                TopMost = false;
+                topmosted = true;
+            }
+            try
+            {
+                Thread CMPThread = new Thread(new ThreadStart(_Compare));
+                CMPThread.Start();
+            }
+            catch (Exception)
+            { }
             if (topmosted)
             {
                 TopMost = true;
             }
         }
+        private void _Compare()
+        {
+            ArtifactCompare CompareTool = new ArtifactCompare();
+            CompareTool.ShowDialog();
+        }
+        #endregion
 
-        //特殊角色定制计算器//
+        #region 特殊角色定制计算器
+        //////特殊角色定制计算器//////
         private void 诺艾尔防御转攻击ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool topmosted = false;
@@ -904,26 +929,32 @@ namespace Genshin_Calc
         }
         private void 阿贝多防御值加伤替换攻击ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Thread Albedo = new Thread(new ThreadStart(Albedo_Function));
             bool topmosted = false;
             if (TopMost)
             {
                 TopMost = false;
                 topmosted = true;
             }
-            RESCalc();
-            Calculate();
-            Albedo_Calc DEF_A = new Albedo_Calc();
-            var buffexceptelem = (100 + float.Parse(DMGBuff.Text) + float.Parse(DMGBuff_S.Text) * DMGBuff1_Sf.Value) / 100;//伤害提升//伤害提升(层数)
-            var def = (PlayerLevel1.Value + 100) / (PlayerLevel1.Value + 100 + (1 + float.Parse(Defense.Text) / 100) * (EnemyLevel1.Value + 100));//防御计算
-            var crit = 1 + float.Parse(CritDMG.Text) / 100;
-            var avg = 1 + float.Parse(CritRate.Text) * float.Parse(CritDMG.Text) / 10000;
-            DEF_A.Input(ATKLC, buffexceptelem, def * (1 + float.Parse(Other.Text)) / 100, crit, avg);
-            DEF_A.ContentChanged_Pub();
-            DEF_A.ShowDialog();
+            Albedo.Start();
+
             if (topmosted)
             {
                 TopMost = true;
             }
+        }
+        private void Albedo_Function()
+        {
+            RESCalc();
+            Calculate();
+            Albedo_Calc DEF_A = new Albedo_Calc();
+            DEF_A.Input(
+                ATKLC,
+                1 + (DataStream[5] + DataStream[6]) / 100,
+                DataStream[15] * DataStream[12],
+                DataStream[3] / 100 + 1,
+                1 + float.Parse(CritRate.Text) * float.Parse(CritDMG.Text) / 10000);
+            DEF_A.ShowDialog();
         }
         private void 胡桃生命值加攻ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -974,13 +1005,13 @@ namespace Genshin_Calc
                 TopMost = true;
             }
         }
-
+        #endregion
         //窗口置顶开关//
         private void 窗口置顶ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TopMost = TopMost ? false : true;
         }
-        //查询工具//
+        #region 查询工具
         private void 敌人抗性快速查询ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             bool topmosted = false;
@@ -989,6 +1020,20 @@ namespace Genshin_Calc
                 TopMost = false;
                 topmosted = true;
             }
+            try
+            {
+                Thread EnemyThread = new Thread(new ThreadStart(_Enemy));
+                EnemyThread.Start();
+            }
+            catch (Exception)
+            { }
+            if (topmosted)
+            {
+                TopMost = true;
+            }
+        }
+        private void _Enemy()
+        {
             EnemyTable enemy = new EnemyTable();
             try
             {
@@ -1007,10 +1052,6 @@ namespace Genshin_Calc
                 DialogResult err;
                 err = MessageBox.Show("你选的抗性是无限大啊。\n都免疫了还算啥伤害。", "免疫预警");
             }
-            if (topmosted)
-            {
-                TopMost = true;
-            }
         }
         private void 角色与武器快捷输入ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -1020,6 +1061,20 @@ namespace Genshin_Calc
                 TopMost = false;
                 topmosted = true;
             }
+            try
+            {
+                Thread ChThread = new Thread(new ThreadStart(_Characters));
+                ChThread.Start();
+            }
+            catch (Exception)
+            { }
+            if (topmosted)
+            {
+                TopMost = true;
+            }
+        }
+        private void _Characters()
+        {
             Characters_Weapons cw = new Characters_Weapons();
             try
             {
@@ -1040,74 +1095,62 @@ namespace Genshin_Calc
 
             }
             Calculate();
-
-            if (topmosted)
-            {
-                TopMost = true;
-            }
         }
-        private void ToolStrips_Click(object sender, EventArgs e)
-        {
-            toolStrips.Visible = toolStrips.Visible ? false : true;
-        }
+        #endregion
 
-
-
-        private void 圣遗物简易比较器ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            bool topmosted = false;
-            if (TopMost)
-            {
-                TopMost = false;
-                topmosted = true;
-            }
-            ArtifactCompare CompareTool = new ArtifactCompare();
-            CompareTool.ShowDialog();
-            if (topmosted)
-            {
-                TopMost = true;
-            }
-        }
-
-
-        ////////////计算过程////////////
+        #region ////////////计算过程////////////
         Upheaval upheaval = new Upheaval();
-
-
-        double DEFLC;//总防御
-        double ATKLC;//总攻击
-        double ELMLV;//元素加伤
-        double BUFLV;//(元素加伤之外)总加伤
+        /// <summary>
+        /// 总防御乘区
+        /// </summary>
+        double DEFLC;
+        /// <summary>
+        /// 总攻击及攻击乘区
+        /// </summary>
+        double ATKLC;
+        /// <summary>
+        /// 元素加伤与其他加伤乘区
+        /// </summary>
+        double ELMLV, BUFLV;
 
         public void ReactionCalculator(int index)
         {
-            var ReactType = 1400;
+            var ReactType = 2000;
+            // 伤害类型测定
+            if (index <= 5 && index > 0)
+            {
+                rp = 16.0;          // 剧变反应
+            }
+            else
+            {
+                rp = 2.78;          // 增幅反应
+                ReactType = 1400;
+            }
+            // 数值计算
+            // 关于反应伤害的计算：
+            // 剧变反应伤害 = [等级~剧变反应基数] * [1 + Σ反应加成] * [抗性系数](* [1 + 深渊反应buff])
+            // 增幅反应伤害 = 未触发反应的伤害 * [1 + Σ反应加成] (* [1 + 深渊反应buff])
+            ///React：反应加成
+            React = 1
+                + ((float)rp / (1 + ReactType / (float)EM1.Value)
+                + (float)ReactBuff1.Value / 1000);
 
             switch (index)
             {
-                case 1: rp = 16.0; ReactType = 2000; break;  //超导
-                case 2: rp = 16.0; ReactType = 2000; break;  //扩散
-                case 3: rp = 16.0; ReactType = 2000; break;  //感电
-                case 4: rp = 16.0; ReactType = 2000; break;  //碎冰
-                case 5: rp = 16.0; ReactType = 2000; break;  //超载
-                case 6: rp = 2.78; ReactType = 1400; break;  //1.5倍增幅
-                case 7: rp = 2.78; ReactType = 1400; break;  //2.0倍增幅
+                case 1: React *= 0.25; break;  //超导
+                case 2: React *= 0.30; break;  //扩散
+                case 3: React *= 0.60; break;  //感电
+                case 4: React *= 0.75; break;  //碎冰
+                case 5: React *= 1.00; break;  //超载
+                case 6: React *= 1.50; break;  //1.5倍增幅
+                case 7: React *= 2.00; break;  //2.0倍增幅
                 default: Reaction_Choose.Text = "不触发反应"; break;
             }
-            React = 1 + ((float)rp / (1 + ReactType / (float)EM1.Value) + (float)ReactBuff1.Value / 1000);
-            switch (index)
-            {
-                case 1:  React *= 0.25; break;  //超导
-                case 2:  React *= 0.30; break;  //扩散
-                case 3:  React *= 0.60; break;  //感电
-                case 4:  React *= 0.75; break;  //碎冰
-                case 5:  React *= 1.00; break;  //超载
-                case 6:  React *= 1.50; break;  //1.5倍增幅
-                case 7:  React *= 2.00; break;  //2.0倍增幅
-                default: Reaction_Choose.Text = "不触发反应"; break;
-            }
-            if (index == 0) React = 1;
+            if (index == 0) React = 1;// 无反应
         }
+        /// <summary>
+        /// 计算伤害的主要公式
+        /// </summary>
         public void Calculate()
         {
             try
@@ -1119,20 +1162,21 @@ namespace Genshin_Calc
                 ELMLV = float.Parse(EP.Text);
                 BUFLV = float.Parse(DMGBuff.Text)//伤害提升
                         + float.Parse(DMGBuff_S.Text) * DMGBuff1_Sf.Value;//伤害提升(层数) 
-                
+
                 //反应伤害相关计算
                 ReactionCalculator(Reaction_Choose.SelectedIndex);
+
                 if (Reaction_Choose.SelectedIndex >= 6 || Reaction_Choose.SelectedIndex == 0)
                 {
                     //基础、增幅伤害相关计算
                     check = false;
-                    Normal = ATKLC                                  //总攻击力
-                        * (1 + (ELMLV + BUFLV) / 100)               //伤害加成
-                        * React                                     //元素精通
-                        * DEFLC                                     //防御属性
-                        * Resistance                                //抗性计算
-                        * float.Parse(Skill.Text) / 100             //技能倍率
-                        * float.Parse(Other.Text) / 100;            //其他乘区
+                    Normal = ATKLC                       //总攻击力
+                        * (1 + (ELMLV + BUFLV) / 100)    //伤害加成
+                        * React                          //元素精通
+                        * DEFLC                          //防御属性
+                        * Resistance                     //抗性计算
+                        * float.Parse(Skill.Text) / 100  //技能倍率
+                        * float.Parse(Other.Text) / 100; //其他乘区
                     //等级压制计算,参考：https://bbs.nga.cn/read.php?tid=24358389
                     if (PlayerLevel1.Value - EnemyLevel1.Value > 70 && EnemyLevel1.Value <= 10)
                         Normal *= 1.5;
@@ -1143,11 +1187,13 @@ namespace Genshin_Calc
                     Avg = Normal * (1 + float.Parse(CritRate.Text) * float.Parse(CritDMG.Text) / 10000);
 
                     //暴击时的伤害修正
-                    if (float.Parse(CritRate.Text) == 100)//满暴击时,普通伤害等于暴击伤害
+                    //满暴击时,普通伤害等于暴击伤害
+                    if (float.Parse(CritRate.Text) == 100)
                     {
                         Normal = Crit;
                     }
-                    else if (float.Parse(CritRate.Text) == 0)//不暴击时,暴击伤害等于普通伤害
+                    //不暴击时,暴击伤害等于普通伤害
+                    else if (float.Parse(CritRate.Text) == 0)
                     {
                         Crit = Normal;
                     }
@@ -1168,7 +1214,7 @@ namespace Genshin_Calc
                 }
                 //伤害数值转为文本
                 Normal_DMG.Text = Convert.ToString(Normal);
-                Crit_DMG.Text = check == true ? "N/A" : Convert.ToString(Crit);
+                Crit_DMG.Text = check ? "N/A" : Convert.ToString(Crit);
                 Avg_DMG.Text = Convert.ToString(Avg);
             }
             catch { }
@@ -1176,10 +1222,15 @@ namespace Genshin_Calc
             {
                 DetailedCalculate();
             }
+            Streamer();
         }
-        private void DetailedCalculate()
+        #region 数据转化为表格
+        private void DetailedCalculate(object sender, EventArgs e)
         {
-            #region 数据处理
+            DetailedCalculate();
+        }
+        private async void DetailedCalculate()
+        {
             var CritValue = 1D;
             var ContentsTemp = new double[8];
             if (DMGType0.Checked)
@@ -1223,246 +1274,116 @@ namespace Genshin_Calc
                 Tmp[i - 1] = 100 * (Contents[i - 1] - 1) / (Contents.Sum() - 8);
             }
             AttributeList.EndUpdate();
-
-            #endregion
-            #region 数据转化为表格
-
-            ComChart.Series[0].Points.DataBindXY(new string[] { "攻击加成", "天赋倍率", "伤害加深", "暴击伤害", "防御计算", "抗性计算", "元素反应", "额外乘区" }, Sw ?  ContentsTemp:Tmp);
+            var TrailedTmp = Tmp;
+            for (int i = 0; i < Tmp.Length; i++)
+            {
+                TrailedTmp[i] = Tmp[i] <= 0 ? 0 : Tmp[i];
+            }
+            ComChart.Series[0].Points.DataBindXY(new string[] { "攻击加成", "天赋倍率", "伤害加深", "暴击伤害", "防御计算", "抗性计算", "元素反应", "额外乘区" }, Sw ? ContentsTemp : TrailedTmp);
             for (int i = 1; i <= 8; i++)
             {
-                AttributeList.Items[i].SubItems[2].Text = OutStr2(i, !Sw);
+                AttributeList.Items[i].SubItems[2].Text = await OutStr2(i, !Sw);
             }
-            #endregion
+
         }
 
         private void ComChart_Click(object sender, EventArgs e)
         {
-            if (Sw)
-            {
-                Sw = false;
-            }
-            else if (!Sw) Sw = true;
+            Sw = !Sw;
             DetailedCalculate();
             ComChart.Annotations[1].Visible = Sw;
             ComChart.Annotations[2].Visible = !Sw;
         }
-        private void ListProvider(int x)
+        private async void ListProvider(int x)
         {
-            var OutputString1 = Convert.ToString(string.Format("{0:N7}", Contents[x - 1]));
-            var OutputString2 = OutStr2(x, false);
+            string OutputString1 = Convert.ToString(string.Format("{0:N7}", Contents[x - 1]));
+            string OutputString2 = await OutStr2(x, false);
             if (OutputString1.Contains("."))
             {
                 OutputString1 = OutputString1.TrimEnd('0').TrimEnd('.');
                 OutputString2 = OutputString2.TrimEnd('0').TrimEnd('.');
             }
             AttributeList.Items[x].SubItems[1].Text = OutputString1 + "x";
-            AttributeList.Items[x].SubItems[2].Text = OutputString2 ;
+            AttributeList.Items[x].SubItems[2].Text = OutputString2;
         }
-        private string OutStr2(int x,bool sw)
+        Task<string> OutStr2(int x, bool sw)
         {
-            if(sw)return Convert.ToString(string.Format("{0:N4}", 100 * (Contents[x - 1] - 1) / (Contents.Sum() - 8))) + "%";
-            else return Convert.ToString(string.Format("{0:N4}", 100 * (Contents[x - 1]) / (Contents.Sum()))) + "%";
+            if (sw) return Task.Run(() => string.Format("{0:N4}", 100 * (Contents[x - 1] - 1) / (Contents.Sum() - 8)) + "%");
+            else return Task.Run(() => string.Format("{0:N4}", 100 * (Contents[x - 1]) / (Contents.Sum())) + "%");
         }
-        //////////计算部分结束///////////
+        #endregion
+        #endregion //////////计算部分结束///////////
+        /// <summary>
+        /// 对各变量进行汇总
+        /// </summary>
+        public void Streamer()
+        {
+            DataStream[0] = ATK1.Value;                         // 白字攻击力     
+            DataStream[1] = ATKPlus1.Value;                     // 绿字攻击力     
+            DataStream[2] = (double)CritRate1.Value / 10;       // 暴击率        
+            DataStream[3] = (double)CritDMG1.Value / 10;        // 暴击伤害      
+            DataStream[4] = EM1.Value;                          // 元素精通      
+            DataStream[5] = ELMLV;                              // 元素伤害加成   
+            DataStream[6] = BUFLV;                              // 其他伤害加成   
+            DataStream[7] = PlayerLevel1.Value;                 // 我方等级      
+            DataStream[8] = EnemyLevel1.Value;                  // 敌方等级      
+            DataStream[9] = Defense1.Value;                     // 防御变化      
+            DataStream[10] = (double)EnemyRES1.Value / 1000;    // 敌方抗性      
+            DataStream[11] = (double)Skill1.Value / 1000;       // 天赋倍率      
+            DataStream[12] = (double)Other1.Value / 1000;       // 额外乘区      
+            DataStream[13] = Reaction_Choose.SelectedIndex;     // 反应类型      
+            DataStream[14] = ATKLC;                             // 攻击力乘区之和 
+            DataStream[15] = DEFLC;                             // 防御力乘区之和 
+            //DataStream[16]=                 //预留
+        }
     }
-    //剧变反应伤害数值
+    #region 剧变反应伤害数值
     //参考：https://bbs.mihoyo.com/ys/article/2215872
     public class Upheaval
     {
-        public int Upheaval_Damage(int level,bool Type)
+        readonly double[] UpheavalBase =                //1.6版本及以后的剧变反应基准值
+            {0,   33,     37,     38,     42,     44,     49,     52,     57,     62,     68,    //01~10级
+                  73,     81,     89,     97,    107,    118,    128,    139,    150,    161,    //11~20级
+                 172,    183,    194,    206,    217,    226,    236,    246,    259,    272,    //21~30级
+                 284,    298,    310,    323,    338,    352,    368,    383,    399,    414,    //31~40级
+                 430,    448,    467,    487,    511,    537,    562,    590,    618,    647,    //41~50级
+                 673,    700,    729,    757,    797,    832,    868,    906,    944,    986,    //51~60级
+                1027,   1078,   1130,   1184,   1248,   1302,   1359,   1416,   1472,   1531,    //61~70级
+                1589,   1649,   1702,   1754,   1828,   1893,   1958,   2022,   2089,   2154,    //71~80级
+                2219,   2286,   2352,   2420,   2507,   2578,   2650,   2727,   2810,   2893     //81~90级
+            };
+
+        readonly double[] OldUpheavalbase =             //早期的剧变反应基准值
+            {0,   33,     37,     38,     42,     44,     49,     52,     57,     62,     68,    //01~10级
+                  73,     81,     89,     97,    107,    118,    128,    139,    150,    161,    //11~20级
+                 172,    183,    194,    206,    217,    226,    236,    246,    259,    272,    //21~30级
+                 284,    298,    310,    323,    338,    352,    368,    383,    399,    414,    //31~40级
+                 430,    448,    467,    487,    511,    537,    562,    590,    618,    647,    //41~50级
+                 673,    700,    729,    757,    797,    832,    868,    904,    942,    980,    //51~60级
+                1019,   1064,   1112,   1160,   1216,   1260,   1306,   1350,   1394,   1440,    //61~70级
+                1484,   1530,   1568,   1607,   1661,   1708,   1754,   1800,   1847,   1892,    //71~80级
+                1937,   1981,   2027,   2072,   2132,   2179,   2229,   2282,   2343,   2406     //81~90级
+            };
+        public double Upheaval_Damage(int level, bool Type)
         {
-            if (Type)
-                switch (level)
-                {
-                    case 1: return 33;
-                    case 2: return 37;
-                    case 3: return 38;
-                    case 4: return 42;
-                    case 5: return 44;
-                    case 6: return 49;
-                    case 7: return 52;
-                    case 8: return 57;
-                    case 9: return 62;
-                    case 10: return 68;
-                    case 11: return 73;
-                    case 12: return 81;
-                    case 13: return 89;
-                    case 14: return 97;
-                    case 15: return 107;
-                    case 16: return 118;
-                    case 17: return 128;
-                    case 18: return 139;
-                    case 19: return 150;
-                    case 20: return 161;
-                    case 21: return 172;
-                    case 22: return 183;
-                    case 23: return 194;
-                    case 24: return 206;
-                    case 25: return 217;
-                    case 26: return 226;
-                    case 27: return 236;
-                    case 28: return 246;
-                    case 29: return 259;
-                    case 30: return 272;
-                    case 31: return 284;
-                    case 32: return 298;
-                    case 33: return 310;
-                    case 34: return 323;
-                    case 35: return 338;
-                    case 36: return 352;
-                    case 37: return 368;
-                    case 38: return 383;
-                    case 39: return 399;
-                    case 40: return 414;
-                    case 41: return 430;
-                    case 42: return 448;
-                    case 43: return 467;
-                    case 44: return 487;
-                    case 45: return 511;
-                    case 46: return 537;
-                    case 47: return 562;
-                    case 48: return 590;
-                    case 49: return 618;
-                    case 50: return 647;
-                    case 51: return 673;
-                    case 52: return 700;
-                    case 53: return 729;
-                    case 54: return 757;
-                    case 55: return 797;
-                    case 56: return 832;
-                    case 57: return 868;
-                    case 58: return 904;
-                    case 59: return 942;
-                    case 60: return 980;
-                    case 61: return 1019;
-                    case 62: return 1064;
-                    case 63: return 1112;
-                    case 64: return 1160;
-                    case 65: return 1216;
-                    case 66: return 1260;
-                    case 67: return 1306;
-                    case 68: return 1350;
-                    case 69: return 1394;
-                    case 70: return 1440;
-                    case 71: return 1484;
-                    case 72: return 1530;
-                    case 73: return 1568;
-                    case 74: return 1607;
-                    case 75: return 1661;
-                    case 76: return 1708;
-                    case 77: return 1754;
-                    case 78: return 1800;
-                    case 79: return 1847;
-                    case 80: return 1892;
-                    case 81: return 1937;
-                    case 82: return 1981;
-                    case 83: return 2027;
-                    case 84: return 2072;
-                    case 85: return 2132;
-                    case 86: return 2179;
-                    case 87: return 2229;
-                    case 88: return 2282;
-                    case 89: return 2343;
-                    case 90: return 2406;
-                    default: return 0;
-                }
-            else
+            try
             {
-                switch (level)
+                if (Type)
                 {
-                    case 1: return 33;
-                    case 2: return 37;
-                    case 3: return 38;
-                    case 4: return 42;
-                    case 5: return 44;
-                    case 6: return 49;
-                    case 7: return 52;
-                    case 8: return 57;
-                    case 9: return 62;
-                    case 10: return 68;
-                    case 11: return 73;
-                    case 12: return 81;
-                    case 13: return 89;
-                    case 14: return 97;
-                    case 15: return 107;
-                    case 16: return 118;
-                    case 17: return 128;
-                    case 18: return 139;
-                    case 19: return 150;
-                    case 20: return 161;
-                    case 21: return 172;
-                    case 22: return 183;
-                    case 23: return 194;
-                    case 24: return 206;
-                    case 25: return 217;
-                    case 26: return 226;
-                    case 27: return 236;
-                    case 28: return 246;
-                    case 29: return 259;
-                    case 30: return 272;
-                    case 31: return 284;
-                    case 32: return 298;
-                    case 33: return 310;
-                    case 34: return 323;
-                    case 35: return 338;
-                    case 36: return 352;
-                    case 37: return 368;
-                    case 38: return 383;
-                    case 39: return 399;
-                    case 40: return 414;
-                    case 41: return 430;
-                    case 42: return 448;
-                    case 43: return 467;
-                    case 44: return 487;
-                    case 45: return 511;
-                    case 46: return 537;
-                    case 47: return 562;
-                    case 48: return 590;
-                    case 49: return 618;
-                    case 50: return 647;
-                    case 51: return 673;
-                    case 52: return 700;
-                    case 53: return 729;
-                    case 54: return 757;
-                    case 55: return 797;
-                    case 56: return 832;
-                    case 57: return 868;
-                    case 58: return 906;
-                    case 59: return 944;
-                    case 60: return 986;
-                    case 61: return 1027;
-                    case 62: return 1078;
-                    case 63: return 1130;
-                    case 64: return 1184;
-                    case 65: return 1248;
-                    case 66: return 1302;
-                    case 67: return 1359;
-                    case 68: return 1416;
-                    case 69: return 1472;
-                    case 70: return 1531;
-                    case 71: return 1589;
-                    case 72: return 1649;
-                    case 73: return 1702;
-                    case 74: return 1754;
-                    case 75: return 1828;
-                    case 76: return 1893;
-                    case 77: return 1958;
-                    case 78: return 2022;
-                    case 79: return 2089;
-                    case 80: return 2154;
-                    case 81: return 2219;
-                    case 82: return 2286;
-                    case 83: return 2352;
-                    case 84: return 2420;
-                    case 85: return 2507;
-                    case 86: return 2578;
-                    case 87: return 2650;
-                    case 88: return 2727;
-                    case 89: return 2810;
-                    case 90: return 2893;
-                    default: return 0;
+                    return OldUpheavalbase[level];
+                    //return -7E-05 * Math.Pow(level, 4) + 0.0136 * Math.Pow(level, 3) - 0.5231 * Math.Pow(level, 2) + 14.259 * level - 14.578;
                 }
+                else
+                {
+                    return UpheavalBase[level];
+                    //return -2E-06 * Math.Pow(level, 5) + 0.0004 * Math.Pow(level, 4) - 0.0246 * Math.Pow(level, 3) + 0.7445 * Math.Pow(level, 2) - 1.6865 * level + 34.394;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
             }
         }
     }
+    #endregion
 }
