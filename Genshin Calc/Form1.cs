@@ -444,7 +444,7 @@ namespace Genshin_Calc
         //防御增减效果//
         private void Defense1_Scroll(object sender, EventArgs e)
         {
-            Defense.Text = Convert.ToString(Convert.ToDouble(Defense1.Value) / 10 - 100);
+            Defense.Text = Convert.ToString(Convert.ToDouble(Defense1.Value) / 10);
             Calculate();
         }
         private void Defense_TextChanged(object sender, EventArgs e)
