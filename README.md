@@ -1,7 +1,7 @@
 代码写得屎一般，非必要的话就不用看了。
 # Genshin-Calculator-By-K_vAE
 A Genshin Damage Calculator based on CSharp.  
-基于C#的原神伤害计算器。致力于成为高泛用性的易用计算工具。
+瞎写着练手玩的原神伤害计算器。致力于成为高泛用性的易用计算工具。
 
 # 目前已经可以使用的功能
 Calculate all the damage or healing effect.  
@@ -11,11 +11,13 @@ Calculate all the damage or healing effect.
 * 计算护盾量和治疗量
 * 简单的DPS计算
 * 简要对比哪个圣遗物更有利于输出
-
-# 以后可能会兼容多种计算/导出工具。  
-计划的兼容列表：
-* [Cocogoat圣遗物提取](https://github.com/YuehaiTeam/cocogoat)与[莫娜占卜铺](https://github.com/wormtql/genshin_artifact)(两者共用同一种文件)
-* [伤害计算器 by 氟氯溴碘砹](https://bbs.nga.cn/read.php?tid=25093894)
+* 圣遗物录入
+ > 目前仅兼容以下工具提供的格式：
+ > * [莫娜占卜铺](https://github.com/wormtql/genshin_artifact)  
+ > * [Genshin Optimizer](https://frzyc.github.io/genshin-optimizer/)  
+ >   
+ >  常见的导出工具均支持上述格式，故不必担心无法使用。  
+ >  使用前请将导出的文件重命名为`Artifacts.json`并复制到计算器的“数据存放文件夹”中。  
 
 # 以后有移植到移动端或网页端的可能。
 我尽量学js或H5，学会了就开始做。咕咕。
