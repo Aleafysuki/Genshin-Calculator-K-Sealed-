@@ -1048,7 +1048,7 @@ namespace Genshin_Calc
                     ,DEFLC
                     ,Resistance
                     ,React
-                    ,Convert.ToDouble(Other.Value.Text) / 1000
+                    ,Convert.ToDouble(Other.Value.Text) / 100
                 };
                 AttributeList.Items[0].SubItems[1].Text = ATK_Basic.CurrentStr;
 
