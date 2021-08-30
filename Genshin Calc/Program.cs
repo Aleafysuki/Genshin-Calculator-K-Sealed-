@@ -15,7 +15,7 @@ namespace Genshin_Calc
         static void Main()
         {
             
-            LoadResoureDll.RegistDLL();
+            LoadResourceDll.RegistDLL();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             

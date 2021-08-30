@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Genshin_Calc
 {
@@ -50,13 +51,14 @@ namespace Genshin_Calc
         /// 在各窗口之间进行数据传递用的变量组
         /// </summary>
         double[] DataStream = new double[20];
-        DataTable Comtable = new DataTable();
+        //private DataTable Comtable = new DataTable();
         Thread ChartDrawing;
         #endregion
 
         #region 初始化窗体
         private void Form1_Load(object sender, EventArgs e)
         {
+
         }
         public Form1()
         {
@@ -70,6 +72,7 @@ namespace Genshin_Calc
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
             Text = "原神计算器 " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            Reaction_Choose.SelectedIndex = 0;
             if (File.Exists(FileLocation + "Configuration.Config"))
             {
                 SettingsChange(true);
@@ -79,26 +82,24 @@ namespace Genshin_Calc
             Calculate();
             RESCalc();
             FileCheck();
-            Cocogoat圣遗物导入ToolStripMenuItem.Visible = false;
-            ChartDrawing = new Thread(DetailedCalculate);
-            ChartDrawing.Start();
+            //Cocogoat圣遗物导入ToolStripMenuItem.Visible = false;
         }
         #endregion
 
         #region 录入设置项
+        Settings settings = new Settings();
         private void LoadSettings()
         {
-            Settings settings = new Settings();
-            ATK1.Maximum = (int)settings.Output(0, "MAX");
-            ATKPlus1.Maximum = (int)settings.Output(1, "MAX");
-            CritDMG1.Maximum = (int)settings.Output(2, "MAX");
-            EP1.Maximum = (int)settings.Output(3, "MAX");
-            Skill1.Maximum = (int)settings.Output(4, "MAX");
-            EnemyRES1.Minimum = (int)settings.Output(5, "MAX");
-            EnemyRES1.Maximum = (int)settings.Output(6, "MAX");
-            EM1.Maximum = (int)settings.Output(7, "MAX");
-            ReactBuff1.Maximum = (int)settings.Output(8, "MAX");
-            Other1.Maximum = (int)settings.Output(9, "MAX");
+            ATK_Basic.Maximum = (int)settings.Output(0, "MAX");
+            ATK_Added.Maximum = (int)settings.Output(1, "MAX");
+            Crit_Damage.Maximum = (int)settings.Output(2, "MAX");
+            DamageBuff_Elem.Maximum = (int)settings.Output(3, "MAX");
+            Skill.Maximum = (int)settings.Output(4, "MAX");
+            Resistance_Percent.Minimum = (int)settings.Output(5, "MAX");
+            Resistance_Percent.Maximum = (int)settings.Output(6, "MAX");
+            ElemMastery.Maximum = (int)settings.Output(7, "MAX");
+            DamageBuff_Reaction.Maximum = (int)settings.Output(8, "MAX");
+            Other.Maximum = (int)settings.Output(9, "MAX");
         }
         public void SettingsChange(bool s)
         {
@@ -195,14 +196,6 @@ namespace Genshin_Calc
         {
             Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Genshin Calculator\");
         }
-        public void Save()
-        {
-            SaveFileDialog ctrl_s = new SaveFileDialog
-            {
-                Title = "保存预设",
-                Filter = "预设文档(*.calo)|*.calo"
-            };
-        }
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
@@ -213,22 +206,21 @@ namespace Genshin_Calc
             if (ATKLC <= 5000)
             {
                 settingwindow.Input(
-                      ATK1.Maximum,
-                      ATKPlus1.Maximum,
-                      CritDMG1.Maximum,
-                      EP1.Maximum,
-                      Skill1.Maximum,
-                      EnemyRES1.Minimum,
-                      EnemyRES1.Maximum,
-                      EM1.Maximum,
-                      ReactBuff1.Maximum,
-                      Other1.Maximum);
+                      ATK_Basic.Maximum,
+                      ATK_Added.Maximum,
+                      Crit_Damage.Maximum,
+                      DamageBuff_Elem.Maximum,
+                      Skill.Maximum,
+                      Resistance_Percent.Minimum,
+                      Resistance_Percent.Maximum,
+                      ElemMastery.Maximum,
+                      DamageBuff_Reaction.Maximum,
+                      Other.Maximum);
                 settingwindow.ShowDialog();
             }
             else
             {
-                DialogResult wip;
-                wip = MessageBox.Show("施工中");
+                _ = MessageBox.Show("施工中");
             }
             if (File.Exists(FileLocation + "Configuration.Config"))
             {
@@ -242,18 +234,16 @@ namespace Genshin_Calc
                 MessageBox.Show("缺失非必要的字体文件，是否进行安装？\n若不安装会导致显示发生变化，但不影响正常使用", "提示", MessageBoxButtons.YesNo);
             if (FontCheck == DialogResult.Yes)
             {
-                DialogResult chk;
                 if (File.Exists("FZXIANGSU12.TTF"))
                 {
-                    chk = MessageBox.Show("已找到文件。\n请点击新窗口中的【安装】按钮并重新启动计算器。");
+                    _ = MessageBox.Show("已找到文件。\n请点击新窗口中的【安装】按钮并重新启动计算器。");
                 }
                 else
                 {
-                    DialogResult err;
-                    err = MessageBox.Show("未找到文件。\n需要从网络中下载指定字体文件。");
+                    _ = MessageBox.Show("未找到文件。\n需要从网络中下载指定字体文件。");
                     ReadFile down = new ReadFile();
                     down.Download("https://genshincalc.oss-cn-beijing.aliyuncs.com/font/FZXIANGSU12.TTF", "FZXIANGSU12.TTF");
-                    chk = MessageBox.Show("已下载文件。\n请点击新窗口中的【安装】按钮并重新启动计算器。");
+                    _ = MessageBox.Show("已下载文件。\n请点击新窗口中的【安装】按钮并重新启动计算器。");
                 }
                 try
                 {
@@ -261,317 +251,17 @@ namespace Genshin_Calc
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    DialogResult err;
-                    err = MessageBox.Show("没有安装字体的权限。\n请使用管理员权限重新打开再试试。");
+                    _ = MessageBox.Show("没有安装字体的权限。\n请使用管理员权限重新打开再试试。");
                 }
                 catch (Exception error)
                 {
-                    DialogResult err;
-                    err = MessageBox.Show($"由于某些信息安装失败。\n错误信息：{error.Message}。");
+                    _ = MessageBox.Show($"由于某些信息安装失败。\n错误信息：{error.Message}。");
                 }
             }
-
-
         }
         #endregion
 
-        #region 输入各项数据
-        //白字攻击力：角色+武器//
-        private void ATK1_Scroll(object sender, EventArgs e)
-        {
-            ATK.Text = ATK1.Value.ToString();
-            Calculate();
-        }
-        private void ATK_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(ATK1, ATK);
-        }
-        //绿字攻击力：圣遗物等加成//
-        private void ATKPlus1_Scroll(object sender, EventArgs e)
-        {
-            ATKPlus.Text = ATKPlus1.Value.ToString();
-            Calculate();
-        }
-        private void ATKPlus_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(ATKPlus1, ATKPlus);
-        }
-        //暴击率输入//
-        private void CritRate1_Scroll(object sender, EventArgs e)
-        {
-            CritRate.Text = Convert.ToString(Convert.ToDouble(CritRate1.Value) / 10);
-            Calculate();
-        }
-        private void CritRate_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(CritRate1, CritRate, "5", 5, 10);
-        }
-        //暴击伤害输入//
-        private void CritDMG1_Scroll(object sender, EventArgs e)
-        {
-            CritDMG.Text = Convert.ToString(Convert.ToDouble(CritDMG1.Value) / 10);
-            Calculate();
-        }
-        private void CritDMG_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Convert.ToDouble(CritDMG.Text) < 50 && CritDMG.Text != null)
-                {
-                    CritDMG.BackColor = System.Drawing.SystemColors.Control;
-                }
-                else
-                {
-                    CritDMG.BackColor = System.Drawing.SystemColors.Window;
-                    TrackBarSync(CritDMG1, CritDMG, "50", 50, 10);
-                }
-            }
-            catch (Exception)
-            {
-            }
-        }
-        //元素精通//
-        private void EM1_Scroll(object sender, EventArgs e)
-        {
-            EM.Text = EM1.Value.ToString();
-            Calculate();
-        }
-        private void EM_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(EM1, EM);
-            Calculate();
-        }
-        //元素伤害加成//
-        private void EP1_Scroll(object sender, EventArgs e)
-        {
-            EP.Text = Convert.ToString(Convert.ToDouble(EP1.Value) / 10);
-            Calculate();
-        }
-        private void EP_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(EP1, EP, "0", 0, 10);
-        }
-        //伤害加深：百分比//
-        private void DMGBuff1_Scroll(object sender, EventArgs e)
-        {
-            DMGBuff.Text = Convert.ToString(Convert.ToDouble(DMGBuff1.Value) / 10);
-            Calculate();
-        }
-        private void DMGBuff_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(DMGBuff1, DMGBuff, "0", 0, 10);
-        }
-        //伤害加深：按层数的百分比//
-        private void DMGBuff1_S_Scroll(object sender, EventArgs e)
-        {
-            DMGBuff_S.Text = Convert.ToString(Convert.ToDouble(DMGBuff1_S.Value) / 10);
-            Calculate();
-        }
-        private void DMGBuff_S_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(DMGBuff1_S, DMGBuff_S, "0", 0, 10);
-        }
-        //伤害加深：层数//
-        private void DMGBuff1_Sf_Scroll(object sender, EventArgs e)
-        {
-            DMGBuff_Sf.Text = DMGBuff1_Sf.Value.ToString();
-            Calculate();
-        }
-        private void DMGBuff_Sf_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(DMGBuff1_Sf, DMGBuff_Sf, "0", 0, 10);
-        }
-        //攻击加成：固定值//
-        private void ATKBuff1_Scroll_1(object sender, EventArgs e)
-        {
-            ATKBuff.Text = Convert.ToString(ATKBuff1.Value);
-            Calculate();
-        }
-        private void ATKBuff_TextChanged_1(object sender, EventArgs e)
-        {
-            TrackBarSync(ATKBuff1, ATKBuff);
-        }
-        //攻击加成：百分比//
-        private void ATKBuff1_P_Scroll(object sender, EventArgs e)
-        {
-            ATKBuff_P.Text = Convert.ToString(Convert.ToDouble(ATKBuff1_P.Value) / 10);
-            Calculate();
-        }
-        private void ATKBuff_P_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(ATKBuff1_P, ATKBuff_P, "0", 0, 10);
-        }
-        //攻击加成：百分比（算层数）//
-        private void ATKBuff1_S_Scroll_1(object sender, EventArgs e)
-        {
-            ATKBuff_S.Text = Convert.ToString(Convert.ToDouble(ATKBuff1_S.Value) / 10);
-            Calculate();
-        }
-        private void ATKBuff_S_TextChanged_1(object sender, EventArgs e)
-        {
-            TrackBarSync(ATKBuff1_S, ATKBuff_S, "0", 0, 10);
-        }
-        //攻击加成：层数//
-        private void ATKBuff1_Sf_Scroll_1(object sender, EventArgs e)
-        {
-            ATKBuff_Sf.Text = ATKBuff1_Sf.Value.ToString();
-            Calculate();
-        }
-        private void ATKBuff_Sf_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(ATKBuff1_Sf, ATKBuff_Sf);
-        }
-        //等级和抗性输入：我方//
-        private void PlayerLevel1_Scroll(object sender, EventArgs e)
-        {
-            PlayerLevel.Text = Convert.ToString(PlayerLevel1.Value);
-            Calculate();
-        }
-        private void PlayerLevel_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(PlayerLevel1, PlayerLevel, "1", 1, 1);
-        }
-        //等级和抗性输入：敌方//
-        private void EnemyLevel1_Scroll(object sender, EventArgs e)
-        {
-            EnemyLevel.Text = Convert.ToString(EnemyLevel1.Value);
-            Calculate();
-        }
-        private void EnemyLevel_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(EnemyLevel1, EnemyLevel, "1", 1, 1);
-        }
-        //防御增减效果//
-        private void Defense1_Scroll(object sender, EventArgs e)
-        {
-            Defense.Text = Convert.ToString(Convert.ToDouble(Defense1.Value) / 10);
-            Calculate();
-        }
-        private void Defense_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(Defense1, Defense, "0", 0, 10);
-        }
-        //抗性计算//
-        private void RESCalc()
-        {
-            if (float.Parse(EnemyRES.Text) < 0)
-            {
-                Resistance = 1 - float.Parse(EnemyRES.Text) / 200;
-            }
-            else if (0 <= float.Parse(EnemyRES.Text) && float.Parse(EnemyRES.Text) <= 75)
-            {
-                Resistance = 1 - float.Parse(EnemyRES.Text) / 100;
-            }
-            else if (75 < float.Parse(EnemyRES.Text))
-            {
-                Resistance = 1 / (1 + 4 * (float.Parse(EnemyRES.Text) / 100));
-            }
-            Calculate();
-        }
-        private void EnemyRES1_Scroll(object sender, EventArgs e)
-        {
-            EnemyRES.Text = Convert.ToString(Convert.ToDouble(EnemyRES1.Value) / 10);
-            RESCalc();
-        }
-        private void EnemyRES_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(EnemyRES1, EnemyRES, "0", 0, 10);
-            RESCalc();
-        }
-        //技能倍率//
-        private void Skill1_Scroll(object sender, EventArgs e)
-        {
-            Skill.Text = Convert.ToString(Convert.ToDouble(Skill1.Value) / 10);
-            Calculate();
-        }
-        private void Skill_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(Skill1, Skill, "0", 0, 10);
-        }
-        //其他额外的乘算加伤//
-        private void Other1_Scroll(object sender, EventArgs e)
-        {
-            Other.Text = Convert.ToString(Convert.ToDouble(Other1.Value) / 10);
-            Calculate();
-        }
-        private void Other_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(Other1, Other, "0", 0, 10);
-        }
-        //反应伤害增强//
-        private void ReactBuff1_Scroll(object sender, EventArgs e)
-        {
-            ReactBuff.Text = Convert.ToString(Convert.ToDouble(ReactBuff1.Value) / 10);
-            Calculate();
-        }
-        private void ReactBuff_TextChanged(object sender, EventArgs e)
-        {
-            TrackBarSync(ReactBuff1, ReactBuff, "0", 0, 10);
-        }
-        //确定反应倍率//
-        private void Reaction_Choose_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Calculate();
-            Calculate();
-        }
-        /// <summary>
-        /// 检测到输入框有误时进行纠正操作。 
-        /// 1.输入框为空或格式有误(FormatException) 时将其设为0，且将对应的trackBar设为零值；
-        /// 2.输入越界(ArgumentOutOfRangeException) 时将其设为对应trackbar的最大值。
-        /// </summary>
-        /// <param name="Val">TrackBar</param>
-        /// <param name="Txt">Textbox</param>
-        public void TrackBarSync(TrackBar Val, TextBox Txt)
-        {
-            try
-            {
-                if (Txt.Text == "")
-                {
-                    Txt.Text = "0";
-                }
-                Val.Value = Convert.ToInt32(Txt.Text);
-            }
-            catch (FormatException)
-            {
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                Txt.Text = Val.Maximum.ToString();
-            }
-            Streamer();
-            Calculate();
-        }
-        /// <summary>
-        /// TrackBarSync的重载
-        /// </summary>
-        /// <param name="Val">TrackBar</param>
-        /// <param name="Txt">Textbox</param>
-        /// <param name="DefaultText">文本框的默认值</param>
-        /// <param name="DefaultValue">数值条的默认位置</param>
-        public void TrackBarSync(TrackBar Val, TextBox Txt, string DefaultText, int DefaultValue, float Scale)
-        {
-            try
-            {
-                if (Txt.Text == "")
-                {
-                    Txt.Text = DefaultText;
-                }
-                Val.Value = Convert.ToInt32(float.Parse(Txt.Text) * Scale);
-            }
-            catch (FormatException)
-            {
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                Txt.Text = Convert.ToDouble(Txt.Text) < Val.Minimum / Scale ?
-                    (Val.Minimum / Scale).ToString() :
-                    (Val.Maximum / Scale).ToString();
-            }
-            Streamer();
-            Calculate();
-        }
-        #endregion 
-
+        #region 窗体相关操作
         //窗口透明化//
         private void TransButton_MouseDown(object sender, MouseEventArgs e)
         {
@@ -581,6 +271,67 @@ namespace Genshin_Calc
         {
             Opacity = 1;
         }
+        //窗口置顶开关//
+        private void 窗口置顶ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TopMost = !TopMost;
+        }
+        #endregion
+
+        #region 输入各项数据
+        private void ValueSet(object sender, EventArgs e)
+        {
+            ValueSet();
+        }
+        private async void ValueSet()
+        {
+            DEFLC = (Level_Player.Current + 100)
+                    / (Level_Player.Current + 100 + (1 + (float)Defence_Debuff.Current / 1000) * (Level_Enemy.Current + 100));
+            ATKLC = ATK_Basic.Current + ATK_Added.Current   // 攻击力
+                    + ATKBuff_Static.Current                // 攻击力加成
+                    + ATKBuff_Percent.Current / 1000        // 攻击力加成 
+                    + DEF2ATK
+                    + HP2ATK
+                    + ATKBuff_Stack_Percent.Current / 1000 * ATK_Basic.Current * ATKBuff_Stack_Count.Current;// 攻击力加成(层数)
+            ELMLV = DamageBuff_Elem.Current / 10;
+            BUFLV = (DamageBuff_Percent.Current                                                 // 伤害提升
+                    + DamageBuff_Stack_Percent.Current * DamageBuff_Stack_Count.Current)
+                    / 10;  // 伤害提升(层数) 
+            await Calc_Await();
+        }
+        Task<int> Calc_Await()
+        {
+            return Task.Run(() =>
+            {
+                RESCalc();
+                Calculate();
+                return 0;
+            });
+        }
+        //抗性计算//
+        private void RESCalc()
+        {
+            if (float.Parse(Resistance_Percent.Value.Text) < 0)
+            {
+                Resistance = 1 - float.Parse(Resistance_Percent.Value.Text) / 200;
+            }
+            else if (0 <= float.Parse(Resistance_Percent.Value.Text) && float.Parse(Resistance_Percent.Value.Text) <= 75)
+            {
+                Resistance = 1 - float.Parse(Resistance_Percent.Value.Text) / 100;
+            }
+            else if (75 < float.Parse(Resistance_Percent.Value.Text))
+            {
+                Resistance = 1 / (1 + 4 * (float.Parse(Resistance_Percent.Value.Text) / 100));
+            }
+
+        }
+        //确定反应倍率//
+        private void Reaction_Choose_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Calculate();
+        }
+        #endregion 
+
         #region 对文件的读取和写入
         //读取
         private void OpenFiles_Drag(object sender, DragEventArgs e)
@@ -634,28 +385,28 @@ namespace Genshin_Calc
                     }
                 }
             }
-            ATK.Text = ContentDisplay("[白攻]");
-            ATKPlus.Text = ContentDisplay("[绿攻]");
-            CritRate.Text = ContentDisplay("[暴率]");
-            CritDMG.Text = ContentDisplay("[暴伤]");
-            EM.Text = ContentDisplay("[精通]");
-            EP.Text = ContentDisplay("[元素]");
-            ATKBuff.Text = ContentDisplay("[固定攻击]");
-            ATKBuff_P.Text = ContentDisplay("[比率攻击]");
+            ATK_Basic.Value.Text = ContentDisplay("[白攻]");
+            ATK_Added.Value.Text = ContentDisplay("[绿攻]");
+            Crit_Rate.Value.Text = ContentDisplay("[暴率]");
+            Crit_Damage.Value.Text = ContentDisplay("[暴伤]");
+            ElemMastery.Value.Text = ContentDisplay("[精通]");
+            DamageBuff_Elem.Value.Text = ContentDisplay("[元素]");
+            ATKBuff_Static.Value.Text = ContentDisplay("[固定攻击]");
+            ATKBuff_Percent.Value.Text = ContentDisplay("[比率攻击]");
             ATKBuff_DEF.Text = ContentDisplay("[防御收益]");
             ATKBuff_HP.Text = ContentDisplay("[生命收益]");
-            ATKBuff_S.Text = ContentDisplay("[叠加攻击]");
-            ATKBuff_Sf.Text = ContentDisplay("[叠攻层数]");
-            PlayerLevel.Text = ContentDisplay("[我方等级]");
-            EnemyLevel.Text = ContentDisplay("[敌方等级]");
-            Defense.Text = ContentDisplay("[防御变化]");
-            EnemyRES.Text = ContentDisplay("[敌人抗性]");
-            DMGBuff.Text = ContentDisplay("[伤害提升]");
-            DMGBuff_S.Text = ContentDisplay("[叠加伤害]");
-            DMGBuff_Sf.Text = ContentDisplay("[叠伤层数]");
-            ReactBuff.Text = ContentDisplay("[反应加剧]");
-            Skill.Text = ContentDisplay("[天赋倍率]");
-            Other.Text = ContentDisplay("[额外乘区]");
+            ATKBuff_Stack_Percent.Value.Text = ContentDisplay("[叠加攻击]");
+            ATKBuff_Stack_Count.Value.Text = ContentDisplay("[叠攻层数]");
+            Level_Player.Value.Text = ContentDisplay("[我方等级]");
+            Level_Enemy.Value.Text = ContentDisplay("[敌方等级]");
+            Defence_Debuff.Value.Text = ContentDisplay("[防御变化]");
+            Resistance_Percent.Value.Text = ContentDisplay("[敌人抗性]");
+            DamageBuff_Percent.Value.Text = ContentDisplay("[伤害提升]");
+            DamageBuff_Stack_Percent.Value.Text = ContentDisplay("[叠加伤害]");
+            DamageBuff_Stack_Count.Value.Text = ContentDisplay("[叠伤层数]");
+            DamageBuff_Reaction.Value.Text = ContentDisplay("[反应加剧]");
+            Skill.Value.Text = ContentDisplay("[天赋倍率]");
+            Other.Value.Text = ContentDisplay("[额外乘区]");
             switch (ContentDisplay("[反应类型]"))
             {
                 case "不触发反应": Reaction_Choose.SelectedIndex = 0; break;
@@ -701,11 +452,11 @@ namespace Genshin_Calc
         private void SaveFiles()
         {
             string[] text = new string[8];
-            text[0] = string.Format("<面板>\t[白攻]{0}\t[绿攻]{1}\t[暴率]{2}\t[暴伤]{3}\t[精通]{4}\t[元素]{5}", ATK.Text, ATKPlus.Text, CritRate.Text, CritDMG.Text, EM.Text, EP.Text);
-            text[1] = string.Format("<加攻>\t[固定攻击]{0}\t[比率攻击]{1}\t[防御收益]{2}\t[生命收益]{3}\t[叠加攻击]{4}\t[叠攻层数]{5}", ATKBuff.Text, ATKBuff_P.Text, ATKBuff_DEF.Text, ATKBuff_HP.Text, ATKBuff_S.Text, ATKBuff_Sf.Text);
-            text[2] = string.Format("<等级>\t[我方等级]{0}\t[敌方等级]{1}\t[防御变化]{2}\t[敌人抗性]{3}", PlayerLevel.Text, EnemyLevel.Text, Defense.Text, EnemyRES.Text);
-            text[3] = string.Format("<加伤>\t[伤害提升]{0}\t[叠加伤害]{1}\t[叠伤层数]{2}\t[反应加剧]{3}", DMGBuff.Text, DMGBuff_S.Text, DMGBuff_Sf.Text, ReactBuff.Text);
-            text[4] = string.Format("<其他>\t[天赋倍率]{0}\t[额外乘区]{1}\t[反应类型]{2}", Skill.Text, Other.Text, Reaction_Choose.SelectedItem.ToString());
+            text[0] = string.Format("<面板>\t[白攻]{0}\t[绿攻]{1}\t[暴率]{2}\t[暴伤]{3}\t[精通]{4}\t[元素]{5}", ATK_Basic.Value.Text, ATK_Added.Value.Text, Crit_Rate.Value.Text, Crit_Damage.Value.Text, ElemMastery.Value.Text, DamageBuff_Elem.Value.Text);
+            text[1] = string.Format("<加攻>\t[固定攻击]{0}\t[比率攻击]{1}\t[防御收益]{2}\t[生命收益]{3}\t[叠加攻击]{4}\t[叠攻层数]{5}", ATKBuff_Static.Value.Text, ATKBuff_Percent.Value.Text, ATKBuff_DEF.Text, ATKBuff_HP.Text, ATKBuff_Stack_Percent.Value.Text, ATKBuff_Stack_Count.Value.Text);
+            text[2] = string.Format("<等级>\t[我方等级]{0}\t[敌方等级]{1}\t[防御变化]{2}\t[敌人抗性]{3}", Level_Player.Value.Text, Level_Enemy.Value.Text, Defence_Debuff.Value.Text, Resistance_Percent.Value.Text);
+            text[3] = string.Format("<加伤>\t[伤害提升]{0}\t[叠加伤害]{1}\t[叠伤层数]{2}\t[反应加剧]{3}", DamageBuff_Percent.Value.Text, DamageBuff_Stack_Percent.Value.Text, DamageBuff_Stack_Count.Value.Text, DamageBuff_Reaction.Value.Text);
+            text[4] = string.Format("<其他>\t[天赋倍率]{0}\t[额外乘区]{1}\t[反应类型]{2}", Skill.Value.Text, Other.Value.Text, Reaction_Choose.SelectedItem.ToString());
             text[5] = string.Format("<输出>\t[未暴击]{0}\t[已暴击]{1}\t[平均值]{2}", Normal, Crit, Avg);
             text[6] = string.Format("<注解>\t[备注]{0}", toolStrips.Text == "点击此处添加备注" ? "文件创建于" + DateTime.Now : toolStrips.Text);
             try
@@ -753,16 +504,6 @@ namespace Genshin_Calc
             }
         }
         #endregion
-        //“帮助”项//
-        private void 计算公式来源ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://bbs.nga.cn/read.php?tid=25564438");
-        }
-        private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            About AboutForm = new About();
-            AboutForm.ShowDialog();
-        }
 
         #region 其他计算器
         private void 治疗量计算器ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -775,7 +516,7 @@ namespace Genshin_Calc
             }
             try
             {
-                Thread HealThread = new Thread(new ThreadStart(_Healing));
+                Thread HealThread = new Thread(new ThreadStart(Healing));
                 HealThread.Start();
             }
             catch (Exception)
@@ -785,7 +526,7 @@ namespace Genshin_Calc
                 TopMost = true;
             }
         }
-        private void _Healing()
+        private void Healing()
         {
             Heal Healing = new Heal();
             Healing.ShowDialog();
@@ -800,7 +541,7 @@ namespace Genshin_Calc
             }
             try
             {
-                Thread TargetedThread = new Thread(new ThreadStart(_TargetedCalc));
+                Thread TargetedThread = new Thread(new ThreadStart(TargetedCalc));
                 TargetedThread.Start();
             }
             catch (Exception)
@@ -810,27 +551,27 @@ namespace Genshin_Calc
                 TopMost = true;
             }
         }
-        private void _TargetedCalc()
+        private void TargetedCalc()
         {
             CalculatorPro p = new CalculatorPro();
-            p.Input((int)(ATK1.Value + ATKPlus1.Value //攻击力
-                        + ATKBuff1.Value + DEF2ATK + HP2ATK
-                        + (double.Parse(ATKBuff_P.Text) / 100 * ATK1.Value)//攻击力加成
-                        + double.Parse(ATKBuff_S.Text) / 100 * ATK1.Value * ATKBuff1_Sf.Value)//攻击力加成(层数)
-                    , double.Parse(CritRate.Text)
-                    , double.Parse(CritDMG.Text)
-                    , EM1.Value
-                    , double.Parse(EP.Text) //元素伤害
-                        + double.Parse(DMGBuff.Text)//伤害提升
-                        + double.Parse(DMGBuff_S.Text) * DMGBuff1_Sf.Value//伤害提升(层数)
-                    , double.Parse(Skill.Text)
-                    , double.Parse(Other.Text)
-                    , PlayerLevel1.Value
-                    , EnemyLevel1.Value
-                    , double.Parse(EnemyRES.Text)
-                    , double.Parse(Defense.Text)
+            p.Input((int)(ATK_Basic.Current + ATK_Added.Current //攻击力
+                        + ATKBuff_Static.Current + DEF2ATK + HP2ATK
+                        + (double.Parse(ATKBuff_Percent.Value.Text) / 100 * ATK_Basic.Current)//攻击力加成
+                        + double.Parse(ATKBuff_Stack_Percent.Value.Text) / 100 * ATK_Basic.Current * ATKBuff_Stack_Count.Current)//攻击力加成(层数)
+                    , double.Parse(Crit_Rate.Value.Text)
+                    , double.Parse(Crit_Damage.Value.Text)
+                    , (int)ElemMastery.Current
+                    , double.Parse(DamageBuff_Elem.Value.Text) //元素伤害
+                        + double.Parse(DamageBuff_Percent.Value.Text)//伤害提升
+                        + double.Parse(DamageBuff_Stack_Percent.Value.Text) * DamageBuff_Stack_Count.Current//伤害提升(层数)
+                    , double.Parse(Skill.Value.Text)
+                    , double.Parse(Other.Value.Text)
+                    , (int)Level_Player.Current
+                    , (int)Level_Enemy.Current
+                    , double.Parse(Resistance_Percent.Value.Text)
+                    , double.Parse(Defence_Debuff.Value.Text)
                     , Reaction_Choose.SelectedIndex
-                    , double.Parse(ReactBuff.Text)
+                    , double.Parse(DamageBuff_Reaction.Value.Text)
                     );
             p.ShowDialog();
         }
@@ -848,7 +589,8 @@ namespace Genshin_Calc
             }
             try
             {
-                Thread DPSThread = new Thread(new ThreadStart(_DPSCalc));
+                Thread DPSThread = new Thread(new ThreadStart(DPSCalc));
+                DPSThread.SetApartmentState(ApartmentState.STA);
                 DPSThread.Start();
             }
             catch (Exception)
@@ -858,16 +600,15 @@ namespace Genshin_Calc
                 TopMost = true;
             }
         }
-        private void _DPSCalc()
+        private void DPSCalc()
         {
             DPSCalc _Calc = new DPSCalc();
             _Calc.Input(
-                Convert.ToDouble(Skill.Text) / 100,
                 BUFLV,
-                ATKLC * DEFLC * float.Parse(Other.Text) / 100 * (1 + float.Parse(CritRate.Text) * float.Parse(CritDMG.Text) / 10000)
-                , (float)ReactBuff1.Value / 1000
-                , EM1.Value
-                , PlayerLevel1.Value);
+                ATKLC * DEFLC * float.Parse(Other.Value.Text) / 100 * (1 + float.Parse(Crit_Rate.Value.Text) * float.Parse(Crit_Damage.Value.Text) / 10000)
+                , (float)DamageBuff_Reaction.Current / 1000
+                , (int)ElemMastery.Current
+                , (int)Level_Player.Current);
             _Calc.ShowDialog();
         }
         private void 圣遗物简易比较器ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -880,7 +621,7 @@ namespace Genshin_Calc
             }
             try
             {
-                Thread CMPThread = new Thread(new ThreadStart(_Compare));
+                Thread CMPThread = new Thread(new ThreadStart(Compare));
                 CMPThread.Start();
             }
             catch (Exception)
@@ -890,7 +631,7 @@ namespace Genshin_Calc
                 TopMost = true;
             }
         }
-        private void _Compare()
+        private void Compare()
         {
             ArtifactCompare CompareTool = new ArtifactCompare();
             CompareTool.ShowDialog();
@@ -953,7 +694,7 @@ namespace Genshin_Calc
                 1 + (DataStream[5] + DataStream[6]) / 100,
                 DataStream[15] * DataStream[12],
                 DataStream[3] / 100 + 1,
-                1 + float.Parse(CritRate.Text) * float.Parse(CritDMG.Text) / 10000);
+                1 + float.Parse(Crit_Rate.Value.Text) * float.Parse(Crit_Damage.Value.Text) / 10000);
             DEF_A.ShowDialog();
         }
         private void 胡桃生命值加攻ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -967,10 +708,10 @@ namespace Genshin_Calc
             Hutao_Calc _Calc = new Hutao_Calc();
             _Calc.Input(
                     ATKLC
-                    , double.Parse(CritRate.Text) / 100
-                    , double.Parse(CritDMG.Text) / 100
+                    , double.Parse(Crit_Rate.Value.Text) / 100
+                    , double.Parse(Crit_Damage.Value.Text) / 100
                     , (100 + ELMLV + BUFLV) / 100
-                    , React * DEFLC * Resistance * float.Parse(Other.Text) / 100);//其他乘区计算
+                    , React * DEFLC * Resistance * float.Parse(Other.Value.Text) / 100);//其他乘区计算
             _Calc.ShowDialog();
             HP2ATK = _Calc.Output(_Calc.DialogResult);
             ATKBuff_HP.Text = Convert.ToString(HP2ATK);
@@ -990,14 +731,14 @@ namespace Genshin_Calc
             }
             Zhongli_Calc _Calc = new Zhongli_Calc();
             _Calc.Input(
-                float.Parse(Skill.Text)
+                float.Parse(Skill.Value.Text)
                 , ATKLC
                 , (100 + ELMLV + BUFLV) / 100
-                , DEFLC * float.Parse(Other.Text) / 100//其他乘区计算
-                , float.Parse(EnemyRES.Text)//抗性计算
-                , float.Parse(EnemyRES.Text)
-                , float.Parse(CritRate.Text)
-                , float.Parse(CritDMG.Text));
+                , DEFLC * float.Parse(Other.Value.Text) / 100//其他乘区计算
+                , float.Parse(Resistance_Percent.Value.Text)//抗性计算
+                , float.Parse(Resistance_Percent.Value.Text)
+                , float.Parse(Crit_Rate.Value.Text)
+                , float.Parse(Crit_Damage.Value.Text));
             _Calc.UpdateIndex();
             _Calc.ShowDialog();
             if (topmosted)
@@ -1006,12 +747,8 @@ namespace Genshin_Calc
             }
         }
         #endregion
-        //窗口置顶开关//
-        private void 窗口置顶ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TopMost = TopMost ? false : true;
-        }
-        #region 查询工具
+
+        #region 查询工具与其他
         private void 敌人抗性快速查询ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             bool topmosted = false;
@@ -1022,7 +759,7 @@ namespace Genshin_Calc
             }
             try
             {
-                Thread EnemyThread = new Thread(new ThreadStart(_Enemy));
+                Thread EnemyThread = new Thread(new ThreadStart(Enemy));
                 EnemyThread.Start();
             }
             catch (Exception)
@@ -1032,7 +769,7 @@ namespace Genshin_Calc
                 TopMost = true;
             }
         }
-        private void _Enemy()
+        private void Enemy()
         {
             EnemyTable enemy = new EnemyTable();
             try
@@ -1042,15 +779,13 @@ namespace Genshin_Calc
             }
             catch (NullReferenceException)
             {
-                DialogResult err;
-                err = MessageBox.Show("文件似乎正在被占用。\n请关闭相应的表格文件后重试。", "提示");
+                _ = MessageBox.Show("文件似乎正在被占用。\n请关闭相应的表格文件后重试。", "提示");
             }
-            EnemyRES.Text = Math.Round(enemy.Output() * 100, 0).ToString();
+            Resistance_Percent.Value.Text = Math.Round(enemy.Output() * 100, 0).ToString();
             Calculate();
-            if (EnemyRES.Text == "∞")
+            if (Resistance_Percent.Value.Text == "∞")
             {
-                DialogResult err;
-                err = MessageBox.Show("你选的抗性是无限大啊。\n都免疫了还算啥伤害。", "免疫预警");
+                _ = MessageBox.Show("你选的抗性是无限大啊。\n都免疫了还算啥伤害。", "免疫预警");
             }
         }
         private void 角色与武器快捷输入ToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -1063,7 +798,7 @@ namespace Genshin_Calc
             }
             try
             {
-                Thread ChThread = new Thread(new ThreadStart(_Characters));
+                Thread ChThread = new Thread(new ThreadStart(Characters));
                 ChThread.Start();
             }
             catch (Exception)
@@ -1073,7 +808,7 @@ namespace Genshin_Calc
                 TopMost = true;
             }
         }
-        private void _Characters()
+        public void Characters()
         {
             Characters_Weapons cw = new Characters_Weapons();
             try
@@ -1081,14 +816,12 @@ namespace Genshin_Calc
                 cw.ShowDialog();
                 if (cw.Output() != -1)
                 {
-                    ATK1.Value = cw.Output();
+                    ATK_Basic.Current = cw.Output();
                 }
-                ATK.Text = ATK1.Value.ToString();
             }
             catch (NullReferenceException)
             {
-                DialogResult err;
-                err = MessageBox.Show("文件似乎正在被占用。\n请关闭相应的表格文件后重试。", "提示");
+                _ = MessageBox.Show("文件似乎正在被占用。\n请关闭相应的表格文件后重试。", "提示");
             }
             catch (ObjectDisposedException)
             {
@@ -1096,10 +829,51 @@ namespace Genshin_Calc
             }
             Calculate();
         }
+        /// <summary>
+        /// 圣遗物导入属性
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ArtifactsApply(object sender, EventArgs e)
+        {
+            ArtifactsLoad Ar = new ArtifactsLoad();
+            string[] Attributes;
+            try
+            {
+                Ar.ShowDialog();
+                Attributes= Ar.Output();
+                for (int i = 0; i < Attributes.Length; i++)
+                {
+                    if (Attributes[i].Length < 1) Attributes[i] = "0";
+                }
+                if (Ar.ValueChange)
+                {
+                    ATK_Basic.Value.Text = Attributes[0];
+                    ATK_Added.Value.Text = Attributes[1];
+                    Crit_Rate.Value.Text = Attributes[2];
+                    Crit_Damage.Value.Text = Attributes[3];
+                    DamageBuff_Elem.Value.Text = Attributes[4];
+                    ElemMastery.Value.Text = Attributes[5];
+                }
+            }
+            catch (Exception)
+            { }
+
+        }
+        //“帮助”项//
+        private void 计算公式来源ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://bbs.nga.cn/read.php?tid=25564438");
+        }
+        private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About AboutForm = new About();
+            AboutForm.ShowDialog();
+        }
         #endregion
 
         #region ////////////计算过程////////////
-        Upheaval upheaval = new Upheaval();
+        readonly Upheaval upheaval = new Upheaval();
         /// <summary>
         /// 总防御乘区
         /// </summary>
@@ -1123,18 +897,17 @@ namespace Genshin_Calc
             }
             else
             {
-                rp = 2.78;          // 增幅反应
+                rp = 2.78;          // 增幅反应或者无反应
                 ReactType = 1400;
             }
             // 数值计算
             // 关于反应伤害的计算：
             // 剧变反应伤害 = [等级~剧变反应基数] * [1 + Σ反应加成] * [抗性系数](* [1 + 深渊反应buff])
             // 增幅反应伤害 = 未触发反应的伤害 * [1 + Σ反应加成] (* [1 + 深渊反应buff])
-            ///React：反应加成
+            // React：反应加成
             React = 1
-                + ((float)rp / (1 + ReactType / (float)EM1.Value)
-                + (float)ReactBuff1.Value / 1000);
-
+                + ((float)rp / (1 + ReactType / (float)ElemMastery.Current)
+                + (float)DamageBuff_Reaction.Current / 1000);
             switch (index)
             {
                 case 1: React *= 0.25; break;  //超导
@@ -1155,17 +928,8 @@ namespace Genshin_Calc
         {
             try
             {
-                DEFLC = (PlayerLevel1.Value + 100) / (PlayerLevel1.Value + 100 + (1 + float.Parse(Defense.Text) / 100) * (EnemyLevel1.Value + 100));
-                ATKLC = ATK1.Value + ATKPlus1.Value //攻击力
-                        + ATKBuff1.Value + DEF2ATK + HP2ATK + (float.Parse(ATKBuff_P.Text) / 100 * ATK1.Value)//攻击力加成
-                        + float.Parse(ATKBuff_S.Text) / 100 * ATK1.Value * ATKBuff1_Sf.Value;//攻击力加成(层数)
-                ELMLV = float.Parse(EP.Text);
-                BUFLV = float.Parse(DMGBuff.Text)//伤害提升
-                        + float.Parse(DMGBuff_S.Text) * DMGBuff1_Sf.Value;//伤害提升(层数) 
-
                 //反应伤害相关计算
                 ReactionCalculator(Reaction_Choose.SelectedIndex);
-
                 if (Reaction_Choose.SelectedIndex >= 6 || Reaction_Choose.SelectedIndex == 0)
                 {
                     //基础、增幅伤害相关计算
@@ -1175,25 +939,25 @@ namespace Genshin_Calc
                         * React                          //元素精通
                         * DEFLC                          //防御属性
                         * Resistance                     //抗性计算
-                        * float.Parse(Skill.Text) / 100  //技能倍率
-                        * float.Parse(Other.Text) / 100; //其他乘区
+                        * float.Parse(Skill.Value.Text) / 100  //技能倍率
+                        * float.Parse(Other.Value.Text) / 100; //其他乘区
                     //等级压制计算,参考：https://bbs.nga.cn/read.php?tid=24358389
-                    if (PlayerLevel1.Value - EnemyLevel1.Value > 70 && EnemyLevel1.Value <= 10)
+                    if (Level_Player.Current - Level_Enemy.Current > 70 && Level_Enemy.Current <= 10)
                         Normal *= 1.5;
-                    else if (EnemyLevel1.Value - PlayerLevel1.Value > 70 && PlayerLevel1.Value <= 10)
+                    else if (Level_Enemy.Current - Level_Player.Current > 70 && Level_Player.Current <= 10)
                         Normal *= 0.5;
 
-                    Crit = Normal * (1 + float.Parse(CritDMG.Text) / 100);
-                    Avg = Normal * (1 + float.Parse(CritRate.Text) * float.Parse(CritDMG.Text) / 10000);
+                    Crit = Normal * (1 + float.Parse(Crit_Damage.Value.Text) / 100);
+                    Avg = Normal * (1 + float.Parse(Crit_Rate.Value.Text) * float.Parse(Crit_Damage.Value.Text) / 10000);
 
                     //暴击时的伤害修正
                     //满暴击时,普通伤害等于暴击伤害
-                    if (float.Parse(CritRate.Text) == 100)
+                    if (float.Parse(Crit_Rate.Value.Text) == 100)
                     {
                         Normal = Crit;
                     }
                     //不暴击时,暴击伤害等于普通伤害
-                    else if (float.Parse(CritRate.Text) == 0)
+                    else if (float.Parse(Crit_Rate.Value.Text) == 0)
                     {
                         Crit = Normal;
                     }
@@ -1201,11 +965,11 @@ namespace Genshin_Calc
                 else    //剧变反应伤害相关计算
                 {
                     check = true;
-                    Normal = React * upheaval.Upheaval_Damage(PlayerLevel1.Value, false) * Resistance;
+                    Normal = React * upheaval.Upheaval_Damage((int)Level_Player.Current, false) * Resistance;
                     Avg = Normal;
                 }
                 //免疫相关显示
-                if (EnemyRES.Text.Contains("∞"))
+                if (Resistance_Percent.Value.Text.Contains("∞"))
                 {
                     Normal = 0;
                     Avg = 0;
@@ -1217,54 +981,76 @@ namespace Genshin_Calc
                 Crit_DMG.Text = check ? "N/A" : Convert.ToString(Crit);
                 Avg_DMG.Text = Convert.ToString(Avg);
             }
-            catch { }
-            if (P1.SelectedTab == tabPage5)
+            catch
             {
-                DetailedCalculate();
+                //_ = MessageBox.Show("111");// 调试用 调试完成后尽快将其注释掉
             }
-            Streamer();
+            if (P1.SelectedIndex == 4)
+            {
+                if (ChartDrawing != null)
+                {
+                    DetailedCalculate();
+                }
+                else
+                {
+                    ChartDrawing = new Thread(DetailedCalculate);
+                    ChartDrawing.Start();
+                }
+            }
+            else if (ChartDrawing != null)
+            {
+                ChartDrawing.Abort();
+                ComChart.Enabled = false;
+            }
+
         }
+        #endregion //////////计算部分结束///////////
+
         #region 数据转化为表格
+        double[] ContentsTemp = new double[8];
         private void DetailedCalculate(object sender, EventArgs e)
         {
-            DetailedCalculate();
+            if (P1.SelectedIndex == 4)
+            {
+                Calculate();
+                ComChart.Enabled = true;
+            }
+
         }
         private async void DetailedCalculate()
         {
-            var CritValue = 1D;
-            var ContentsTemp = new double[8];
+            double CritValue;
             if (DMGType0.Checked)
             {
                 CritValue = 1d;
             }
             else if (DMGType1.Checked)
             {
-                CritValue = 1 + Convert.ToDouble(CritDMG1.Value) / 1000;
+                CritValue = 1 + Convert.ToDouble(Crit_Damage.Current) / 1000;
             }
             else
             {
-                CritValue = 1 + float.Parse(CritRate.Text) * float.Parse(CritDMG.Text) / 10000;
+                CritValue = 1 + float.Parse(Crit_Rate.Value.Text) * float.Parse(Crit_Damage.Value.Text) / 10000;
             }
-            AttributeList.BeginUpdate();
             if (Reaction_Choose.SelectedIndex <= 5 && Reaction_Choose.SelectedIndex >= 1)
             {
                 Contents = new double[8] { 0, 0, 0, 0, 0, Resistance, React, 0 };
-                AttributeList.Items[0].SubItems[1].Text = upheaval.Upheaval_Damage(PlayerLevel1.Value, false).ToString();
+                AttributeList.Items[0].SubItems[1].Text = upheaval.Upheaval_Damage((int)Level_Player.Current, false).ToString();
             }
             else
             {
                 Contents = new double[8]
                 {
-                    (ATKLC - ATK1.Value) / ATK1.Value
-                    ,Convert.ToDouble(Skill1.Value) / 1000
+                    (ATKLC - ATK_Basic.Current) / ATK_Basic.Current + 1
+                    ,Convert.ToDouble(Skill.Current) / 1000
                     ,((ELMLV + BUFLV) / 100) + 1
                     ,CritValue
                     ,DEFLC
                     ,Resistance
                     ,React
-                    ,Convert.ToDouble(Other1.Value) / 1000
+                    ,Convert.ToDouble(Other.Value.Text) / 1000
                 };
-                AttributeList.Items[0].SubItems[1].Text = ATK.Text;
+                AttributeList.Items[0].SubItems[1].Text = ATK_Basic.CurrentStr;
 
             }
             for (int i = 1; i <= 8; i++)
@@ -1273,20 +1059,33 @@ namespace Genshin_Calc
                 ContentsTemp[i - 1] = 100 * Contents[i - 1] / Contents.Sum();
                 Tmp[i - 1] = 100 * (Contents[i - 1] - 1) / (Contents.Sum() - 8);
             }
-            AttributeList.EndUpdate();
+            await ChartRefresh();
+        }
+        private async void ChRefresh()
+        {
             var TrailedTmp = Tmp;
             for (int i = 0; i < Tmp.Length; i++)
             {
                 TrailedTmp[i] = Tmp[i] <= 0 ? 0 : Tmp[i];
             }
-            ComChart.Series[0].Points.DataBindXY(new string[] { "攻击加成", "天赋倍率", "伤害加深", "暴击伤害", "防御计算", "抗性计算", "元素反应", "额外乘区" }, Sw ? ContentsTemp : TrailedTmp);
+            try
+            {
+                ComChart.Series[0].Points.DataBindXY(new string[] { "攻击加成", "天赋倍率", "伤害加深", "暴击伤害", "防御计算", "抗性计算", "元素反应", "额外乘区" }, Sw ? ContentsTemp : TrailedTmp);
+            }
+            catch { }
             for (int i = 1; i <= 8; i++)
             {
                 AttributeList.Items[i].SubItems[2].Text = await OutStr2(i, !Sw);
             }
-
         }
-
+        Task<int> ChartRefresh()
+        {
+            return Task.Run(() => 
+            { 
+                ChRefresh();
+                return 0; 
+            });
+        }
         private void ComChart_Click(object sender, EventArgs e)
         {
             Sw = !Sw;
@@ -1312,30 +1111,6 @@ namespace Genshin_Calc
             else return Task.Run(() => string.Format("{0:N4}", 100 * (Contents[x - 1]) / (Contents.Sum())) + "%");
         }
         #endregion
-        #endregion //////////计算部分结束///////////
-        /// <summary>
-        /// 对各变量进行汇总
-        /// </summary>
-        public void Streamer()
-        {
-            DataStream[0] = ATK1.Value;                         // 白字攻击力     
-            DataStream[1] = ATKPlus1.Value;                     // 绿字攻击力     
-            DataStream[2] = (double)CritRate1.Value / 10;       // 暴击率        
-            DataStream[3] = (double)CritDMG1.Value / 10;        // 暴击伤害      
-            DataStream[4] = EM1.Value;                          // 元素精通      
-            DataStream[5] = ELMLV;                              // 元素伤害加成   
-            DataStream[6] = BUFLV;                              // 其他伤害加成   
-            DataStream[7] = PlayerLevel1.Value;                 // 我方等级      
-            DataStream[8] = EnemyLevel1.Value;                  // 敌方等级      
-            DataStream[9] = Defense1.Value;                     // 防御变化      
-            DataStream[10] = (double)EnemyRES1.Value / 1000;    // 敌方抗性      
-            DataStream[11] = (double)Skill1.Value / 1000;       // 天赋倍率      
-            DataStream[12] = (double)Other1.Value / 1000;       // 额外乘区      
-            DataStream[13] = Reaction_Choose.SelectedIndex;     // 反应类型      
-            DataStream[14] = ATKLC;                             // 攻击力乘区之和 
-            DataStream[15] = DEFLC;                             // 防御力乘区之和 
-            //DataStream[16]=                 //预留
-        }
     }
     #region 剧变反应伤害数值
     //参考：https://bbs.mihoyo.com/ys/article/2215872
@@ -1364,19 +1139,23 @@ namespace Genshin_Calc
                 1484,   1530,   1568,   1607,   1661,   1708,   1754,   1800,   1847,   1892,    //71~80级
                 1937,   1981,   2027,   2072,   2132,   2179,   2229,   2282,   2343,   2406     //81~90级
             };
+        /// <summary>
+        /// 根据等级获取反应计算系数
+        /// </summary>
+        /// <param name="level">角色等级</param>
+        /// <param name="Type">是否使用旧反应系数,true=旧反应系数,false=新反应系数</param>
+        /// <returns>计算获得的反应系数值</returns>
         public double Upheaval_Damage(int level, bool Type)
         {
             try
             {
                 if (Type)
                 {
-                    return OldUpheavalbase[level];
-                    //return -7E-05 * Math.Pow(level, 4) + 0.0136 * Math.Pow(level, 3) - 0.5231 * Math.Pow(level, 2) + 14.259 * level - 14.578;
+                    return OldUpheavalbase[level];      // -7E-05 * Math.Pow(level, 4) + 0.0136 * Math.Pow(level, 3) - 0.5231 * Math.Pow(level, 2) + 14.259 * level - 14.578;
                 }
                 else
                 {
-                    return UpheavalBase[level];
-                    //return -2E-06 * Math.Pow(level, 5) + 0.0004 * Math.Pow(level, 4) - 0.0246 * Math.Pow(level, 3) + 0.7445 * Math.Pow(level, 2) - 1.6865 * level + 34.394;
+                    return UpheavalBase[level];         // -2E-06 * Math.Pow(level, 5) + 0.0004 * Math.Pow(level, 4) - 0.0246 * Math.Pow(level, 3) + 0.7445 * Math.Pow(level, 2) - 1.6865 * level + 34.394;
                 }
             }
             catch (Exception)

@@ -107,7 +107,7 @@ namespace LicenseExamination
     /// 加载第三方库。代码是复制粘贴来的。
     /// 代码来源：https://blog.csdn.net/u012842630/article/details/97416416
     /// </summary>
-    public static class LoadResoureDll
+    public static class LoadResourceDll
     {
         /// <summary> 已加载DLL
         /// </summary>
@@ -190,5 +190,6 @@ namespace LicenseExamination
                 }
             }
         }
+
     }
 }

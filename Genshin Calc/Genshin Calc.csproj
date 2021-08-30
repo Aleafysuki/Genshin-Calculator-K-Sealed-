@@ -52,7 +52,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>3F3BCF976E4755F5FD9DB81F8A170E3514919ED1</ManifestCertificateThumbprint>
@@ -61,7 +61,7 @@
     <ManifestKeyFile>Genshin Calc_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Genshin_Calc.Program</StartupObject>
@@ -69,21 +69,29 @@
   <PropertyGroup>
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ClosedXML.0.95.4\lib\net40\ClosedXML.dll</HintPath>
+    <Reference Include="ClosedXML">
+      <HintPath>Resources\ClosedXML.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
-      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>Resources\DocumentFormat.OpenXml.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ExcelNumberFormat, Version=1.0.10.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
-      <HintPath>..\packages\ExcelNumberFormat.1.0.10\lib\net20\ExcelNumberFormat.dll</HintPath>
+    <Reference Include="ExcelNumberFormat">
+      <HintPath>Resources\ExcelNumberFormat.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -101,70 +109,70 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.cs">
+    <Compile Include="OtherForms\About.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="About.Designer.cs">
+    <Compile Include="OtherForms\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="Albedo_Calc.cs">
+    <Compile Include="SpecialCharacters\Albedo_Calc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Albedo_Calc.Designer.cs">
+    <Compile Include="SpecialCharacters\Albedo_Calc.Designer.cs">
       <DependentUpon>Albedo_Calc.cs</DependentUpon>
     </Compile>
-    <Compile Include="ArtifactCompare.cs">
+    <Compile Include="Tools\ArtifactCompare.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArtifactCompare.Designer.cs">
+    <Compile Include="Tools\ArtifactCompare.Designer.cs">
       <DependentUpon>ArtifactCompare.cs</DependentUpon>
     </Compile>
-    <Compile Include="CalculatorPro.cs">
+    <Compile Include="Tools\CalculatorPro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CalculatorPro.Designer.cs">
+    <Compile Include="Tools\CalculatorPro.Designer.cs">
       <DependentUpon>CalculatorPro.cs</DependentUpon>
     </Compile>
-    <Compile Include="Characters.cs">
+    <Compile Include="Tools\Characters.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Characters.Designer.cs">
+    <Compile Include="Tools\Characters.Designer.cs">
       <DependentUpon>Characters.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cocogoat_Tools.cs">
+    <Compile Include="Tools\ArtifactsLoad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cocogoat_Tools.Designer.cs">
-      <DependentUpon>Cocogoat_Tools.cs</DependentUpon>
+    <Compile Include="Tools\ArtifactsLoad.Designer.cs">
+      <DependentUpon>ArtifactsLoad.cs</DependentUpon>
     </Compile>
-    <Compile Include="DPSCalc.cs">
+    <Compile Include="Tools\DPSCalc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DPSCalc.Designer.cs">
+    <Compile Include="Tools\DPSCalc.Designer.cs">
       <DependentUpon>DPSCalc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Heal.cs">
+    <Compile Include="Tools\Heal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Heal.Designer.cs">
+    <Compile Include="Tools\Heal.Designer.cs">
       <DependentUpon>Heal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hutao_Calc.cs">
+    <Compile Include="SpecialCharacters\Hutao_Calc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Hutao_Calc.Designer.cs">
+    <Compile Include="SpecialCharacters\Hutao_Calc.Designer.cs">
       <DependentUpon>Hutao_Calc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Noelle_Calc.cs">
+    <Compile Include="SpecialCharacters\Noelle_Calc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Noelle_Calc.Designer.cs">
+    <Compile Include="SpecialCharacters\Noelle_Calc.Designer.cs">
       <DependentUpon>Noelle_Calc.cs</DependentUpon>
     </Compile>
-    <Compile Include="EnemyTable.cs">
+    <Compile Include="Tools\EnemyTable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EnemyTable.Designer.cs">
+    <Compile Include="Tools\EnemyTable.Designer.cs">
       <DependentUpon>EnemyTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
@@ -173,10 +181,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="NoteAdd.cs">
+    <Compile Include="OtherForms\NoteAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NoteAdd.Designer.cs">
+    <Compile Include="OtherForms\NoteAdd.Designer.cs">
       <DependentUpon>NoteAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -192,55 +200,61 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs">
+    <Compile Include="OtherForms\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings.Designer.cs">
+    <Compile Include="OtherForms\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Zhongli_Calc.cs">
+    <Compile Include="SpecialCharacters\Zhongli_Calc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Zhongli_Calc.Designer.cs">
+    <Compile Include="SpecialCharacters\Zhongli_Calc.Designer.cs">
       <DependentUpon>Zhongli_Calc.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="About.resx">
+    <Compile Include="ValueTracker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ValueTracker.Designer.cs">
+      <DependentUpon>ValueTracker.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="OtherForms\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Albedo_Calc.resx">
+    <EmbeddedResource Include="SpecialCharacters\Albedo_Calc.resx">
       <DependentUpon>Albedo_Calc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArtifactCompare.resx">
+    <EmbeddedResource Include="Tools\ArtifactCompare.resx">
       <DependentUpon>ArtifactCompare.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CalculatorPro.resx">
+    <EmbeddedResource Include="Tools\CalculatorPro.resx">
       <DependentUpon>CalculatorPro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Characters.resx">
+    <EmbeddedResource Include="Tools\Characters.resx">
       <DependentUpon>Characters.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cocogoat_Tools.resx">
-      <DependentUpon>Cocogoat_Tools.cs</DependentUpon>
+    <EmbeddedResource Include="Tools\ArtifactsLoad.resx">
+      <DependentUpon>ArtifactsLoad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DPSCalc.resx">
+    <EmbeddedResource Include="Tools\DPSCalc.resx">
       <DependentUpon>DPSCalc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Heal.resx">
+    <EmbeddedResource Include="Tools\Heal.resx">
       <DependentUpon>Heal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Hutao_Calc.resx">
+    <EmbeddedResource Include="SpecialCharacters\Hutao_Calc.resx">
       <DependentUpon>Hutao_Calc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Noelle_Calc.resx">
+    <EmbeddedResource Include="SpecialCharacters\Noelle_Calc.resx">
       <DependentUpon>Noelle_Calc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EnemyTable.resx">
+    <EmbeddedResource Include="Tools\EnemyTable.resx">
       <DependentUpon>EnemyTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NoteAdd.resx">
+    <EmbeddedResource Include="OtherForms\NoteAdd.resx">
       <DependentUpon>NoteAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -251,16 +265,19 @@
     <EmbeddedResource Include="Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Settings.resx">
+    <EmbeddedResource Include="OtherForms\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Zhongli_Calc.resx">
+    <EmbeddedResource Include="SpecialCharacters\Zhongli_Calc.resx">
       <DependentUpon>Zhongli_Calc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="bin\Debug\FZXIANGSU12.TTF" />
-    <None Include="bin\FZXIANGSU12.TTF" />
-    <None Include="packages.config" />
+    <EmbeddedResource Include="ValueTracker.resx">
+      <DependentUpon>ValueTracker.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Configurations\packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\DPSCalc.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -271,9 +288,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\FZXIANGSU12.TTF" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Configurations\App.config" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -291,28 +309,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="bin\Debug\ClosedXML.dll" />
+    <Folder Include="bin\Debug\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="bin\Debug\DocumentFormat.OpenXml.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="bin\Debug\ExcelNumberFormat.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <PublishFile Include="Newtonsoft.Json">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Prerequisite</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-  </ItemGroup>
-  <ItemGroup>
+    <EmbeddedResource Include="Resources\Newtonsoft.Json.dll" />
+    <EmbeddedResource Include="Resources\ExcelNumberFormat.dll" />
+    <EmbeddedResource Include="Resources\DocumentFormat.OpenXml.dll" />
+    <EmbeddedResource Include="Resources\ClosedXML.dll" />
     <Content Include="icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

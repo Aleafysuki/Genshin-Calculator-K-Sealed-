@@ -22,7 +22,6 @@ namespace Genshin_Calc
             base.Dispose(disposing);
         }
 
-
         #region Windows 窗体设计器生成的代码
 
         /// <summary>
@@ -31,50 +30,50 @@ namespace Genshin_Calc
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
             "基础攻击",
             "0",
             "---"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
             "攻击加成",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
             "天赋倍率",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
             "伤害加深",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
             "暴击伤害",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem(new string[] {
             "防御计算",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem(new string[] {
             "抗性计算",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem(new string[] {
             "元素反应",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem(new string[] {
             "额外乘区",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation1 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation2 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation3 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn1 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
-            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn2 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation4 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation5 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation6 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn3 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
+            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn4 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据存放文件夹ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,12 +84,6 @@ namespace Genshin_Calc
             this.数值上下限设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.窗口置顶ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修复字体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.windows计算器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.锚定伤害计算器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.治疗量计算器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DPS简易计算ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.圣遗物简易比较器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.角色与武器快捷输入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.敌人抗性快速查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,83 +93,53 @@ namespace Genshin_Calc
             this.阿贝多防御值加伤替换攻击ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.钟离生命值加伤ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.胡桃生命值加攻ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.windows计算器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.锚定伤害计算器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.治疗量计算器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DPS简易计算ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.圣遗物简易比较器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.使用入门ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.计算公式来源ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ATK1 = new System.Windows.Forms.TrackBar();
-            this.ATK = new System.Windows.Forms.TextBox();
-            this.CritRate = new System.Windows.Forms.TextBox();
-            this.CritRate1 = new System.Windows.Forms.TrackBar();
-            this.ATK_Label = new System.Windows.Forms.Label();
-            this.CR_Label = new System.Windows.Forms.Label();
-            this.CritDMG1 = new System.Windows.Forms.TrackBar();
-            this.CritDMG = new System.Windows.Forms.TextBox();
-            this.CD_Label = new System.Windows.Forms.Label();
-            this.Group_A = new System.Windows.Forms.GroupBox();
-            this.ATKPlus1 = new System.Windows.Forms.TrackBar();
-            this.ATKPlus = new System.Windows.Forms.TextBox();
-            this.EP1 = new System.Windows.Forms.TrackBar();
-            this.EP = new System.Windows.Forms.TextBox();
-            this.EP_Label = new System.Windows.Forms.Label();
-            this.EM1 = new System.Windows.Forms.TrackBar();
-            this.EM = new System.Windows.Forms.TextBox();
-            this.EM_Label = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.P1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.BUFF_ATK2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ATKBuff1_Sf = new System.Windows.Forms.TrackBar();
-            this.ATKBuff_Sf = new System.Windows.Forms.TextBox();
-            this.ATKBuff1_S = new System.Windows.Forms.TrackBar();
-            this.ATKBuff_S = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.BUFF_ATK_1 = new System.Windows.Forms.GroupBox();
+            this.Basic = new System.Windows.Forms.TabPage();
+            this.BasicGroup = new System.Windows.Forms.GroupBox();
+            this.DamageBuff_Elem = new Genshin_Calc.ValueTracker();
+            this.Crit_Damage = new Genshin_Calc.ValueTracker();
+            this.Crit_Rate = new Genshin_Calc.ValueTracker();
+            this.ElemMastery = new Genshin_Calc.ValueTracker();
+            this.ATK_Added = new Genshin_Calc.ValueTracker();
+            this.ATK_Basic = new Genshin_Calc.ValueTracker();
+            this.ATK_Buff = new System.Windows.Forms.TabPage();
+            this.ATKBuff_Stack_Group = new System.Windows.Forms.GroupBox();
+            this.ATKBuff_Stack_Count = new Genshin_Calc.ValueTracker();
+            this.ATKBuff_Stack_Percent = new Genshin_Calc.ValueTracker();
+            this.ATKBuff_Group = new System.Windows.Forms.GroupBox();
             this.ATKBuff_HP = new System.Windows.Forms.Label();
             this.ATKBuff_DEF = new System.Windows.Forms.Label();
             this.ATKBuff_HP_Label = new System.Windows.Forms.Label();
             this.ATKBuff_DEF_Label = new System.Windows.Forms.Label();
-            this.ATKBuff_other_label = new System.Windows.Forms.Label();
-            this.ATKBuff1_P = new System.Windows.Forms.TrackBar();
-            this.ATK_Buff_Num = new System.Windows.Forms.Label();
-            this.ATKBuff1 = new System.Windows.Forms.TrackBar();
-            this.ATKBuff = new System.Windows.Forms.TextBox();
-            this.ATKBuff_P = new System.Windows.Forms.TextBox();
-            this.ATK_Buff_Percent = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.ReactBuff1 = new System.Windows.Forms.TrackBar();
-            this.ReactBuff = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.DMGBuff1_Sf = new System.Windows.Forms.TrackBar();
-            this.DMGBuff_Sf = new System.Windows.Forms.TextBox();
-            this.DMGBuff1_S = new System.Windows.Forms.TrackBar();
-            this.DMGBuff_S = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.DMGBuff1 = new System.Windows.Forms.TrackBar();
-            this.DMGBuff = new System.Windows.Forms.TextBox();
-            this.DMG_Buff = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.RES = new System.Windows.Forms.GroupBox();
-            this.EnemyRES1 = new System.Windows.Forms.TrackBar();
-            this.EnemyRES = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.DEF = new System.Windows.Forms.GroupBox();
-            this.Defense1 = new System.Windows.Forms.TrackBar();
-            this.LVL_E = new System.Windows.Forms.Label();
-            this.Defense = new System.Windows.Forms.TextBox();
-            this.EnemyLevel1 = new System.Windows.Forms.TrackBar();
-            this.DEF_Text = new System.Windows.Forms.Label();
-            this.EnemyLevel = new System.Windows.Forms.TextBox();
-            this.LVL_P = new System.Windows.Forms.Label();
-            this.PlayerLevel1 = new System.Windows.Forms.TrackBar();
-            this.PlayerLevel = new System.Windows.Forms.TextBox();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.ATKBuff_Percent = new Genshin_Calc.ValueTracker();
+            this.ATKBuff_Static = new Genshin_Calc.ValueTracker();
+            this.label15 = new System.Windows.Forms.Label();
+            this.Damage_Buff = new System.Windows.Forms.TabPage();
+            this.DamageBuff_Reaction_Group = new System.Windows.Forms.GroupBox();
+            this.DamageBuff_Reaction = new Genshin_Calc.ValueTracker();
+            this.DamageBuffStack_Group = new System.Windows.Forms.GroupBox();
+            this.DamageBuff_Stack_Count = new Genshin_Calc.ValueTracker();
+            this.DamageBuff_Stack_Percent = new Genshin_Calc.ValueTracker();
+            this.DamageBuff_Group = new System.Windows.Forms.GroupBox();
+            this.DamageBuff_Percent = new Genshin_Calc.ValueTracker();
+            this.Level_And_Res = new System.Windows.Forms.TabPage();
+            this.Resistance_Group = new System.Windows.Forms.GroupBox();
+            this.Resistance_Percent = new Genshin_Calc.ValueTracker();
+            this.LevelAndDefence_Group = new System.Windows.Forms.GroupBox();
+            this.Defence_Debuff = new Genshin_Calc.ValueTracker();
+            this.Level_Enemy = new Genshin_Calc.ValueTracker();
+            this.Level_Player = new Genshin_Calc.ValueTracker();
+            this.ChartViewer = new System.Windows.Forms.TabPage();
             this.DMGType2 = new System.Windows.Forms.RadioButton();
             this.DMGType1 = new System.Windows.Forms.RadioButton();
             this.DMGType0 = new System.Windows.Forms.RadioButton();
@@ -188,12 +151,6 @@ namespace Genshin_Calc
             this.NormalDMG_Text = new System.Windows.Forms.Label();
             this.CritDMG_Text = new System.Windows.Forms.Label();
             this.AvgDMG_Text = new System.Windows.Forms.Label();
-            this.Skill1 = new System.Windows.Forms.TrackBar();
-            this.Skill = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Other1 = new System.Windows.Forms.TrackBar();
-            this.Other = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Reaction = new System.Windows.Forms.Label();
             this.Reaction_Choose = new System.Windows.Forms.ComboBox();
@@ -203,45 +160,26 @@ namespace Genshin_Calc
             this.TransButton = new System.Windows.Forms.Button();
             this.statusStrips = new System.Windows.Forms.StatusStrip();
             this.toolStrips = new System.Windows.Forms.ToolStripStatusLabel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
+            this.Skill = new Genshin_Calc.ValueTracker();
+            this.Other = new Genshin_Calc.ValueTracker();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ATK1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CritRate1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CritDMG1)).BeginInit();
-            this.Group_A.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ATKPlus1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EP1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EM1)).BeginInit();
             this.P1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.BUFF_ATK2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ATKBuff1_Sf)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ATKBuff1_S)).BeginInit();
-            this.BUFF_ATK_1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ATKBuff1_P)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ATKBuff1)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReactBuff1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DMGBuff1_Sf)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DMGBuff1_S)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DMGBuff1)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            this.RES.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EnemyRES1)).BeginInit();
-            this.DEF.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Defense1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EnemyLevel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayerLevel1)).BeginInit();
-            this.tabPage5.SuspendLayout();
+            this.Basic.SuspendLayout();
+            this.BasicGroup.SuspendLayout();
+            this.ATK_Buff.SuspendLayout();
+            this.ATKBuff_Stack_Group.SuspendLayout();
+            this.ATKBuff_Group.SuspendLayout();
+            this.Damage_Buff.SuspendLayout();
+            this.DamageBuff_Reaction_Group.SuspendLayout();
+            this.DamageBuffStack_Group.SuspendLayout();
+            this.DamageBuff_Group.SuspendLayout();
+            this.Level_And_Res.SuspendLayout();
+            this.Resistance_Group.SuspendLayout();
+            this.LevelAndDefence_Group.SuspendLayout();
+            this.ChartViewer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ComChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Skill1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Other1)).BeginInit();
             this.panel1.SuspendLayout();
             this.statusStrips.SuspendLayout();
             this.SuspendLayout();
@@ -344,6 +282,84 @@ namespace Genshin_Calc
             this.修复字体ToolStripMenuItem.Text = "修复字体";
             this.修复字体ToolStripMenuItem.Click += new System.EventHandler(this.修复字体ToolStripMenuItem_Click);
             // 
+            // 查询ToolStripMenuItem
+            // 
+            this.查询ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.查询ToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.角色与武器快捷输入ToolStripMenuItem,
+            this.敌人抗性快速查询ToolStripMenuItem,
+            this.Cocogoat圣遗物导入ToolStripMenuItem});
+            this.查询ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.查询ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.查询ToolStripMenuItem.Name = "查询ToolStripMenuItem";
+            this.查询ToolStripMenuItem.Size = new System.Drawing.Size(56, 28);
+            this.查询ToolStripMenuItem.Text = "查询";
+            // 
+            // 角色与武器快捷输入ToolStripMenuItem
+            // 
+            this.角色与武器快捷输入ToolStripMenuItem.Name = "角色与武器快捷输入ToolStripMenuItem";
+            this.角色与武器快捷输入ToolStripMenuItem.Size = new System.Drawing.Size(271, 28);
+            this.角色与武器快捷输入ToolStripMenuItem.Text = "角色与武器快捷输入";
+            this.角色与武器快捷输入ToolStripMenuItem.Click += new System.EventHandler(this.角色与武器快捷输入ToolStripMenuItem_Click_1);
+            // 
+            // 敌人抗性快速查询ToolStripMenuItem
+            // 
+            this.敌人抗性快速查询ToolStripMenuItem.Name = "敌人抗性快速查询ToolStripMenuItem";
+            this.敌人抗性快速查询ToolStripMenuItem.Size = new System.Drawing.Size(271, 28);
+            this.敌人抗性快速查询ToolStripMenuItem.Text = "敌人抗性快速查询";
+            this.敌人抗性快速查询ToolStripMenuItem.Click += new System.EventHandler(this.敌人抗性快速查询ToolStripMenuItem_Click_1);
+            // 
+            // Cocogoat圣遗物导入ToolStripMenuItem
+            // 
+            this.Cocogoat圣遗物导入ToolStripMenuItem.Name = "Cocogoat圣遗物导入ToolStripMenuItem";
+            this.Cocogoat圣遗物导入ToolStripMenuItem.Size = new System.Drawing.Size(271, 28);
+            this.Cocogoat圣遗物导入ToolStripMenuItem.Text = "圣遗物导入 ( JSON文件 )";
+            this.Cocogoat圣遗物导入ToolStripMenuItem.Click += new System.EventHandler(this.ArtifactsApply);
+            // 
+            // 特殊计算ToolStripMenuItem
+            // 
+            this.特殊计算ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.特殊计算ToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.特殊计算ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.诺艾尔防御转攻击ToolStripMenuItem,
+            this.阿贝多防御值加伤替换攻击ToolStripMenuItem,
+            this.钟离生命值加伤ToolStripMenuItem,
+            this.胡桃生命值加攻ToolStripMenuItem});
+            this.特殊计算ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.特殊计算ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.特殊计算ToolStripMenuItem.Name = "特殊计算ToolStripMenuItem";
+            this.特殊计算ToolStripMenuItem.Size = new System.Drawing.Size(90, 28);
+            this.特殊计算ToolStripMenuItem.Text = "角色计算";
+            // 
+            // 诺艾尔防御转攻击ToolStripMenuItem
+            // 
+            this.诺艾尔防御转攻击ToolStripMenuItem.Name = "诺艾尔防御转攻击ToolStripMenuItem";
+            this.诺艾尔防御转攻击ToolStripMenuItem.Size = new System.Drawing.Size(325, 28);
+            this.诺艾尔防御转攻击ToolStripMenuItem.Text = "诺艾尔（防御转攻击）";
+            this.诺艾尔防御转攻击ToolStripMenuItem.Click += new System.EventHandler(this.诺艾尔防御转攻击ToolStripMenuItem_Click);
+            // 
+            // 阿贝多防御值加伤替换攻击ToolStripMenuItem
+            // 
+            this.阿贝多防御值加伤替换攻击ToolStripMenuItem.Name = "阿贝多防御值加伤替换攻击ToolStripMenuItem";
+            this.阿贝多防御值加伤替换攻击ToolStripMenuItem.Size = new System.Drawing.Size(325, 28);
+            this.阿贝多防御值加伤替换攻击ToolStripMenuItem.Text = "阿贝多（防御值加伤/替换攻击）";
+            this.阿贝多防御值加伤替换攻击ToolStripMenuItem.Click += new System.EventHandler(this.阿贝多防御值加伤替换攻击ToolStripMenuItem_Click);
+            // 
+            // 钟离生命值加伤ToolStripMenuItem
+            // 
+            this.钟离生命值加伤ToolStripMenuItem.Name = "钟离生命值加伤ToolStripMenuItem";
+            this.钟离生命值加伤ToolStripMenuItem.Size = new System.Drawing.Size(325, 28);
+            this.钟离生命值加伤ToolStripMenuItem.Text = "钟离    （生命值加伤）";
+            this.钟离生命值加伤ToolStripMenuItem.Click += new System.EventHandler(this.钟离生命值加伤ToolStripMenuItem_Click);
+            // 
+            // 胡桃生命值加攻ToolStripMenuItem
+            // 
+            this.胡桃生命值加攻ToolStripMenuItem.Name = "胡桃生命值加攻ToolStripMenuItem";
+            this.胡桃生命值加攻ToolStripMenuItem.Size = new System.Drawing.Size(325, 28);
+            this.胡桃生命值加攻ToolStripMenuItem.Text = "胡桃    （生命值加攻）";
+            this.胡桃生命值加攻ToolStripMenuItem.Click += new System.EventHandler(this.胡桃生命值加攻ToolStripMenuItem_Click);
+            // 
             // 工具ToolStripMenuItem
             // 
             this.工具ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -395,83 +411,6 @@ namespace Genshin_Calc
             this.圣遗物简易比较器ToolStripMenuItem.Text = "圣遗物简易比较器";
             this.圣遗物简易比较器ToolStripMenuItem.Click += new System.EventHandler(this.圣遗物简易比较器ToolStripMenuItem_Click);
             // 
-            // 查询ToolStripMenuItem
-            // 
-            this.查询ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.查询ToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.角色与武器快捷输入ToolStripMenuItem,
-            this.敌人抗性快速查询ToolStripMenuItem,
-            this.Cocogoat圣遗物导入ToolStripMenuItem});
-            this.查询ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.查询ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.查询ToolStripMenuItem.Name = "查询ToolStripMenuItem";
-            this.查询ToolStripMenuItem.Size = new System.Drawing.Size(56, 28);
-            this.查询ToolStripMenuItem.Text = "查询";
-            // 
-            // 角色与武器快捷输入ToolStripMenuItem
-            // 
-            this.角色与武器快捷输入ToolStripMenuItem.Name = "角色与武器快捷输入ToolStripMenuItem";
-            this.角色与武器快捷输入ToolStripMenuItem.Size = new System.Drawing.Size(244, 28);
-            this.角色与武器快捷输入ToolStripMenuItem.Text = "角色与武器快捷输入";
-            this.角色与武器快捷输入ToolStripMenuItem.Click += new System.EventHandler(this.角色与武器快捷输入ToolStripMenuItem_Click_1);
-            // 
-            // 敌人抗性快速查询ToolStripMenuItem
-            // 
-            this.敌人抗性快速查询ToolStripMenuItem.Name = "敌人抗性快速查询ToolStripMenuItem";
-            this.敌人抗性快速查询ToolStripMenuItem.Size = new System.Drawing.Size(244, 28);
-            this.敌人抗性快速查询ToolStripMenuItem.Text = "敌人抗性快速查询";
-            this.敌人抗性快速查询ToolStripMenuItem.Click += new System.EventHandler(this.敌人抗性快速查询ToolStripMenuItem_Click_1);
-            // 
-            // Cocogoat圣遗物导入ToolStripMenuItem
-            // 
-            this.Cocogoat圣遗物导入ToolStripMenuItem.Name = "Cocogoat圣遗物导入ToolStripMenuItem";
-            this.Cocogoat圣遗物导入ToolStripMenuItem.Size = new System.Drawing.Size(244, 28);
-            this.Cocogoat圣遗物导入ToolStripMenuItem.Text = "Cocogoat圣遗物导入";
-            // 
-            // 特殊计算ToolStripMenuItem
-            // 
-            this.特殊计算ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.特殊计算ToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.特殊计算ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.诺艾尔防御转攻击ToolStripMenuItem,
-            this.阿贝多防御值加伤替换攻击ToolStripMenuItem,
-            this.钟离生命值加伤ToolStripMenuItem,
-            this.胡桃生命值加攻ToolStripMenuItem});
-            this.特殊计算ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.特殊计算ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.特殊计算ToolStripMenuItem.Name = "特殊计算ToolStripMenuItem";
-            this.特殊计算ToolStripMenuItem.Size = new System.Drawing.Size(90, 28);
-            this.特殊计算ToolStripMenuItem.Text = "角色计算";
-            // 
-            // 诺艾尔防御转攻击ToolStripMenuItem
-            // 
-            this.诺艾尔防御转攻击ToolStripMenuItem.Name = "诺艾尔防御转攻击ToolStripMenuItem";
-            this.诺艾尔防御转攻击ToolStripMenuItem.Size = new System.Drawing.Size(325, 28);
-            this.诺艾尔防御转攻击ToolStripMenuItem.Text = "诺艾尔（防御转攻击）";
-            this.诺艾尔防御转攻击ToolStripMenuItem.Click += new System.EventHandler(this.诺艾尔防御转攻击ToolStripMenuItem_Click);
-            // 
-            // 阿贝多防御值加伤替换攻击ToolStripMenuItem
-            // 
-            this.阿贝多防御值加伤替换攻击ToolStripMenuItem.Name = "阿贝多防御值加伤替换攻击ToolStripMenuItem";
-            this.阿贝多防御值加伤替换攻击ToolStripMenuItem.Size = new System.Drawing.Size(325, 28);
-            this.阿贝多防御值加伤替换攻击ToolStripMenuItem.Text = "阿贝多（防御值加伤/替换攻击）";
-            this.阿贝多防御值加伤替换攻击ToolStripMenuItem.Click += new System.EventHandler(this.阿贝多防御值加伤替换攻击ToolStripMenuItem_Click);
-            // 
-            // 钟离生命值加伤ToolStripMenuItem
-            // 
-            this.钟离生命值加伤ToolStripMenuItem.Name = "钟离生命值加伤ToolStripMenuItem";
-            this.钟离生命值加伤ToolStripMenuItem.Size = new System.Drawing.Size(325, 28);
-            this.钟离生命值加伤ToolStripMenuItem.Text = "钟离    （生命值加伤）";
-            this.钟离生命值加伤ToolStripMenuItem.Click += new System.EventHandler(this.钟离生命值加伤ToolStripMenuItem_Click);
-            // 
-            // 胡桃生命值加攻ToolStripMenuItem
-            // 
-            this.胡桃生命值加攻ToolStripMenuItem.Name = "胡桃生命值加攻ToolStripMenuItem";
-            this.胡桃生命值加攻ToolStripMenuItem.Size = new System.Drawing.Size(325, 28);
-            this.胡桃生命值加攻ToolStripMenuItem.Text = "胡桃    （生命值加攻）";
-            this.胡桃生命值加攻ToolStripMenuItem.Click += new System.EventHandler(this.胡桃生命值加攻ToolStripMenuItem_Click);
-            // 
             // 帮助ToolStripMenuItem
             // 
             this.帮助ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -508,979 +447,568 @@ namespace Genshin_Calc
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
-            // ATK1
-            // 
-            this.ATK1.AllowDrop = true;
-            this.ATK1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ATK1.BackColor = System.Drawing.SystemColors.Control;
-            this.ATK1.LargeChange = 50;
-            this.ATK1.Location = new System.Drawing.Point(304, 34);
-            this.ATK1.Maximum = 2000;
-            this.ATK1.Name = "ATK1";
-            this.ATK1.Size = new System.Drawing.Size(572, 45);
-            this.ATK1.TabIndex = 2;
-            this.ATK1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.ATK1.Value = 400;
-            this.ATK1.Scroll += new System.EventHandler(this.ATK1_Scroll);
-            this.ATK1.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // ATK
-            // 
-            this.ATK.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ATK.ForeColor = System.Drawing.Color.Gray;
-            this.ATK.Location = new System.Drawing.Point(200, 34);
-            this.ATK.MaxLength = 4;
-            this.ATK.Name = "ATK";
-            this.ATK.Size = new System.Drawing.Size(96, 32);
-            this.ATK.TabIndex = 1;
-            this.ATK.Text = "400";
-            this.ATK.TextChanged += new System.EventHandler(this.ATK_TextChanged);
-            this.ATK.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // CritRate
-            // 
-            this.CritRate.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CritRate.Location = new System.Drawing.Point(200, 130);
-            this.CritRate.MaxLength = 8;
-            this.CritRate.Name = "CritRate";
-            this.CritRate.Size = new System.Drawing.Size(77, 32);
-            this.CritRate.TabIndex = 5;
-            this.CritRate.Text = "5";
-            this.CritRate.TextChanged += new System.EventHandler(this.CritRate_TextChanged);
-            this.CritRate.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // CritRate1
-            // 
-            this.CritRate1.AllowDrop = true;
-            this.CritRate1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CritRate1.BackColor = System.Drawing.SystemColors.Control;
-            this.CritRate1.LargeChange = 0;
-            this.CritRate1.Location = new System.Drawing.Point(304, 130);
-            this.CritRate1.Maximum = 1000;
-            this.CritRate1.Name = "CritRate1";
-            this.CritRate1.Size = new System.Drawing.Size(572, 45);
-            this.CritRate1.TabIndex = 6;
-            this.CritRate1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.CritRate1.Value = 50;
-            this.CritRate1.Scroll += new System.EventHandler(this.CritRate1_Scroll);
-            this.CritRate1.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // ATK_Label
-            // 
-            this.ATK_Label.AutoSize = true;
-            this.ATK_Label.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ATK_Label.Location = new System.Drawing.Point(22, 34);
-            this.ATK_Label.Name = "ATK_Label";
-            this.ATK_Label.Size = new System.Drawing.Size(117, 28);
-            this.ATK_Label.TabIndex = 6;
-            this.ATK_Label.Text = "白字攻击力";
-            this.ATK_Label.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // CR_Label
-            // 
-            this.CR_Label.AutoSize = true;
-            this.CR_Label.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CR_Label.Location = new System.Drawing.Point(22, 130);
-            this.CR_Label.Name = "CR_Label";
-            this.CR_Label.Size = new System.Drawing.Size(289, 28);
-            this.CR_Label.TabIndex = 7;
-            this.CR_Label.Text = "暴击率                       字      %";
-            this.CR_Label.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // CritDMG1
-            // 
-            this.CritDMG1.AllowDrop = true;
-            this.CritDMG1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CritDMG1.BackColor = System.Drawing.SystemColors.Control;
-            this.CritDMG1.LargeChange = 0;
-            this.CritDMG1.Location = new System.Drawing.Point(304, 178);
-            this.CritDMG1.Maximum = 4000;
-            this.CritDMG1.Minimum = 500;
-            this.CritDMG1.Name = "CritDMG1";
-            this.CritDMG1.Size = new System.Drawing.Size(572, 45);
-            this.CritDMG1.TabIndex = 8;
-            this.CritDMG1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.CritDMG1.Value = 500;
-            this.CritDMG1.Scroll += new System.EventHandler(this.CritDMG1_Scroll);
-            this.CritDMG1.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // CritDMG
-            // 
-            this.CritDMG.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CritDMG.Location = new System.Drawing.Point(200, 178);
-            this.CritDMG.MaxLength = 8;
-            this.CritDMG.Name = "CritDMG";
-            this.CritDMG.Size = new System.Drawing.Size(77, 32);
-            this.CritDMG.TabIndex = 7;
-            this.CritDMG.Text = "50";
-            this.CritDMG.TextChanged += new System.EventHandler(this.CritDMG_TextChanged);
-            this.CritDMG.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // CD_Label
-            // 
-            this.CD_Label.AutoSize = true;
-            this.CD_Label.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CD_Label.Location = new System.Drawing.Point(22, 178);
-            this.CD_Label.Name = "CD_Label";
-            this.CD_Label.Size = new System.Drawing.Size(289, 28);
-            this.CD_Label.TabIndex = 10;
-            this.CD_Label.Text = "暴击伤害                             %";
-            this.CD_Label.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // Group_A
-            // 
-            this.Group_A.BackColor = System.Drawing.SystemColors.Control;
-            this.Group_A.Controls.Add(this.ATKPlus1);
-            this.Group_A.Controls.Add(this.ATKPlus);
-            this.Group_A.Controls.Add(this.EP1);
-            this.Group_A.Controls.Add(this.EP);
-            this.Group_A.Controls.Add(this.EP_Label);
-            this.Group_A.Controls.Add(this.EM1);
-            this.Group_A.Controls.Add(this.EM);
-            this.Group_A.Controls.Add(this.EM_Label);
-            this.Group_A.Controls.Add(this.CritRate1);
-            this.Group_A.Controls.Add(this.CritDMG1);
-            this.Group_A.Controls.Add(this.CritDMG);
-            this.Group_A.Controls.Add(this.ATK1);
-            this.Group_A.Controls.Add(this.ATK);
-            this.Group_A.Controls.Add(this.CritRate);
-            this.Group_A.Controls.Add(this.CR_Label);
-            this.Group_A.Controls.Add(this.CD_Label);
-            this.Group_A.Controls.Add(this.ATK_Label);
-            this.Group_A.Controls.Add(this.label8);
-            this.Group_A.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Group_A.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Group_A.Location = new System.Drawing.Point(3, 3);
-            this.Group_A.Name = "Group_A";
-            this.Group_A.Size = new System.Drawing.Size(906, 327);
-            this.Group_A.TabIndex = 11;
-            this.Group_A.TabStop = false;
-            this.Group_A.Text = "我方攻击面板";
-            this.Group_A.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // ATKPlus1
-            // 
-            this.ATKPlus1.AllowDrop = true;
-            this.ATKPlus1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ATKPlus1.BackColor = System.Drawing.SystemColors.Control;
-            this.ATKPlus1.LargeChange = 50;
-            this.ATKPlus1.Location = new System.Drawing.Point(304, 82);
-            this.ATKPlus1.Maximum = 3000;
-            this.ATKPlus1.Name = "ATKPlus1";
-            this.ATKPlus1.Size = new System.Drawing.Size(572, 45);
-            this.ATKPlus1.TabIndex = 4;
-            this.ATKPlus1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.ATKPlus1.Value = 400;
-            this.ATKPlus1.Scroll += new System.EventHandler(this.ATKPlus1_Scroll);
-            this.ATKPlus1.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // ATKPlus
-            // 
-            this.ATKPlus.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ATKPlus.ForeColor = System.Drawing.Color.Green;
-            this.ATKPlus.Location = new System.Drawing.Point(200, 82);
-            this.ATKPlus.MaxLength = 8;
-            this.ATKPlus.Name = "ATKPlus";
-            this.ATKPlus.Size = new System.Drawing.Size(96, 32);
-            this.ATKPlus.TabIndex = 3;
-            this.ATKPlus.Text = "400";
-            this.ATKPlus.TextChanged += new System.EventHandler(this.ATKPlus_TextChanged);
-            this.ATKPlus.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // EP1
-            // 
-            this.EP1.AllowDrop = true;
-            this.EP1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EP1.BackColor = System.Drawing.SystemColors.Control;
-            this.EP1.LargeChange = 0;
-            this.EP1.Location = new System.Drawing.Point(304, 274);
-            this.EP1.Maximum = 1500;
-            this.EP1.Name = "EP1";
-            this.EP1.Size = new System.Drawing.Size(572, 45);
-            this.EP1.TabIndex = 12;
-            this.EP1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.EP1.Value = 616;
-            this.EP1.Scroll += new System.EventHandler(this.EP1_Scroll);
-            this.EP1.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // EP
-            // 
-            this.EP.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EP.Location = new System.Drawing.Point(200, 274);
-            this.EP.MaxLength = 8;
-            this.EP.Name = "EP";
-            this.EP.Size = new System.Drawing.Size(77, 32);
-            this.EP.TabIndex = 11;
-            this.EP.Text = "61.6";
-            this.EP.TextChanged += new System.EventHandler(this.EP_TextChanged);
-            this.EP.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // EP_Label
-            // 
-            this.EP_Label.AutoSize = true;
-            this.EP_Label.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.EP_Label.Location = new System.Drawing.Point(22, 274);
-            this.EP_Label.Name = "EP_Label";
-            this.EP_Label.Size = new System.Drawing.Size(289, 28);
-            this.EP_Label.TabIndex = 16;
-            this.EP_Label.Text = "属性伤害加成                      %";
-            this.EP_Label.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // EM1
-            // 
-            this.EM1.AllowDrop = true;
-            this.EM1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EM1.BackColor = System.Drawing.SystemColors.Control;
-            this.EM1.LargeChange = 0;
-            this.EM1.Location = new System.Drawing.Point(304, 226);
-            this.EM1.Maximum = 1500;
-            this.EM1.Name = "EM1";
-            this.EM1.Size = new System.Drawing.Size(572, 45);
-            this.EM1.TabIndex = 10;
-            this.EM1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.EM1.Scroll += new System.EventHandler(this.EM1_Scroll);
-            this.EM1.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // EM
-            // 
-            this.EM.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EM.Location = new System.Drawing.Point(200, 226);
-            this.EM.MaxLength = 4;
-            this.EM.Name = "EM";
-            this.EM.Size = new System.Drawing.Size(96, 32);
-            this.EM.TabIndex = 9;
-            this.EM.Text = "0";
-            this.EM.TextChanged += new System.EventHandler(this.EM_TextChanged);
-            this.EM.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // EM_Label
-            // 
-            this.EM_Label.AutoSize = true;
-            this.EM_Label.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.EM_Label.Location = new System.Drawing.Point(22, 226);
-            this.EM_Label.Name = "EM_Label";
-            this.EM_Label.Size = new System.Drawing.Size(96, 28);
-            this.EM_Label.TabIndex = 13;
-            this.EM_Label.Text = "元素精通";
-            this.EM_Label.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(22, 82);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 28);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "绿字攻击力";
-            this.label8.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
             // P1
             // 
             this.P1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.P1.Controls.Add(this.tabPage1);
-            this.P1.Controls.Add(this.tabPage2);
-            this.P1.Controls.Add(this.tabPage3);
-            this.P1.Controls.Add(this.tabPage4);
-            this.P1.Controls.Add(this.tabPage5);
+            this.P1.Controls.Add(this.Basic);
+            this.P1.Controls.Add(this.ATK_Buff);
+            this.P1.Controls.Add(this.Damage_Buff);
+            this.P1.Controls.Add(this.Level_And_Res);
+            this.P1.Controls.Add(this.ChartViewer);
             this.P1.Font = new System.Drawing.Font("微软雅黑 Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.P1.HotTrack = true;
+            this.P1.ItemSize = new System.Drawing.Size(120, 28);
             this.P1.Location = new System.Drawing.Point(12, 34);
             this.P1.Name = "P1";
             this.P1.SelectedIndex = 0;
             this.P1.Size = new System.Drawing.Size(920, 367);
+            this.P1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.P1.TabIndex = 12;
-            this.P1.SelectedIndexChanged += new System.EventHandler(this.Skill_TextChanged);
+            this.P1.SelectedIndexChanged += new System.EventHandler(this.DetailedCalculate);
             this.P1.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
             // 
-            // tabPage1
+            // Basic
             // 
-            this.tabPage1.Controls.Add(this.Group_A);
-            this.tabPage1.Location = new System.Drawing.Point(4, 30);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(912, 333);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "面板属性";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.Basic.BackColor = System.Drawing.Color.Transparent;
+            this.Basic.Controls.Add(this.BasicGroup);
+            this.Basic.Font = new System.Drawing.Font("宋体", 9F);
+            this.Basic.Location = new System.Drawing.Point(4, 32);
+            this.Basic.Name = "Basic";
+            this.Basic.Padding = new System.Windows.Forms.Padding(3);
+            this.Basic.Size = new System.Drawing.Size(912, 331);
+            this.Basic.TabIndex = 0;
+            this.Basic.Text = "面板属性";
             // 
-            // tabPage2
+            // BasicGroup
             // 
-            this.tabPage2.Controls.Add(this.BUFF_ATK2);
-            this.tabPage2.Controls.Add(this.BUFF_ATK_1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 30);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(912, 333);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "攻击加成";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.BasicGroup.BackColor = System.Drawing.SystemColors.Control;
+            this.BasicGroup.Controls.Add(this.DamageBuff_Elem);
+            this.BasicGroup.Controls.Add(this.Crit_Damage);
+            this.BasicGroup.Controls.Add(this.Crit_Rate);
+            this.BasicGroup.Controls.Add(this.ElemMastery);
+            this.BasicGroup.Controls.Add(this.ATK_Added);
+            this.BasicGroup.Controls.Add(this.ATK_Basic);
+            this.BasicGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BasicGroup.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.BasicGroup.Location = new System.Drawing.Point(3, 3);
+            this.BasicGroup.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.BasicGroup.Name = "BasicGroup";
+            this.BasicGroup.Padding = new System.Windows.Forms.Padding(3, 0, 0, 3);
+            this.BasicGroup.Size = new System.Drawing.Size(906, 325);
+            this.BasicGroup.TabIndex = 3;
+            this.BasicGroup.TabStop = false;
+            this.BasicGroup.Text = "基础面板";
             // 
-            // BUFF_ATK2
+            // DamageBuff_Elem
             // 
-            this.BUFF_ATK2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BUFF_ATK2.BackColor = System.Drawing.SystemColors.Control;
-            this.BUFF_ATK2.Controls.Add(this.label1);
-            this.BUFF_ATK2.Controls.Add(this.ATKBuff1_Sf);
-            this.BUFF_ATK2.Controls.Add(this.ATKBuff_Sf);
-            this.BUFF_ATK2.Controls.Add(this.ATKBuff1_S);
-            this.BUFF_ATK2.Controls.Add(this.ATKBuff_S);
-            this.BUFF_ATK2.Controls.Add(this.label3);
-            this.BUFF_ATK2.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
-            this.BUFF_ATK2.Location = new System.Drawing.Point(6, 185);
-            this.BUFF_ATK2.Name = "BUFF_ATK2";
-            this.BUFF_ATK2.Size = new System.Drawing.Size(900, 141);
-            this.BUFF_ATK2.TabIndex = 13;
-            this.BUFF_ATK2.TabStop = false;
-            this.BUFF_ATK2.Text = "可叠加的攻击力加成";
+            this.DamageBuff_Elem.Current = 0F;
+            this.DamageBuff_Elem.CurrentStr = "0";
+            this.DamageBuff_Elem.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.DamageBuff_Elem.Location = new System.Drawing.Point(9, 270);
+            this.DamageBuff_Elem.Margin = new System.Windows.Forms.Padding(6);
+            this.DamageBuff_Elem.Maximum = 1500;
+            this.DamageBuff_Elem.Minimum = 0;
+            this.DamageBuff_Elem.Name = "DamageBuff_Elem";
+            this.DamageBuff_Elem.PercentShownOrNot = true;
+            this.DamageBuff_Elem.Size = new System.Drawing.Size(891, 45);
+            this.DamageBuff_Elem.TabIndex = 6;
+            this.DamageBuff_Elem.Title = "元素伤害加成";
+            this.DamageBuff_Elem.ValScale = 10D;
+            this.DamageBuff_Elem.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
             // 
-            // label1
+            // Crit_Damage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(22, 92);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 28);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "叠加的层数";
+            this.Crit_Damage.Current = 500F;
+            this.Crit_Damage.CurrentStr = "50";
+            this.Crit_Damage.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.Crit_Damage.Location = new System.Drawing.Point(9, 221);
+            this.Crit_Damage.Margin = new System.Windows.Forms.Padding(6);
+            this.Crit_Damage.Maximum = 4000;
+            this.Crit_Damage.Minimum = 500;
+            this.Crit_Damage.Name = "Crit_Damage";
+            this.Crit_Damage.PercentShownOrNot = true;
+            this.Crit_Damage.Size = new System.Drawing.Size(891, 45);
+            this.Crit_Damage.TabIndex = 5;
+            this.Crit_Damage.Title = "暴击伤害";
+            this.Crit_Damage.ValScale = 10D;
+            this.Crit_Damage.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
             // 
-            // ATKBuff1_Sf
+            // Crit_Rate
             // 
-            this.ATKBuff1_Sf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ATKBuff1_Sf.BackColor = System.Drawing.SystemColors.Control;
-            this.ATKBuff1_Sf.LargeChange = 1;
-            this.ATKBuff1_Sf.Location = new System.Drawing.Point(342, 91);
-            this.ATKBuff1_Sf.Maximum = 30;
-            this.ATKBuff1_Sf.Name = "ATKBuff1_Sf";
-            this.ATKBuff1_Sf.Size = new System.Drawing.Size(528, 45);
-            this.ATKBuff1_Sf.TabIndex = 8;
-            this.ATKBuff1_Sf.Scroll += new System.EventHandler(this.ATKBuff1_Sf_Scroll_1);
+            this.Crit_Rate.Current = 50F;
+            this.Crit_Rate.CurrentStr = "5";
+            this.Crit_Rate.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.Crit_Rate.Location = new System.Drawing.Point(9, 172);
+            this.Crit_Rate.Margin = new System.Windows.Forms.Padding(6);
+            this.Crit_Rate.Maximum = 1000;
+            this.Crit_Rate.Minimum = 50;
+            this.Crit_Rate.Name = "Crit_Rate";
+            this.Crit_Rate.PercentShownOrNot = true;
+            this.Crit_Rate.Size = new System.Drawing.Size(891, 45);
+            this.Crit_Rate.TabIndex = 4;
+            this.Crit_Rate.Title = "暴击率";
+            this.Crit_Rate.ValScale = 10D;
+            this.Crit_Rate.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
             // 
-            // ATKBuff_Sf
+            // ElemMastery
             // 
-            this.ATKBuff_Sf.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ATKBuff_Sf.Location = new System.Drawing.Point(250, 91);
-            this.ATKBuff_Sf.MaxLength = 8;
-            this.ATKBuff_Sf.Name = "ATKBuff_Sf";
-            this.ATKBuff_Sf.Size = new System.Drawing.Size(67, 32);
-            this.ATKBuff_Sf.TabIndex = 7;
-            this.ATKBuff_Sf.Text = "0";
-            this.ATKBuff_Sf.TextChanged += new System.EventHandler(this.ATKBuff_Sf_TextChanged);
+            this.ElemMastery.Current = 0F;
+            this.ElemMastery.CurrentStr = "0";
+            this.ElemMastery.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.ElemMastery.Location = new System.Drawing.Point(9, 123);
+            this.ElemMastery.Margin = new System.Windows.Forms.Padding(6, 1, 6, 1);
+            this.ElemMastery.Maximum = 2000;
+            this.ElemMastery.Minimum = 0;
+            this.ElemMastery.Name = "ElemMastery";
+            this.ElemMastery.PercentShownOrNot = false;
+            this.ElemMastery.Size = new System.Drawing.Size(891, 45);
+            this.ElemMastery.TabIndex = 3;
+            this.ElemMastery.Title = "元素精通";
+            this.ElemMastery.ValScale = 1D;
+            this.ElemMastery.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
             // 
-            // ATKBuff1_S
+            // ATK_Added
             // 
-            this.ATKBuff1_S.AllowDrop = true;
-            this.ATKBuff1_S.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ATKBuff1_S.BackColor = System.Drawing.SystemColors.Control;
-            this.ATKBuff1_S.LargeChange = 0;
-            this.ATKBuff1_S.Location = new System.Drawing.Point(342, 45);
-            this.ATKBuff1_S.Maximum = 500;
-            this.ATKBuff1_S.Name = "ATKBuff1_S";
-            this.ATKBuff1_S.Size = new System.Drawing.Size(528, 45);
-            this.ATKBuff1_S.TabIndex = 6;
-            this.ATKBuff1_S.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.ATKBuff1_S.Scroll += new System.EventHandler(this.ATKBuff1_S_Scroll_1);
+            this.ATK_Added.Current = 400F;
+            this.ATK_Added.CurrentStr = "400";
+            this.ATK_Added.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.ATK_Added.Location = new System.Drawing.Point(9, 74);
+            this.ATK_Added.Margin = new System.Windows.Forms.Padding(6, 1, 6, 1);
+            this.ATK_Added.Maximum = 2000;
+            this.ATK_Added.Minimum = 0;
+            this.ATK_Added.Name = "ATK_Added";
+            this.ATK_Added.PercentShownOrNot = false;
+            this.ATK_Added.Size = new System.Drawing.Size(891, 45);
+            this.ATK_Added.TabIndex = 2;
+            this.ATK_Added.Title = "附加攻击力";
+            this.ATK_Added.ValScale = 1D;
+            this.ATK_Added.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
             // 
-            // ATKBuff_S
+            // ATK_Basic
             // 
-            this.ATKBuff_S.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ATKBuff_S.Location = new System.Drawing.Point(250, 45);
-            this.ATKBuff_S.MaxLength = 8;
-            this.ATKBuff_S.Name = "ATKBuff_S";
-            this.ATKBuff_S.Size = new System.Drawing.Size(67, 32);
-            this.ATKBuff_S.TabIndex = 5;
-            this.ATKBuff_S.Text = "0";
-            this.ATKBuff_S.TextChanged += new System.EventHandler(this.ATKBuff_S_TextChanged_1);
+            this.ATK_Basic.Current = 400F;
+            this.ATK_Basic.CurrentStr = "400";
+            this.ATK_Basic.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.ATK_Basic.Location = new System.Drawing.Point(9, 25);
+            this.ATK_Basic.Margin = new System.Windows.Forms.Padding(6, 1, 6, 1);
+            this.ATK_Basic.Maximum = 1500;
+            this.ATK_Basic.Minimum = 0;
+            this.ATK_Basic.Name = "ATK_Basic";
+            this.ATK_Basic.PercentShownOrNot = false;
+            this.ATK_Basic.Size = new System.Drawing.Size(891, 45);
+            this.ATK_Basic.TabIndex = 1;
+            this.ATK_Basic.Title = "基础攻击力";
+            this.ATK_Basic.ValScale = 1D;
+            this.ATK_Basic.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
             // 
-            // label3
+            // ATK_Buff
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(22, 45);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(325, 28);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "每层叠加的攻击百分比              %";
+            this.ATK_Buff.Controls.Add(this.ATKBuff_Stack_Group);
+            this.ATK_Buff.Controls.Add(this.ATKBuff_Group);
+            this.ATK_Buff.Location = new System.Drawing.Point(4, 32);
+            this.ATK_Buff.Name = "ATK_Buff";
+            this.ATK_Buff.Padding = new System.Windows.Forms.Padding(3);
+            this.ATK_Buff.Size = new System.Drawing.Size(912, 331);
+            this.ATK_Buff.TabIndex = 7;
+            this.ATK_Buff.Text = "攻击加成";
+            this.ATK_Buff.UseVisualStyleBackColor = true;
             // 
-            // BUFF_ATK_1
+            // ATKBuff_Stack_Group
             // 
-            this.BUFF_ATK_1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BUFF_ATK_1.BackColor = System.Drawing.SystemColors.Control;
-            this.BUFF_ATK_1.Controls.Add(this.ATKBuff_HP);
-            this.BUFF_ATK_1.Controls.Add(this.ATKBuff_DEF);
-            this.BUFF_ATK_1.Controls.Add(this.ATKBuff_HP_Label);
-            this.BUFF_ATK_1.Controls.Add(this.ATKBuff_DEF_Label);
-            this.BUFF_ATK_1.Controls.Add(this.ATKBuff_other_label);
-            this.BUFF_ATK_1.Controls.Add(this.ATKBuff1_P);
-            this.BUFF_ATK_1.Controls.Add(this.ATK_Buff_Num);
-            this.BUFF_ATK_1.Controls.Add(this.ATKBuff1);
-            this.BUFF_ATK_1.Controls.Add(this.ATKBuff);
-            this.BUFF_ATK_1.Controls.Add(this.ATKBuff_P);
-            this.BUFF_ATK_1.Controls.Add(this.ATK_Buff_Percent);
-            this.BUFF_ATK_1.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BUFF_ATK_1.Location = new System.Drawing.Point(6, 6);
-            this.BUFF_ATK_1.Name = "BUFF_ATK_1";
-            this.BUFF_ATK_1.Size = new System.Drawing.Size(900, 173);
-            this.BUFF_ATK_1.TabIndex = 12;
-            this.BUFF_ATK_1.TabStop = false;
-            this.BUFF_ATK_1.Text = "不叠加的攻击力加成";
+            this.ATKBuff_Stack_Group.BackColor = System.Drawing.SystemColors.Control;
+            this.ATKBuff_Stack_Group.Controls.Add(this.ATKBuff_Stack_Count);
+            this.ATKBuff_Stack_Group.Controls.Add(this.ATKBuff_Stack_Percent);
+            this.ATKBuff_Stack_Group.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ATKBuff_Stack_Group.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.ATKBuff_Stack_Group.Location = new System.Drawing.Point(3, 183);
+            this.ATKBuff_Stack_Group.Name = "ATKBuff_Stack_Group";
+            this.ATKBuff_Stack_Group.Size = new System.Drawing.Size(906, 145);
+            this.ATKBuff_Stack_Group.TabIndex = 15;
+            this.ATKBuff_Stack_Group.TabStop = false;
+            this.ATKBuff_Stack_Group.Text = "可叠加的攻击力加成";
+            // 
+            // ATKBuff_Stack_Count
+            // 
+            this.ATKBuff_Stack_Count.Current = 0F;
+            this.ATKBuff_Stack_Count.CurrentStr = "0";
+            this.ATKBuff_Stack_Count.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.ATKBuff_Stack_Count.Location = new System.Drawing.Point(9, 90);
+            this.ATKBuff_Stack_Count.Margin = new System.Windows.Forms.Padding(6);
+            this.ATKBuff_Stack_Count.Maximum = 20;
+            this.ATKBuff_Stack_Count.Minimum = 0;
+            this.ATKBuff_Stack_Count.Name = "ATKBuff_Stack_Count";
+            this.ATKBuff_Stack_Count.PercentShownOrNot = false;
+            this.ATKBuff_Stack_Count.Size = new System.Drawing.Size(882, 45);
+            this.ATKBuff_Stack_Count.TabIndex = 1;
+            this.ATKBuff_Stack_Count.Title = "叠攻层数";
+            this.ATKBuff_Stack_Count.ValScale = 1D;
+            this.ATKBuff_Stack_Count.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
+            // ATKBuff_Stack_Percent
+            // 
+            this.ATKBuff_Stack_Percent.Current = 0F;
+            this.ATKBuff_Stack_Percent.CurrentStr = "0";
+            this.ATKBuff_Stack_Percent.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.ATKBuff_Stack_Percent.Location = new System.Drawing.Point(9, 41);
+            this.ATKBuff_Stack_Percent.Margin = new System.Windows.Forms.Padding(6);
+            this.ATKBuff_Stack_Percent.Maximum = 1000;
+            this.ATKBuff_Stack_Percent.Minimum = 0;
+            this.ATKBuff_Stack_Percent.Name = "ATKBuff_Stack_Percent";
+            this.ATKBuff_Stack_Percent.PercentShownOrNot = true;
+            this.ATKBuff_Stack_Percent.Size = new System.Drawing.Size(882, 45);
+            this.ATKBuff_Stack_Percent.TabIndex = 0;
+            this.ATKBuff_Stack_Percent.Title = "每层叠攻百分比";
+            this.ATKBuff_Stack_Percent.ValScale = 1D;
+            this.ATKBuff_Stack_Percent.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
+            // ATKBuff_Group
+            // 
+            this.ATKBuff_Group.BackColor = System.Drawing.SystemColors.Control;
+            this.ATKBuff_Group.Controls.Add(this.ATKBuff_HP);
+            this.ATKBuff_Group.Controls.Add(this.ATKBuff_DEF);
+            this.ATKBuff_Group.Controls.Add(this.ATKBuff_HP_Label);
+            this.ATKBuff_Group.Controls.Add(this.ATKBuff_DEF_Label);
+            this.ATKBuff_Group.Controls.Add(this.ATKBuff_Percent);
+            this.ATKBuff_Group.Controls.Add(this.ATKBuff_Static);
+            this.ATKBuff_Group.Controls.Add(this.label15);
+            this.ATKBuff_Group.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ATKBuff_Group.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ATKBuff_Group.Location = new System.Drawing.Point(3, 3);
+            this.ATKBuff_Group.Name = "ATKBuff_Group";
+            this.ATKBuff_Group.Size = new System.Drawing.Size(906, 180);
+            this.ATKBuff_Group.TabIndex = 14;
+            this.ATKBuff_Group.TabStop = false;
+            this.ATKBuff_Group.Text = "不叠加的攻击力加成";
             // 
             // ATKBuff_HP
             // 
             this.ATKBuff_HP.AutoSize = true;
             this.ATKBuff_HP.Font = new System.Drawing.Font("方正像素12", 21F);
-            this.ATKBuff_HP.Location = new System.Drawing.Point(658, 130);
+            this.ATKBuff_HP.Location = new System.Drawing.Point(662, 133);
             this.ATKBuff_HP.Name = "ATKBuff_HP";
             this.ATKBuff_HP.Size = new System.Drawing.Size(26, 28);
-            this.ATKBuff_HP.TabIndex = 14;
+            this.ATKBuff_HP.TabIndex = 20;
             this.ATKBuff_HP.Text = "0";
             // 
             // ATKBuff_DEF
             // 
             this.ATKBuff_DEF.AutoSize = true;
             this.ATKBuff_DEF.Font = new System.Drawing.Font("方正像素12", 21F);
-            this.ATKBuff_DEF.Location = new System.Drawing.Point(328, 130);
+            this.ATKBuff_DEF.Location = new System.Drawing.Point(332, 133);
             this.ATKBuff_DEF.Name = "ATKBuff_DEF";
             this.ATKBuff_DEF.Size = new System.Drawing.Size(26, 28);
-            this.ATKBuff_DEF.TabIndex = 13;
+            this.ATKBuff_DEF.TabIndex = 19;
             this.ATKBuff_DEF.Text = "0";
             // 
             // ATKBuff_HP_Label
             // 
             this.ATKBuff_HP_Label.AutoSize = true;
             this.ATKBuff_HP_Label.Font = new System.Drawing.Font("微软雅黑 Light", 15.75F);
-            this.ATKBuff_HP_Label.Location = new System.Drawing.Point(525, 130);
+            this.ATKBuff_HP_Label.Location = new System.Drawing.Point(529, 133);
             this.ATKBuff_HP_Label.Name = "ATKBuff_HP_Label";
             this.ATKBuff_HP_Label.Size = new System.Drawing.Size(117, 28);
-            this.ATKBuff_HP_Label.TabIndex = 11;
+            this.ATKBuff_HP_Label.TabIndex = 18;
             this.ATKBuff_HP_Label.Text = "生命值收益";
             // 
             // ATKBuff_DEF_Label
             // 
             this.ATKBuff_DEF_Label.AutoSize = true;
             this.ATKBuff_DEF_Label.Font = new System.Drawing.Font("微软雅黑 Light", 15.75F);
-            this.ATKBuff_DEF_Label.Location = new System.Drawing.Point(205, 130);
+            this.ATKBuff_DEF_Label.Location = new System.Drawing.Point(209, 133);
             this.ATKBuff_DEF_Label.Name = "ATKBuff_DEF_Label";
             this.ATKBuff_DEF_Label.Size = new System.Drawing.Size(117, 28);
-            this.ATKBuff_DEF_Label.TabIndex = 10;
+            this.ATKBuff_DEF_Label.TabIndex = 17;
             this.ATKBuff_DEF_Label.Text = "防御力收益";
             // 
-            // ATKBuff_other_label
-            // 
-            this.ATKBuff_other_label.AutoSize = true;
-            this.ATKBuff_other_label.Font = new System.Drawing.Font("微软雅黑", 15.75F);
-            this.ATKBuff_other_label.Location = new System.Drawing.Point(22, 130);
-            this.ATKBuff_other_label.Name = "ATKBuff_other_label";
-            this.ATKBuff_other_label.Size = new System.Drawing.Size(138, 28);
-            this.ATKBuff_other_label.TabIndex = 9;
-            this.ATKBuff_other_label.Text = "其他攻击收益";
-            // 
-            // ATKBuff1_P
-            // 
-            this.ATKBuff1_P.AllowDrop = true;
-            this.ATKBuff1_P.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ATKBuff1_P.BackColor = System.Drawing.SystemColors.Control;
-            this.ATKBuff1_P.LargeChange = 0;
-            this.ATKBuff1_P.Location = new System.Drawing.Point(304, 82);
-            this.ATKBuff1_P.Maximum = 1000;
-            this.ATKBuff1_P.Name = "ATKBuff1_P";
-            this.ATKBuff1_P.Size = new System.Drawing.Size(566, 45);
-            this.ATKBuff1_P.TabIndex = 4;
-            this.ATKBuff1_P.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.ATKBuff1_P.Scroll += new System.EventHandler(this.ATKBuff1_P_Scroll);
-            // 
-            // ATK_Buff_Num
-            // 
-            this.ATK_Buff_Num.AutoSize = true;
-            this.ATK_Buff_Num.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ATK_Buff_Num.Location = new System.Drawing.Point(22, 34);
-            this.ATK_Buff_Num.Name = "ATK_Buff_Num";
-            this.ATK_Buff_Num.Size = new System.Drawing.Size(138, 28);
-            this.ATK_Buff_Num.TabIndex = 6;
-            this.ATK_Buff_Num.Text = "固定数值攻击";
-            // 
-            // ATKBuff1
-            // 
-            this.ATKBuff1.AllowDrop = true;
-            this.ATKBuff1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ATKBuff1.BackColor = System.Drawing.SystemColors.Control;
-            this.ATKBuff1.LargeChange = 20;
-            this.ATKBuff1.Location = new System.Drawing.Point(304, 34);
-            this.ATKBuff1.Maximum = 18000;
-            this.ATKBuff1.Name = "ATKBuff1";
-            this.ATKBuff1.Size = new System.Drawing.Size(566, 45);
-            this.ATKBuff1.TabIndex = 2;
-            this.ATKBuff1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.ATKBuff1.Scroll += new System.EventHandler(this.ATKBuff1_Scroll_1);
-            // 
-            // ATKBuff
-            // 
-            this.ATKBuff.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ATKBuff.Location = new System.Drawing.Point(210, 34);
-            this.ATKBuff.MaxLength = 8;
-            this.ATKBuff.Name = "ATKBuff";
-            this.ATKBuff.Size = new System.Drawing.Size(86, 32);
-            this.ATKBuff.TabIndex = 1;
-            this.ATKBuff.Text = "0";
-            this.ATKBuff.TextChanged += new System.EventHandler(this.ATKBuff_TextChanged_1);
-            // 
-            // ATKBuff_P
-            // 
-            this.ATKBuff_P.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ATKBuff_P.Location = new System.Drawing.Point(210, 82);
-            this.ATKBuff_P.MaxLength = 8;
-            this.ATKBuff_P.Name = "ATKBuff_P";
-            this.ATKBuff_P.Size = new System.Drawing.Size(67, 32);
-            this.ATKBuff_P.TabIndex = 3;
-            this.ATKBuff_P.Text = "0";
-            this.ATKBuff_P.TextChanged += new System.EventHandler(this.ATKBuff_P_TextChanged);
-            // 
-            // ATK_Buff_Percent
-            // 
-            this.ATK_Buff_Percent.AutoSize = true;
-            this.ATK_Buff_Percent.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ATK_Buff_Percent.Location = new System.Drawing.Point(22, 82);
-            this.ATK_Buff_Percent.Name = "ATK_Buff_Percent";
-            this.ATK_Buff_Percent.Size = new System.Drawing.Size(286, 28);
-            this.ATK_Buff_Percent.TabIndex = 8;
-            this.ATK_Buff_Percent.Text = "固定百分比攻击                  %";
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.groupBox3);
-            this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Controls.Add(this.groupBox2);
-            this.tabPage3.Location = new System.Drawing.Point(4, 30);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(912, 333);
-            this.tabPage3.TabIndex = 3;
-            this.tabPage3.Text = "伤害加深";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox3.Controls.Add(this.ReactBuff1);
-            this.groupBox3.Controls.Add(this.ReactBuff);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox3.Location = new System.Drawing.Point(6, 239);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(900, 88);
-            this.groupBox3.TabIndex = 15;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "反应伤害增强";
-            // 
-            // ReactBuff1
-            // 
-            this.ReactBuff1.AllowDrop = true;
-            this.ReactBuff1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReactBuff1.BackColor = System.Drawing.SystemColors.Control;
-            this.ReactBuff1.Location = new System.Drawing.Point(304, 34);
-            this.ReactBuff1.Maximum = 1000;
-            this.ReactBuff1.Name = "ReactBuff1";
-            this.ReactBuff1.Size = new System.Drawing.Size(566, 45);
-            this.ReactBuff1.TabIndex = 21;
-            this.ReactBuff1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.ReactBuff1.Scroll += new System.EventHandler(this.ReactBuff1_Scroll);
-            // 
-            // ReactBuff
-            // 
-            this.ReactBuff.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReactBuff.Location = new System.Drawing.Point(200, 34);
-            this.ReactBuff.MaxLength = 8;
-            this.ReactBuff.Name = "ReactBuff";
-            this.ReactBuff.Size = new System.Drawing.Size(77, 32);
-            this.ReactBuff.TabIndex = 20;
-            this.ReactBuff.Text = "0";
-            this.ReactBuff.TextChanged += new System.EventHandler(this.ReactBuff_TextChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(22, 36);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(286, 28);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "反应提升百分比                  %";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.DMGBuff1_Sf);
-            this.groupBox1.Controls.Add(this.DMGBuff_Sf);
-            this.groupBox1.Controls.Add(this.DMGBuff1_S);
-            this.groupBox1.Controls.Add(this.DMGBuff_S);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
-            this.groupBox1.Location = new System.Drawing.Point(6, 91);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(900, 145);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "可叠加的伤害buff";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(22, 97);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 28);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "叠加的层数";
-            // 
-            // DMGBuff1_Sf
-            // 
-            this.DMGBuff1_Sf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DMGBuff1_Sf.BackColor = System.Drawing.SystemColors.Control;
-            this.DMGBuff1_Sf.LargeChange = 2;
-            this.DMGBuff1_Sf.Location = new System.Drawing.Point(342, 97);
-            this.DMGBuff1_Sf.Maximum = 30;
-            this.DMGBuff1_Sf.Name = "DMGBuff1_Sf";
-            this.DMGBuff1_Sf.Size = new System.Drawing.Size(528, 45);
-            this.DMGBuff1_Sf.TabIndex = 13;
-            this.DMGBuff1_Sf.Scroll += new System.EventHandler(this.DMGBuff1_Sf_Scroll);
-            // 
-            // DMGBuff_Sf
-            // 
-            this.DMGBuff_Sf.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DMGBuff_Sf.Location = new System.Drawing.Point(250, 93);
-            this.DMGBuff_Sf.MaxLength = 8;
-            this.DMGBuff_Sf.Name = "DMGBuff_Sf";
-            this.DMGBuff_Sf.Size = new System.Drawing.Size(67, 32);
-            this.DMGBuff_Sf.TabIndex = 12;
-            this.DMGBuff_Sf.Text = "0";
-            this.DMGBuff_Sf.TextChanged += new System.EventHandler(this.DMGBuff_Sf_TextChanged);
-            // 
-            // DMGBuff1_S
-            // 
-            this.DMGBuff1_S.AllowDrop = true;
-            this.DMGBuff1_S.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DMGBuff1_S.BackColor = System.Drawing.SystemColors.Control;
-            this.DMGBuff1_S.LargeChange = 0;
-            this.DMGBuff1_S.Location = new System.Drawing.Point(342, 43);
-            this.DMGBuff1_S.Maximum = 1000;
-            this.DMGBuff1_S.Name = "DMGBuff1_S";
-            this.DMGBuff1_S.Size = new System.Drawing.Size(528, 45);
-            this.DMGBuff1_S.TabIndex = 11;
-            this.DMGBuff1_S.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.DMGBuff1_S.Scroll += new System.EventHandler(this.DMGBuff1_S_Scroll);
-            // 
-            // DMGBuff_S
-            // 
-            this.DMGBuff_S.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DMGBuff_S.Location = new System.Drawing.Point(250, 43);
-            this.DMGBuff_S.MaxLength = 8;
-            this.DMGBuff_S.Name = "DMGBuff_S";
-            this.DMGBuff_S.Size = new System.Drawing.Size(67, 32);
-            this.DMGBuff_S.TabIndex = 10;
-            this.DMGBuff_S.Text = "0";
-            this.DMGBuff_S.TextChanged += new System.EventHandler(this.DMGBuff_S_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(22, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(325, 28);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "每层叠加的增伤百分比              %";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Controls.Add(this.DMGBuff1);
-            this.groupBox2.Controls.Add(this.DMGBuff);
-            this.groupBox2.Controls.Add(this.DMG_Buff);
-            this.groupBox2.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(900, 82);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "常驻伤害buff";
-            // 
-            // DMGBuff1
-            // 
-            this.DMGBuff1.AllowDrop = true;
-            this.DMGBuff1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DMGBuff1.BackColor = System.Drawing.SystemColors.Control;
-            this.DMGBuff1.LargeChange = 0;
-            this.DMGBuff1.Location = new System.Drawing.Point(304, 34);
-            this.DMGBuff1.Maximum = 1000;
-            this.DMGBuff1.Name = "DMGBuff1";
-            this.DMGBuff1.Size = new System.Drawing.Size(566, 45);
-            this.DMGBuff1.TabIndex = 2;
-            this.DMGBuff1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.DMGBuff1.Scroll += new System.EventHandler(this.DMGBuff1_Scroll);
-            // 
-            // DMGBuff
-            // 
-            this.DMGBuff.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DMGBuff.Location = new System.Drawing.Point(200, 34);
-            this.DMGBuff.MaxLength = 8;
-            this.DMGBuff.Name = "DMGBuff";
-            this.DMGBuff.Size = new System.Drawing.Size(77, 32);
-            this.DMGBuff.TabIndex = 1;
-            this.DMGBuff.Text = "0";
-            this.DMGBuff.TextChanged += new System.EventHandler(this.DMGBuff_TextChanged);
-            // 
-            // DMG_Buff
-            // 
-            this.DMG_Buff.AutoSize = true;
-            this.DMG_Buff.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.DMG_Buff.Location = new System.Drawing.Point(22, 34);
-            this.DMG_Buff.Name = "DMG_Buff";
-            this.DMG_Buff.Size = new System.Drawing.Size(286, 28);
-            this.DMG_Buff.TabIndex = 8;
-            this.DMG_Buff.Text = "伤害提升百分比                  %";
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.RES);
-            this.tabPage4.Controls.Add(this.DEF);
-            this.tabPage4.Location = new System.Drawing.Point(4, 30);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(912, 333);
-            this.tabPage4.TabIndex = 2;
-            this.tabPage4.Text = "敌我属性";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // RES
-            // 
-            this.RES.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RES.BackColor = System.Drawing.SystemColors.Control;
-            this.RES.Controls.Add(this.EnemyRES1);
-            this.RES.Controls.Add(this.EnemyRES);
-            this.RES.Controls.Add(this.label7);
-            this.RES.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
-            this.RES.Location = new System.Drawing.Point(6, 212);
-            this.RES.Name = "RES";
-            this.RES.Size = new System.Drawing.Size(900, 114);
-            this.RES.TabIndex = 14;
-            this.RES.TabStop = false;
-            this.RES.Text = "减伤计算";
-            // 
-            // EnemyRES1
-            // 
-            this.EnemyRES1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EnemyRES1.BackColor = System.Drawing.SystemColors.Control;
-            this.EnemyRES1.LargeChange = 0;
-            this.EnemyRES1.Location = new System.Drawing.Point(304, 49);
-            this.EnemyRES1.Maximum = 3000;
-            this.EnemyRES1.Minimum = -1000;
-            this.EnemyRES1.Name = "EnemyRES1";
-            this.EnemyRES1.Size = new System.Drawing.Size(566, 45);
-            this.EnemyRES1.SmallChange = 10;
-            this.EnemyRES1.TabIndex = 8;
-            this.EnemyRES1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.EnemyRES1.Value = 100;
-            this.EnemyRES1.Scroll += new System.EventHandler(this.EnemyRES1_Scroll);
-            // 
-            // EnemyRES
-            // 
-            this.EnemyRES.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnemyRES.Location = new System.Drawing.Point(210, 49);
-            this.EnemyRES.MaxLength = 8;
-            this.EnemyRES.Name = "EnemyRES";
-            this.EnemyRES.Size = new System.Drawing.Size(67, 32);
-            this.EnemyRES.TabIndex = 7;
-            this.EnemyRES.Text = "10";
-            this.EnemyRES.TextChanged += new System.EventHandler(this.EnemyRES_TextChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(22, 49);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(289, 28);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "敌人相应属性抗性               %";
-            // 
-            // DEF
-            // 
-            this.DEF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DEF.BackColor = System.Drawing.SystemColors.Control;
-            this.DEF.Controls.Add(this.Defense1);
-            this.DEF.Controls.Add(this.LVL_E);
-            this.DEF.Controls.Add(this.Defense);
-            this.DEF.Controls.Add(this.EnemyLevel1);
-            this.DEF.Controls.Add(this.DEF_Text);
-            this.DEF.Controls.Add(this.EnemyLevel);
-            this.DEF.Controls.Add(this.LVL_P);
-            this.DEF.Controls.Add(this.PlayerLevel1);
-            this.DEF.Controls.Add(this.PlayerLevel);
-            this.DEF.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.DEF.Location = new System.Drawing.Point(6, 6);
-            this.DEF.Name = "DEF";
-            this.DEF.Size = new System.Drawing.Size(900, 200);
-            this.DEF.TabIndex = 13;
-            this.DEF.TabStop = false;
-            this.DEF.Text = "防御计算";
-            // 
-            // Defense1
-            // 
-            this.Defense1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Defense1.BackColor = System.Drawing.SystemColors.Control;
-            this.Defense1.LargeChange = 10;
-            this.Defense1.Location = new System.Drawing.Point(304, 148);
-            this.Defense1.Maximum = 1000;
-            this.Defense1.Minimum = -1000;
-            this.Defense1.Name = "Defense1";
-            this.Defense1.Size = new System.Drawing.Size(566, 45);
-            this.Defense1.SmallChange = 10;
-            this.Defense1.TabIndex = 6;
-            this.Defense1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.Defense1.Scroll += new System.EventHandler(this.Defense1_Scroll);
-            // 
-            // LVL_E
-            // 
-            this.LVL_E.AutoSize = true;
-            this.LVL_E.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LVL_E.Location = new System.Drawing.Point(22, 90);
-            this.LVL_E.Name = "LVL_E";
-            this.LVL_E.Size = new System.Drawing.Size(96, 28);
-            this.LVL_E.TabIndex = 18;
-            this.LVL_E.Text = "敌方等级";
-            // 
-            // Defense
-            // 
-            this.Defense.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Defense.Location = new System.Drawing.Point(210, 148);
-            this.Defense.MaxLength = 8;
-            this.Defense.Name = "Defense";
-            this.Defense.Size = new System.Drawing.Size(67, 32);
-            this.Defense.TabIndex = 5;
-            this.Defense.Text = "0";
-            this.Defense.TextChanged += new System.EventHandler(this.Defense_TextChanged);
-            // 
-            // EnemyLevel1
-            // 
-            this.EnemyLevel1.AllowDrop = true;
-            this.EnemyLevel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EnemyLevel1.BackColor = System.Drawing.SystemColors.Control;
-            this.EnemyLevel1.LargeChange = 1;
-            this.EnemyLevel1.Location = new System.Drawing.Point(304, 90);
-            this.EnemyLevel1.Maximum = 110;
-            this.EnemyLevel1.Minimum = 1;
-            this.EnemyLevel1.Name = "EnemyLevel1";
-            this.EnemyLevel1.Size = new System.Drawing.Size(566, 45);
-            this.EnemyLevel1.TabIndex = 4;
-            this.EnemyLevel1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.EnemyLevel1.Value = 1;
-            this.EnemyLevel1.Scroll += new System.EventHandler(this.EnemyLevel1_Scroll);
-            // 
-            // DEF_Text
-            // 
-            this.DEF_Text.AutoSize = true;
-            this.DEF_Text.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.DEF_Text.Location = new System.Drawing.Point(22, 148);
-            this.DEF_Text.Name = "DEF_Text";
-            this.DEF_Text.Size = new System.Drawing.Size(289, 28);
-            this.DEF_Text.TabIndex = 14;
-            this.DEF_Text.Text = "敌人防御值变化           字    %";
-            // 
-            // EnemyLevel
-            // 
-            this.EnemyLevel.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnemyLevel.Location = new System.Drawing.Point(210, 90);
-            this.EnemyLevel.MaxLength = 8;
-            this.EnemyLevel.Name = "EnemyLevel";
-            this.EnemyLevel.Size = new System.Drawing.Size(86, 32);
-            this.EnemyLevel.TabIndex = 3;
-            this.EnemyLevel.Text = "1";
-            this.EnemyLevel.TextChanged += new System.EventHandler(this.EnemyLevel_TextChanged);
-            // 
-            // LVL_P
-            // 
-            this.LVL_P.AutoSize = true;
-            this.LVL_P.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LVL_P.Location = new System.Drawing.Point(22, 34);
-            this.LVL_P.Name = "LVL_P";
-            this.LVL_P.Size = new System.Drawing.Size(96, 28);
-            this.LVL_P.TabIndex = 6;
-            this.LVL_P.Text = "我方等级";
-            // 
-            // PlayerLevel1
-            // 
-            this.PlayerLevel1.AllowDrop = true;
-            this.PlayerLevel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PlayerLevel1.BackColor = System.Drawing.SystemColors.Control;
-            this.PlayerLevel1.LargeChange = 1;
-            this.PlayerLevel1.Location = new System.Drawing.Point(304, 34);
-            this.PlayerLevel1.Maximum = 90;
-            this.PlayerLevel1.Minimum = 1;
-            this.PlayerLevel1.Name = "PlayerLevel1";
-            this.PlayerLevel1.Size = new System.Drawing.Size(566, 45);
-            this.PlayerLevel1.TabIndex = 2;
-            this.PlayerLevel1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.PlayerLevel1.Value = 1;
-            this.PlayerLevel1.Scroll += new System.EventHandler(this.PlayerLevel1_Scroll);
-            // 
-            // PlayerLevel
-            // 
-            this.PlayerLevel.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayerLevel.Location = new System.Drawing.Point(210, 34);
-            this.PlayerLevel.MaxLength = 8;
-            this.PlayerLevel.Name = "PlayerLevel";
-            this.PlayerLevel.Size = new System.Drawing.Size(86, 32);
-            this.PlayerLevel.TabIndex = 1;
-            this.PlayerLevel.Text = "1";
-            this.PlayerLevel.TextChanged += new System.EventHandler(this.PlayerLevel_TextChanged);
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage5.Controls.Add(this.DMGType2);
-            this.tabPage5.Controls.Add(this.DMGType1);
-            this.tabPage5.Controls.Add(this.DMGType0);
-            this.tabPage5.Controls.Add(this.AttributeList);
-            this.tabPage5.Controls.Add(this.ComChart);
-            this.tabPage5.Location = new System.Drawing.Point(4, 30);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(912, 333);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "面板分析";
+            // ATKBuff_Percent
+            // 
+            this.ATKBuff_Percent.Current = 0F;
+            this.ATKBuff_Percent.CurrentStr = "0";
+            this.ATKBuff_Percent.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.ATKBuff_Percent.Location = new System.Drawing.Point(9, 74);
+            this.ATKBuff_Percent.Margin = new System.Windows.Forms.Padding(6);
+            this.ATKBuff_Percent.Maximum = 2000;
+            this.ATKBuff_Percent.Minimum = 0;
+            this.ATKBuff_Percent.Name = "ATKBuff_Percent";
+            this.ATKBuff_Percent.PercentShownOrNot = true;
+            this.ATKBuff_Percent.Size = new System.Drawing.Size(882, 45);
+            this.ATKBuff_Percent.TabIndex = 16;
+            this.ATKBuff_Percent.Title = "百分比攻击加成";
+            this.ATKBuff_Percent.ValScale = 1D;
+            this.ATKBuff_Percent.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
+            // ATKBuff_Static
+            // 
+            this.ATKBuff_Static.Current = 0F;
+            this.ATKBuff_Static.CurrentStr = "0";
+            this.ATKBuff_Static.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.ATKBuff_Static.Location = new System.Drawing.Point(9, 25);
+            this.ATKBuff_Static.Margin = new System.Windows.Forms.Padding(6);
+            this.ATKBuff_Static.Maximum = 2000;
+            this.ATKBuff_Static.Minimum = 0;
+            this.ATKBuff_Static.Name = "ATKBuff_Static";
+            this.ATKBuff_Static.PercentShownOrNot = false;
+            this.ATKBuff_Static.Size = new System.Drawing.Size(882, 45);
+            this.ATKBuff_Static.TabIndex = 15;
+            this.ATKBuff_Static.Title = "固定值攻击加成";
+            this.ATKBuff_Static.ValScale = 1D;
+            this.ATKBuff_Static.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("微软雅黑", 15.75F);
+            this.label15.Location = new System.Drawing.Point(16, 133);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(138, 28);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "其他攻击收益";
+            // 
+            // Damage_Buff
+            // 
+            this.Damage_Buff.Controls.Add(this.DamageBuff_Reaction_Group);
+            this.Damage_Buff.Controls.Add(this.DamageBuffStack_Group);
+            this.Damage_Buff.Controls.Add(this.DamageBuff_Group);
+            this.Damage_Buff.Font = new System.Drawing.Font("宋体", 9F);
+            this.Damage_Buff.Location = new System.Drawing.Point(4, 32);
+            this.Damage_Buff.Name = "Damage_Buff";
+            this.Damage_Buff.Padding = new System.Windows.Forms.Padding(3);
+            this.Damage_Buff.Size = new System.Drawing.Size(912, 331);
+            this.Damage_Buff.TabIndex = 5;
+            this.Damage_Buff.Text = "伤害加深";
+            this.Damage_Buff.UseVisualStyleBackColor = true;
+            // 
+            // DamageBuff_Reaction_Group
+            // 
+            this.DamageBuff_Reaction_Group.BackColor = System.Drawing.SystemColors.Control;
+            this.DamageBuff_Reaction_Group.Controls.Add(this.DamageBuff_Reaction);
+            this.DamageBuff_Reaction_Group.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.DamageBuff_Reaction_Group.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.DamageBuff_Reaction_Group.Location = new System.Drawing.Point(3, 242);
+            this.DamageBuff_Reaction_Group.Name = "DamageBuff_Reaction_Group";
+            this.DamageBuff_Reaction_Group.Size = new System.Drawing.Size(906, 86);
+            this.DamageBuff_Reaction_Group.TabIndex = 18;
+            this.DamageBuff_Reaction_Group.TabStop = false;
+            this.DamageBuff_Reaction_Group.Text = "反应伤害增强";
+            // 
+            // DamageBuff_Reaction
+            // 
+            this.DamageBuff_Reaction.Current = 0F;
+            this.DamageBuff_Reaction.CurrentStr = "0";
+            this.DamageBuff_Reaction.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.DamageBuff_Reaction.Location = new System.Drawing.Point(9, 31);
+            this.DamageBuff_Reaction.Margin = new System.Windows.Forms.Padding(6);
+            this.DamageBuff_Reaction.Maximum = 2000;
+            this.DamageBuff_Reaction.Minimum = 0;
+            this.DamageBuff_Reaction.Name = "DamageBuff_Reaction";
+            this.DamageBuff_Reaction.PercentShownOrNot = true;
+            this.DamageBuff_Reaction.Size = new System.Drawing.Size(882, 45);
+            this.DamageBuff_Reaction.TabIndex = 0;
+            this.DamageBuff_Reaction.Title = "反应伤害提升";
+            this.DamageBuff_Reaction.ValScale = 10D;
+            this.DamageBuff_Reaction.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
+            // DamageBuffStack_Group
+            // 
+            this.DamageBuffStack_Group.BackColor = System.Drawing.SystemColors.Control;
+            this.DamageBuffStack_Group.Controls.Add(this.DamageBuff_Stack_Count);
+            this.DamageBuffStack_Group.Controls.Add(this.DamageBuff_Stack_Percent);
+            this.DamageBuffStack_Group.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.DamageBuffStack_Group.Location = new System.Drawing.Point(3, 88);
+            this.DamageBuffStack_Group.Name = "DamageBuffStack_Group";
+            this.DamageBuffStack_Group.Size = new System.Drawing.Size(906, 151);
+            this.DamageBuffStack_Group.TabIndex = 17;
+            this.DamageBuffStack_Group.TabStop = false;
+            this.DamageBuffStack_Group.Text = "可叠加的伤害buff";
+            // 
+            // DamageBuff_Stack_Count
+            // 
+            this.DamageBuff_Stack_Count.Current = 0F;
+            this.DamageBuff_Stack_Count.CurrentStr = "0";
+            this.DamageBuff_Stack_Count.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.DamageBuff_Stack_Count.Location = new System.Drawing.Point(9, 87);
+            this.DamageBuff_Stack_Count.Margin = new System.Windows.Forms.Padding(6);
+            this.DamageBuff_Stack_Count.Maximum = 20;
+            this.DamageBuff_Stack_Count.Minimum = 0;
+            this.DamageBuff_Stack_Count.Name = "DamageBuff_Stack_Count";
+            this.DamageBuff_Stack_Count.PercentShownOrNot = false;
+            this.DamageBuff_Stack_Count.Size = new System.Drawing.Size(882, 45);
+            this.DamageBuff_Stack_Count.TabIndex = 1;
+            this.DamageBuff_Stack_Count.Title = "伤害叠加层数";
+            this.DamageBuff_Stack_Count.ValScale = 1D;
+            this.DamageBuff_Stack_Count.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
+            // DamageBuff_Stack_Percent
+            // 
+            this.DamageBuff_Stack_Percent.Current = 0F;
+            this.DamageBuff_Stack_Percent.CurrentStr = "0";
+            this.DamageBuff_Stack_Percent.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.DamageBuff_Stack_Percent.Location = new System.Drawing.Point(9, 38);
+            this.DamageBuff_Stack_Percent.Margin = new System.Windows.Forms.Padding(6);
+            this.DamageBuff_Stack_Percent.Maximum = 2000;
+            this.DamageBuff_Stack_Percent.Minimum = 0;
+            this.DamageBuff_Stack_Percent.Name = "DamageBuff_Stack_Percent";
+            this.DamageBuff_Stack_Percent.PercentShownOrNot = true;
+            this.DamageBuff_Stack_Percent.Size = new System.Drawing.Size(882, 45);
+            this.DamageBuff_Stack_Percent.TabIndex = 0;
+            this.DamageBuff_Stack_Percent.Title = "每层伤害加成";
+            this.DamageBuff_Stack_Percent.ValScale = 10D;
+            this.DamageBuff_Stack_Percent.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
+            // DamageBuff_Group
+            // 
+            this.DamageBuff_Group.BackColor = System.Drawing.SystemColors.Control;
+            this.DamageBuff_Group.Controls.Add(this.DamageBuff_Percent);
+            this.DamageBuff_Group.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DamageBuff_Group.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.DamageBuff_Group.Location = new System.Drawing.Point(3, 3);
+            this.DamageBuff_Group.Name = "DamageBuff_Group";
+            this.DamageBuff_Group.Size = new System.Drawing.Size(906, 82);
+            this.DamageBuff_Group.TabIndex = 16;
+            this.DamageBuff_Group.TabStop = false;
+            this.DamageBuff_Group.Text = "常驻伤害buff";
+            // 
+            // DamageBuff_Percent
+            // 
+            this.DamageBuff_Percent.Current = 0F;
+            this.DamageBuff_Percent.CurrentStr = "0";
+            this.DamageBuff_Percent.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.DamageBuff_Percent.Location = new System.Drawing.Point(9, 25);
+            this.DamageBuff_Percent.Margin = new System.Windows.Forms.Padding(6);
+            this.DamageBuff_Percent.Maximum = 2000;
+            this.DamageBuff_Percent.Minimum = 0;
+            this.DamageBuff_Percent.Name = "DamageBuff_Percent";
+            this.DamageBuff_Percent.PercentShownOrNot = true;
+            this.DamageBuff_Percent.Size = new System.Drawing.Size(882, 45);
+            this.DamageBuff_Percent.TabIndex = 0;
+            this.DamageBuff_Percent.Title = "伤害加成";
+            this.DamageBuff_Percent.ValScale = 10D;
+            this.DamageBuff_Percent.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
+            // Level_And_Res
+            // 
+            this.Level_And_Res.Controls.Add(this.Resistance_Group);
+            this.Level_And_Res.Controls.Add(this.LevelAndDefence_Group);
+            this.Level_And_Res.Location = new System.Drawing.Point(4, 32);
+            this.Level_And_Res.Name = "Level_And_Res";
+            this.Level_And_Res.Padding = new System.Windows.Forms.Padding(3);
+            this.Level_And_Res.Size = new System.Drawing.Size(912, 331);
+            this.Level_And_Res.TabIndex = 6;
+            this.Level_And_Res.Text = "等级与抗性";
+            this.Level_And_Res.UseVisualStyleBackColor = true;
+            // 
+            // Resistance_Group
+            // 
+            this.Resistance_Group.BackColor = System.Drawing.SystemColors.Control;
+            this.Resistance_Group.Controls.Add(this.Resistance_Percent);
+            this.Resistance_Group.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Resistance_Group.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.Resistance_Group.Location = new System.Drawing.Point(3, 189);
+            this.Resistance_Group.Name = "Resistance_Group";
+            this.Resistance_Group.Size = new System.Drawing.Size(906, 139);
+            this.Resistance_Group.TabIndex = 16;
+            this.Resistance_Group.TabStop = false;
+            this.Resistance_Group.Text = "抗性计算";
+            // 
+            // Resistance_Percent
+            // 
+            this.Resistance_Percent.Current = 100F;
+            this.Resistance_Percent.CurrentStr = "10";
+            this.Resistance_Percent.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.Resistance_Percent.Location = new System.Drawing.Point(9, 35);
+            this.Resistance_Percent.Margin = new System.Windows.Forms.Padding(6);
+            this.Resistance_Percent.Maximum = 3000;
+            this.Resistance_Percent.Minimum = -1000;
+            this.Resistance_Percent.Name = "Resistance_Percent";
+            this.Resistance_Percent.PercentShownOrNot = true;
+            this.Resistance_Percent.Size = new System.Drawing.Size(882, 45);
+            this.Resistance_Percent.TabIndex = 0;
+            this.Resistance_Percent.Title = "对应属性抗性";
+            this.Resistance_Percent.ValScale = 10D;
+            this.Resistance_Percent.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
+            // LevelAndDefence_Group
+            // 
+            this.LevelAndDefence_Group.BackColor = System.Drawing.SystemColors.Control;
+            this.LevelAndDefence_Group.Controls.Add(this.Defence_Debuff);
+            this.LevelAndDefence_Group.Controls.Add(this.Level_Enemy);
+            this.LevelAndDefence_Group.Controls.Add(this.Level_Player);
+            this.LevelAndDefence_Group.Dock = System.Windows.Forms.DockStyle.Top;
+            this.LevelAndDefence_Group.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LevelAndDefence_Group.Location = new System.Drawing.Point(3, 3);
+            this.LevelAndDefence_Group.Name = "LevelAndDefence_Group";
+            this.LevelAndDefence_Group.Size = new System.Drawing.Size(906, 184);
+            this.LevelAndDefence_Group.TabIndex = 15;
+            this.LevelAndDefence_Group.TabStop = false;
+            this.LevelAndDefence_Group.Text = "防御计算";
+            // 
+            // Defence_Debuff
+            // 
+            this.Defence_Debuff.Current = 0F;
+            this.Defence_Debuff.CurrentStr = "0";
+            this.Defence_Debuff.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.Defence_Debuff.Location = new System.Drawing.Point(9, 123);
+            this.Defence_Debuff.Margin = new System.Windows.Forms.Padding(6);
+            this.Defence_Debuff.Maximum = 1000;
+            this.Defence_Debuff.Minimum = -1000;
+            this.Defence_Debuff.Name = "Defence_Debuff";
+            this.Defence_Debuff.PercentShownOrNot = true;
+            this.Defence_Debuff.Size = new System.Drawing.Size(882, 45);
+            this.Defence_Debuff.TabIndex = 2;
+            this.Defence_Debuff.Title = "敌方防御变化";
+            this.Defence_Debuff.ValScale = 10D;
+            this.Defence_Debuff.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
+            // Level_Enemy
+            // 
+            this.Level_Enemy.Current = 1F;
+            this.Level_Enemy.CurrentStr = "1";
+            this.Level_Enemy.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.Level_Enemy.Location = new System.Drawing.Point(9, 74);
+            this.Level_Enemy.Margin = new System.Windows.Forms.Padding(6);
+            this.Level_Enemy.Maximum = 110;
+            this.Level_Enemy.Minimum = 1;
+            this.Level_Enemy.Name = "Level_Enemy";
+            this.Level_Enemy.PercentShownOrNot = false;
+            this.Level_Enemy.Size = new System.Drawing.Size(882, 45);
+            this.Level_Enemy.TabIndex = 1;
+            this.Level_Enemy.Title = "敌方等级";
+            this.Level_Enemy.ValScale = 1D;
+            this.Level_Enemy.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
+            // Level_Player
+            // 
+            this.Level_Player.Current = 1F;
+            this.Level_Player.CurrentStr = "1";
+            this.Level_Player.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.Level_Player.Location = new System.Drawing.Point(9, 25);
+            this.Level_Player.Margin = new System.Windows.Forms.Padding(6);
+            this.Level_Player.Maximum = 90;
+            this.Level_Player.Minimum = 1;
+            this.Level_Player.Name = "Level_Player";
+            this.Level_Player.PercentShownOrNot = false;
+            this.Level_Player.Size = new System.Drawing.Size(882, 45);
+            this.Level_Player.TabIndex = 0;
+            this.Level_Player.Title = "我方等级";
+            this.Level_Player.ValScale = 1D;
+            this.Level_Player.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
+            // ChartViewer
+            // 
+            this.ChartViewer.BackColor = System.Drawing.SystemColors.Control;
+            this.ChartViewer.Controls.Add(this.DMGType2);
+            this.ChartViewer.Controls.Add(this.DMGType1);
+            this.ChartViewer.Controls.Add(this.DMGType0);
+            this.ChartViewer.Controls.Add(this.AttributeList);
+            this.ChartViewer.Controls.Add(this.ComChart);
+            this.ChartViewer.Location = new System.Drawing.Point(4, 32);
+            this.ChartViewer.Name = "ChartViewer";
+            this.ChartViewer.Padding = new System.Windows.Forms.Padding(3);
+            this.ChartViewer.Size = new System.Drawing.Size(912, 331);
+            this.ChartViewer.TabIndex = 4;
+            this.ChartViewer.Text = "伤害构成";
             // 
             // DMGType2
             // 
@@ -1493,7 +1021,7 @@ namespace Genshin_Calc
             this.DMGType2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.DMGType2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DMGType2.Font = new System.Drawing.Font("微软雅黑", 13.5F);
-            this.DMGType2.Location = new System.Drawing.Point(244, 294);
+            this.DMGType2.Location = new System.Drawing.Point(244, 292);
             this.DMGType2.Name = "DMGType2";
             this.DMGType2.Size = new System.Drawing.Size(122, 36);
             this.DMGType2.TabIndex = 51;
@@ -1513,7 +1041,7 @@ namespace Genshin_Calc
             this.DMGType1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.DMGType1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DMGType1.Font = new System.Drawing.Font("微软雅黑", 13.5F);
-            this.DMGType1.Location = new System.Drawing.Point(123, 294);
+            this.DMGType1.Location = new System.Drawing.Point(123, 292);
             this.DMGType1.Name = "DMGType1";
             this.DMGType1.Size = new System.Drawing.Size(123, 36);
             this.DMGType1.TabIndex = 50;
@@ -1534,7 +1062,7 @@ namespace Genshin_Calc
             this.DMGType0.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.DMGType0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DMGType0.Font = new System.Drawing.Font("微软雅黑", 13.5F);
-            this.DMGType0.Location = new System.Drawing.Point(3, 294);
+            this.DMGType0.Location = new System.Drawing.Point(3, 292);
             this.DMGType0.Name = "DMGType0";
             this.DMGType0.Size = new System.Drawing.Size(123, 36);
             this.DMGType0.TabIndex = 49;
@@ -1555,19 +1083,19 @@ namespace Genshin_Calc
             this.AttributeList.Font = new System.Drawing.Font("微软雅黑", 13.5F);
             this.AttributeList.HideSelection = false;
             this.AttributeList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9});
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17,
+            listViewItem18});
             this.AttributeList.Location = new System.Drawing.Point(3, 3);
             this.AttributeList.Name = "AttributeList";
             this.AttributeList.ShowGroups = false;
-            this.AttributeList.Size = new System.Drawing.Size(363, 327);
+            this.AttributeList.Size = new System.Drawing.Size(363, 325);
             this.AttributeList.TabIndex = 48;
             this.AttributeList.UseCompatibleStateImageBehavior = false;
             this.AttributeList.View = System.Windows.Forms.View.Details;
@@ -1592,54 +1120,54 @@ namespace Genshin_Calc
             this.ComChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            textAnnotation1.AllowAnchorMoving = true;
-            textAnnotation1.AnchorAlignment = System.Drawing.ContentAlignment.BottomRight;
-            textAnnotation1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            textAnnotation1.Name = "TextAnnotation1";
-            textAnnotation1.Text = "在本页中，乘区占比越低的部分，提升后收益越高。双击此图可切换乘区计算逻辑。";
-            textAnnotation1.X = 0D;
-            textAnnotation1.Y = 93D;
-            textAnnotation2.Name = "TextAnnotation2";
-            textAnnotation2.Text = "当前：所有乘区（包括扣减伤害的乘区）均累加";
-            textAnnotation2.X = 50D;
-            textAnnotation2.Y = 1D;
-            textAnnotation3.Name = "TextAnnotation3";
-            textAnnotation3.Text = "当前：扣减伤害的乘区会表现为负数";
-            textAnnotation3.Visible = false;
-            textAnnotation3.X = 61D;
-            textAnnotation3.Y = 1D;
-            this.ComChart.Annotations.Add(textAnnotation1);
-            this.ComChart.Annotations.Add(textAnnotation2);
-            this.ComChart.Annotations.Add(textAnnotation3);
+            textAnnotation4.AllowAnchorMoving = true;
+            textAnnotation4.AnchorAlignment = System.Drawing.ContentAlignment.BottomRight;
+            textAnnotation4.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            textAnnotation4.Name = "TextAnnotation1";
+            textAnnotation4.Text = "在本页中，乘区占比越低的部分，提升后收益越高。双击此图可切换乘区计算逻辑。";
+            textAnnotation4.X = 0D;
+            textAnnotation4.Y = 93D;
+            textAnnotation5.Name = "TextAnnotation2";
+            textAnnotation5.Text = "当前：所有乘区（包括扣减伤害的乘区）均累加";
+            textAnnotation5.X = 50D;
+            textAnnotation5.Y = 1D;
+            textAnnotation6.Name = "TextAnnotation3";
+            textAnnotation6.Text = "当前：扣减伤害的乘区会表现为负数";
+            textAnnotation6.Visible = false;
+            textAnnotation6.X = 61D;
+            textAnnotation6.Y = 1D;
+            this.ComChart.Annotations.Add(textAnnotation4);
+            this.ComChart.Annotations.Add(textAnnotation5);
+            this.ComChart.Annotations.Add(textAnnotation6);
             this.ComChart.BackColor = System.Drawing.SystemColors.Control;
-            chartArea1.Area3DStyle.Inclination = 3;
-            chartArea1.Area3DStyle.Rotation = 10;
-            chartArea1.Area3DStyle.WallWidth = 2;
-            chartArea1.BackColor = System.Drawing.SystemColors.Control;
-            chartArea1.BackSecondaryColor = System.Drawing.SystemColors.ControlDark;
-            chartArea1.Name = "ChartArea1";
-            chartArea1.Position.Auto = false;
-            chartArea1.Position.Height = 75F;
-            chartArea1.Position.Width = 75F;
-            chartArea1.Position.Y = 10F;
-            this.ComChart.ChartAreas.Add(chartArea1);
-            legend1.AutoFitMinFontSize = 9;
-            legend1.BackColor = System.Drawing.SystemColors.Control;
-            legendCellColumn1.ColumnType = System.Windows.Forms.DataVisualization.Charting.LegendCellColumnType.SeriesSymbol;
-            legendCellColumn1.Name = "Column1";
-            legendCellColumn2.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
-            legendCellColumn2.Name = "Column2";
-            legendCellColumn2.Text = "#VALX : #PERCENT";
-            legend1.CellColumns.Add(legendCellColumn1);
-            legend1.CellColumns.Add(legendCellColumn2);
-            legend1.Name = "Legend1";
-            legend1.Position.Auto = false;
-            legend1.Position.Height = 45F;
-            legend1.Position.Width = 30F;
-            legend1.Position.X = 70F;
-            legend1.Position.Y = 50F;
-            legend1.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
-            this.ComChart.Legends.Add(legend1);
+            chartArea2.Area3DStyle.Inclination = 3;
+            chartArea2.Area3DStyle.Rotation = 10;
+            chartArea2.Area3DStyle.WallWidth = 2;
+            chartArea2.BackColor = System.Drawing.SystemColors.Control;
+            chartArea2.BackSecondaryColor = System.Drawing.SystemColors.ControlDark;
+            chartArea2.Name = "ChartArea1";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 75F;
+            chartArea2.Position.Width = 75F;
+            chartArea2.Position.Y = 10F;
+            this.ComChart.ChartAreas.Add(chartArea2);
+            legend2.AutoFitMinFontSize = 9;
+            legend2.BackColor = System.Drawing.SystemColors.Control;
+            legendCellColumn3.ColumnType = System.Windows.Forms.DataVisualization.Charting.LegendCellColumnType.SeriesSymbol;
+            legendCellColumn3.Name = "Column1";
+            legendCellColumn4.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            legendCellColumn4.Name = "Column2";
+            legendCellColumn4.Text = "#VALX : #PERCENT";
+            legend2.CellColumns.Add(legendCellColumn3);
+            legend2.CellColumns.Add(legendCellColumn4);
+            legend2.Name = "Legend1";
+            legend2.Position.Auto = false;
+            legend2.Position.Height = 45F;
+            legend2.Position.Width = 30F;
+            legend2.Position.X = 70F;
+            legend2.Position.Y = 50F;
+            legend2.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
+            this.ComChart.Legends.Add(legend2);
             this.ComChart.Location = new System.Drawing.Point(364, 3);
             this.ComChart.Name = "ComChart";
             this.ComChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
@@ -1652,23 +1180,23 @@ namespace Genshin_Calc
         System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(185)))), ((int)(((byte)(255))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))))};
-            series1.BackSecondaryColor = System.Drawing.SystemColors.HighlightText;
-            series1.BorderColor = System.Drawing.SystemColors.ControlDark;
-            series1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.Color = System.Drawing.SystemColors.AppWorkspace;
-            series1.CustomProperties = "PieLineColor=ControlDark, MinimumRelativePieSize=50, DoughnutRadius=30, PieLabelS" +
-    "tyle=Outside";
-            series1.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            series1.LabelForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            series1.Legend = "Legend1";
-            series1.MarkerBorderColor = System.Drawing.SystemColors.ControlDark;
-            series1.MarkerColor = System.Drawing.SystemColors.ControlDark;
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 4;
-            this.ComChart.Series.Add(series1);
-            this.ComChart.Size = new System.Drawing.Size(545, 327);
+            series2.BackSecondaryColor = System.Drawing.SystemColors.HighlightText;
+            series2.BorderColor = System.Drawing.SystemColors.ControlDark;
+            series2.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Color = System.Drawing.SystemColors.AppWorkspace;
+            series2.CustomProperties = "DoughnutRadius=30, MinimumRelativePieSize=50, PieLabelStyle=Outside, PieLineColor" +
+    "=ControlDark";
+            series2.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            series2.LabelForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            series2.Legend = "Legend1";
+            series2.MarkerBorderColor = System.Drawing.SystemColors.ControlDark;
+            series2.MarkerColor = System.Drawing.SystemColors.ControlDark;
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 4;
+            this.ComChart.Series.Add(series2);
+            this.ComChart.Size = new System.Drawing.Size(545, 325);
             this.ComChart.TabIndex = 1;
             this.ComChart.Text = "chart1";
             this.ComChart.DoubleClick += new System.EventHandler(this.ComChart_Click);
@@ -1702,91 +1230,6 @@ namespace Genshin_Calc
             this.AvgDMG_Text.Size = new System.Drawing.Size(154, 24);
             this.AvgDMG_Text.TabIndex = 15;
             this.AvgDMG_Text.Text = "单次伤害期望";
-            // 
-            // Skill1
-            // 
-            this.Skill1.AllowDrop = true;
-            this.Skill1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Skill1.BackColor = System.Drawing.SystemColors.Control;
-            this.Skill1.LargeChange = 200;
-            this.Skill1.Location = new System.Drawing.Point(326, 406);
-            this.Skill1.Maximum = 10000;
-            this.Skill1.Name = "Skill1";
-            this.Skill1.Size = new System.Drawing.Size(566, 45);
-            this.Skill1.TabIndex = 61;
-            this.Skill1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.Skill1.Value = 1000;
-            this.Skill1.Scroll += new System.EventHandler(this.Skill1_Scroll);
-            this.Skill1.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // Skill
-            // 
-            this.Skill.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Skill.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Skill.Location = new System.Drawing.Point(222, 406);
-            this.Skill.MaxLength = 8;
-            this.Skill.Name = "Skill";
-            this.Skill.Size = new System.Drawing.Size(77, 32);
-            this.Skill.TabIndex = 60;
-            this.Skill.Text = "100";
-            this.Skill.TextChanged += new System.EventHandler(this.Skill_TextChanged);
-            this.Skill.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(44, 406);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(289, 28);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "天赋倍率                             %";
-            this.label5.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // Other1
-            // 
-            this.Other1.AllowDrop = true;
-            this.Other1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Other1.BackColor = System.Drawing.SystemColors.Control;
-            this.Other1.LargeChange = 100;
-            this.Other1.Location = new System.Drawing.Point(326, 457);
-            this.Other1.Maximum = 5000;
-            this.Other1.Minimum = 1000;
-            this.Other1.Name = "Other1";
-            this.Other1.Size = new System.Drawing.Size(566, 45);
-            this.Other1.TabIndex = 63;
-            this.Other1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.Other1.Value = 1000;
-            this.Other1.Scroll += new System.EventHandler(this.Other1_Scroll);
-            this.Other1.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // Other
-            // 
-            this.Other.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Other.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Other.Location = new System.Drawing.Point(222, 453);
-            this.Other.MaxLength = 8;
-            this.Other.Name = "Other";
-            this.Other.Size = new System.Drawing.Size(77, 32);
-            this.Other.TabIndex = 62;
-            this.Other.Text = "100";
-            this.Other.TextChanged += new System.EventHandler(this.Other_TextChanged);
-            this.Other.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(44, 453);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(289, 28);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "额外伤害乘区                      %";
-            this.label6.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenFiles_Drag);
             // 
             // panel1
             // 
@@ -1847,7 +1290,7 @@ namespace Genshin_Calc
             this.Normal_DMG.ForeColor = System.Drawing.Color.DarkRed;
             this.Normal_DMG.Location = new System.Drawing.Point(48, 57);
             this.Normal_DMG.Name = "Normal_DMG";
-            this.Normal_DMG.Size = new System.Drawing.Size(154, 24);
+            this.Normal_DMG.Size = new System.Drawing.Size(154, 33);
             this.Normal_DMG.TabIndex = 16;
             this.Normal_DMG.Text = "0";
             this.Normal_DMG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1858,7 +1301,7 @@ namespace Genshin_Calc
             this.Crit_DMG.ForeColor = System.Drawing.Color.DarkRed;
             this.Crit_DMG.Location = new System.Drawing.Point(273, 57);
             this.Crit_DMG.Name = "Crit_DMG";
-            this.Crit_DMG.Size = new System.Drawing.Size(154, 24);
+            this.Crit_DMG.Size = new System.Drawing.Size(154, 33);
             this.Crit_DMG.TabIndex = 17;
             this.Crit_DMG.Text = "0";
             this.Crit_DMG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1869,7 +1312,7 @@ namespace Genshin_Calc
             this.Avg_DMG.ForeColor = System.Drawing.Color.DarkRed;
             this.Avg_DMG.Location = new System.Drawing.Point(498, 57);
             this.Avg_DMG.Name = "Avg_DMG";
-            this.Avg_DMG.Size = new System.Drawing.Size(154, 24);
+            this.Avg_DMG.Size = new System.Drawing.Size(154, 33);
             this.Avg_DMG.TabIndex = 18;
             this.Avg_DMG.Text = "0";
             this.Avg_DMG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1914,18 +1357,6 @@ namespace Genshin_Calc
             this.toolStrips.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolStrips.Click += new System.EventHandler(this.Notes);
             // 
-            // panel2
-            // 
-            this.panel2.AllowDrop = true;
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(944, 636);
-            this.panel2.TabIndex = 101;
-            this.panel2.Visible = false;
-            this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.OpenFiles);
-            // 
             // OpenFile
             // 
             this.OpenFile.Filter = "计算器角色文件|*.yschar|文本文件|*.txt|所有文件|*.*";
@@ -1935,24 +1366,53 @@ namespace Genshin_Calc
             // 
             this.SaveFile.DefaultExt = "ysdata";
             // 
+            // Skill
+            // 
+            this.Skill.Current = 1000F;
+            this.Skill.CurrentStr = "100";
+            this.Skill.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.Skill.Location = new System.Drawing.Point(28, 403);
+            this.Skill.Margin = new System.Windows.Forms.Padding(6);
+            this.Skill.Maximum = 10000;
+            this.Skill.Minimum = 0;
+            this.Skill.Name = "Skill";
+            this.Skill.PercentShownOrNot = true;
+            this.Skill.Size = new System.Drawing.Size(891, 45);
+            this.Skill.TabIndex = 101;
+            this.Skill.Title = "技能倍率";
+            this.Skill.ValScale = 10D;
+            this.Skill.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
+            // Other
+            // 
+            this.Other.Current = 1000F;
+            this.Other.CurrentStr = "100";
+            this.Other.Font = new System.Drawing.Font("微软雅黑 Light", 14.25F);
+            this.Other.Location = new System.Drawing.Point(28, 448);
+            this.Other.Margin = new System.Windows.Forms.Padding(6);
+            this.Other.Maximum = 20000;
+            this.Other.Minimum = 1000;
+            this.Other.Name = "Other";
+            this.Other.PercentShownOrNot = true;
+            this.Other.Size = new System.Drawing.Size(891, 45);
+            this.Other.TabIndex = 102;
+            this.Other.Title = "额外伤害乘区";
+            this.Other.ValScale = 10D;
+            this.Other.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 636);
+            this.Controls.Add(this.Other);
+            this.Controls.Add(this.Skill);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrips);
             this.Controls.Add(this.TransButton);
-            this.Controls.Add(this.Other);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.Skill1);
-            this.Controls.Add(this.Skill);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.P1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.Other1);
-            this.Controls.Add(this.panel2);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(960, 675);
             this.Name = "Form1";
@@ -1964,49 +1424,22 @@ namespace Genshin_Calc
             this.DragLeave += new System.EventHandler(this.DragBreak);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ATK1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CritRate1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CritDMG1)).EndInit();
-            this.Group_A.ResumeLayout(false);
-            this.Group_A.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ATKPlus1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EP1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EM1)).EndInit();
             this.P1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.BUFF_ATK2.ResumeLayout(false);
-            this.BUFF_ATK2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ATKBuff1_Sf)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ATKBuff1_S)).EndInit();
-            this.BUFF_ATK_1.ResumeLayout(false);
-            this.BUFF_ATK_1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ATKBuff1_P)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ATKBuff1)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReactBuff1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DMGBuff1_Sf)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DMGBuff1_S)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DMGBuff1)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.RES.ResumeLayout(false);
-            this.RES.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EnemyRES1)).EndInit();
-            this.DEF.ResumeLayout(false);
-            this.DEF.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Defense1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EnemyLevel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayerLevel1)).EndInit();
-            this.tabPage5.ResumeLayout(false);
+            this.Basic.ResumeLayout(false);
+            this.BasicGroup.ResumeLayout(false);
+            this.ATK_Buff.ResumeLayout(false);
+            this.ATKBuff_Stack_Group.ResumeLayout(false);
+            this.ATKBuff_Group.ResumeLayout(false);
+            this.ATKBuff_Group.PerformLayout();
+            this.Damage_Buff.ResumeLayout(false);
+            this.DamageBuff_Reaction_Group.ResumeLayout(false);
+            this.DamageBuffStack_Group.ResumeLayout(false);
+            this.DamageBuff_Group.ResumeLayout(false);
+            this.Level_And_Res.ResumeLayout(false);
+            this.Resistance_Group.ResumeLayout(false);
+            this.LevelAndDefence_Group.ResumeLayout(false);
+            this.ChartViewer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ComChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Skill1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Other1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.statusStrips.ResumeLayout(false);
@@ -2028,98 +1461,22 @@ namespace Genshin_Calc
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 使用入门ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
-        private System.Windows.Forms.TrackBar ATK1;
-        private System.Windows.Forms.TextBox ATK;
-        private System.Windows.Forms.TextBox CritRate;
-        private System.Windows.Forms.TrackBar CritRate1;
-        private System.Windows.Forms.Label ATK_Label;
-        private System.Windows.Forms.Label CR_Label;
-        private System.Windows.Forms.TrackBar CritDMG1;
-        private System.Windows.Forms.TextBox CritDMG;
-        private System.Windows.Forms.Label CD_Label;
-        private System.Windows.Forms.GroupBox Group_A;
-        private System.Windows.Forms.TrackBar EM1;
-        private System.Windows.Forms.TextBox EM;
-        private System.Windows.Forms.Label EM_Label;
-        private System.Windows.Forms.TrackBar EP1;
-        private System.Windows.Forms.TextBox EP;
-        private System.Windows.Forms.Label EP_Label;
         private System.Windows.Forms.TabControl P1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox BUFF_ATK_1;
-        private System.Windows.Forms.TrackBar ATKBuff1_P;
-        private System.Windows.Forms.Label ATK_Buff_Num;
-        private System.Windows.Forms.TrackBar ATKBuff1;
-        private System.Windows.Forms.TextBox ATKBuff;
-        private System.Windows.Forms.TextBox ATKBuff_P;
-        private System.Windows.Forms.Label ATK_Buff_Percent;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.GroupBox DEF;
-        private System.Windows.Forms.Label LVL_E;
-        private System.Windows.Forms.TrackBar EnemyLevel1;
-        private System.Windows.Forms.TextBox EnemyLevel;
-        private System.Windows.Forms.Label LVL_P;
-        private System.Windows.Forms.TrackBar PlayerLevel1;
-        private System.Windows.Forms.TextBox PlayerLevel;
-        private System.Windows.Forms.GroupBox BUFF_ATK2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TrackBar ATKBuff1_Sf;
-        private System.Windows.Forms.TextBox ATKBuff_Sf;
-        private System.Windows.Forms.TrackBar ATKBuff1_S;
-        private System.Windows.Forms.TextBox ATKBuff_S;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox RES;
-        private System.Windows.Forms.TrackBar EnemyRES1;
-        private System.Windows.Forms.TextBox EnemyRES;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TrackBar DMGBuff1_Sf;
-        private System.Windows.Forms.TextBox DMGBuff_Sf;
-        private System.Windows.Forms.TrackBar DMGBuff1_S;
-        private System.Windows.Forms.TextBox DMGBuff_S;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TrackBar DMGBuff1;
-        private System.Windows.Forms.TextBox DMGBuff;
-        private System.Windows.Forms.Label DMG_Buff;
+        private System.Windows.Forms.TabPage Basic;
         private System.Windows.Forms.ToolStripMenuItem 窗口置顶ToolStripMenuItem;
         private System.Windows.Forms.Label NormalDMG_Text;
         private System.Windows.Forms.Label CritDMG_Text;
         private System.Windows.Forms.Label AvgDMG_Text;
-        private System.Windows.Forms.TrackBar Skill1;
-        private System.Windows.Forms.TextBox Skill;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TrackBar Other1;
-        private System.Windows.Forms.TextBox Other;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Normal_DMG;
         private System.Windows.Forms.Label Crit_DMG;
         private System.Windows.Forms.Label Avg_DMG;
         private System.Windows.Forms.Label Reaction;
         private System.Windows.Forms.ComboBox Reaction_Choose;
-        private System.Windows.Forms.TrackBar ATKPlus1;
-        private System.Windows.Forms.TextBox ATKPlus;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TrackBar Defense1;
-        private System.Windows.Forms.TextBox Defense;
-        private System.Windows.Forms.Label DEF_Text;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TrackBar ReactBuff1;
-        private System.Windows.Forms.TextBox ReactBuff;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button TransButton;
         private StatusStrip statusStrips;
         private ToolStripStatusLabel toolStrips;
         private ToolStripMenuItem 工具ToolStripMenuItem;
-        private Label ATKBuff_HP;
-        private Label ATKBuff_DEF;
-        private Label ATKBuff_HP_Label;
-        private Label ATKBuff_DEF_Label;
-        private Label ATKBuff_other_label;
         private ToolStripMenuItem 计算公式来源ToolStripMenuItem;
         private ToolStripMenuItem 锚定伤害计算器ToolStripMenuItem;
         private ToolStripMenuItem 特殊计算ToolStripMenuItem;
@@ -2135,12 +1492,11 @@ namespace Genshin_Calc
         private ToolStripMenuItem 敌人抗性快速查询ToolStripMenuItem;
         private ToolStripMenuItem 修复字体ToolStripMenuItem;
         private ToolStripMenuItem 数据存放文件夹ToolStripMenuItem;
-        private Panel panel2;
         private OpenFileDialog OpenFile;
         private SaveFileDialog SaveFile;
         private ToolStripMenuItem Cocogoat圣遗物导入ToolStripMenuItem;
         private ToolStripMenuItem 圣遗物简易比较器ToolStripMenuItem;
-        private TabPage tabPage5;
+        private TabPage ChartViewer;
         //private SplitContainer Spliter;
         private RadioButton DMGType2;
         private RadioButton DMGType1;
@@ -2150,6 +1506,43 @@ namespace Genshin_Calc
         private ColumnHeader ColumnB;
         private ColumnHeader ColumnC;
         private System.Windows.Forms.DataVisualization.Charting.Chart ComChart;
+        private TabPage Damage_Buff;
+
+        private GroupBox BasicGroup;
+        private ValueTracker ATK_Basic;
+        private ValueTracker ATK_Added;
+        private ValueTracker ElemMastery;
+        private ValueTracker Crit_Rate;
+        private ValueTracker Crit_Damage;
+        private ValueTracker DamageBuff_Elem;
+        private TabPage Level_And_Res;
+        private TabPage ATK_Buff;
+        private GroupBox ATKBuff_Stack_Group;
+        private GroupBox ATKBuff_Group;
+        private ValueTracker ATKBuff_Percent;
+        private ValueTracker ATKBuff_Static;
+        private Label label15;
+        private ValueTracker ATKBuff_Stack_Count;
+        private ValueTracker ATKBuff_Stack_Percent;
+        private Label ATKBuff_HP;
+        private Label ATKBuff_DEF;
+        private Label ATKBuff_HP_Label;
+        private Label ATKBuff_DEF_Label;
+        private GroupBox DamageBuff_Reaction_Group;
+        private ValueTracker DamageBuff_Reaction;
+        private GroupBox DamageBuffStack_Group;
+        private ValueTracker DamageBuff_Stack_Count;
+        private ValueTracker DamageBuff_Stack_Percent;
+        private GroupBox DamageBuff_Group;
+        private ValueTracker DamageBuff_Percent;
+        private GroupBox Resistance_Group;
+        private ValueTracker Resistance_Percent;
+        private GroupBox LevelAndDefence_Group;
+        private ValueTracker Defence_Debuff;
+        private ValueTracker Level_Enemy;
+        private ValueTracker Level_Player;
+        private ValueTracker Skill;
+        private ValueTracker Other;
     }
 }
 
