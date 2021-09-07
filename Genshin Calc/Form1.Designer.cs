@@ -30,50 +30,50 @@ namespace Genshin_Calc
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "基础攻击",
             "0",
             "---"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "攻击加成",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "天赋倍率",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "伤害加深",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
             "暴击伤害",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
             "防御计算",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "抗性计算",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
             "元素反应",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
             "额外乘区",
             "1x",
             "0%"}, -1);
-            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation4 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation5 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation6 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn3 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
-            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn4 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation1 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation2 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.TextAnnotation textAnnotation3 = new System.Windows.Forms.DataVisualization.Charting.TextAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn1 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
+            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn2 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据存放文件夹ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -660,7 +660,7 @@ namespace Genshin_Calc
             this.ATKBuff_Stack_Percent.Size = new System.Drawing.Size(882, 45);
             this.ATKBuff_Stack_Percent.TabIndex = 0;
             this.ATKBuff_Stack_Percent.Title = "每层叠攻百分比";
-            this.ATKBuff_Stack_Percent.ValScale = 1D;
+            this.ATKBuff_Stack_Percent.ValScale = 10D;
             this.ATKBuff_Stack_Percent.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
             // 
             // ATKBuff_Group
@@ -736,7 +736,7 @@ namespace Genshin_Calc
             this.ATKBuff_Percent.Size = new System.Drawing.Size(882, 45);
             this.ATKBuff_Percent.TabIndex = 16;
             this.ATKBuff_Percent.Title = "百分比攻击加成";
-            this.ATKBuff_Percent.ValScale = 1D;
+            this.ATKBuff_Percent.ValScale = 10D;
             this.ATKBuff_Percent.ValueChange += new Genshin_Calc.ValueTracker.ValueSettingsDelegate(this.ValueSet);
             // 
             // ATKBuff_Static
@@ -1083,15 +1083,15 @@ namespace Genshin_Calc
             this.AttributeList.Font = new System.Drawing.Font("微软雅黑", 13.5F);
             this.AttributeList.HideSelection = false;
             this.AttributeList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem10,
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9});
             this.AttributeList.Location = new System.Drawing.Point(3, 3);
             this.AttributeList.Name = "AttributeList";
             this.AttributeList.ShowGroups = false;
@@ -1120,54 +1120,54 @@ namespace Genshin_Calc
             this.ComChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            textAnnotation4.AllowAnchorMoving = true;
-            textAnnotation4.AnchorAlignment = System.Drawing.ContentAlignment.BottomRight;
-            textAnnotation4.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            textAnnotation4.Name = "TextAnnotation1";
-            textAnnotation4.Text = "在本页中，乘区占比越低的部分，提升后收益越高。双击此图可切换乘区计算逻辑。";
-            textAnnotation4.X = 0D;
-            textAnnotation4.Y = 93D;
-            textAnnotation5.Name = "TextAnnotation2";
-            textAnnotation5.Text = "当前：所有乘区（包括扣减伤害的乘区）均累加";
-            textAnnotation5.X = 50D;
-            textAnnotation5.Y = 1D;
-            textAnnotation6.Name = "TextAnnotation3";
-            textAnnotation6.Text = "当前：扣减伤害的乘区会表现为负数";
-            textAnnotation6.Visible = false;
-            textAnnotation6.X = 61D;
-            textAnnotation6.Y = 1D;
-            this.ComChart.Annotations.Add(textAnnotation4);
-            this.ComChart.Annotations.Add(textAnnotation5);
-            this.ComChart.Annotations.Add(textAnnotation6);
+            textAnnotation1.AllowAnchorMoving = true;
+            textAnnotation1.AnchorAlignment = System.Drawing.ContentAlignment.BottomRight;
+            textAnnotation1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            textAnnotation1.Name = "TextAnnotation1";
+            textAnnotation1.Text = "在本页中，乘区占比越低的部分，提升后收益越高。双击此图可切换乘区计算逻辑。";
+            textAnnotation1.X = 0D;
+            textAnnotation1.Y = 93D;
+            textAnnotation2.Name = "TextAnnotation2";
+            textAnnotation2.Text = "当前：所有乘区（包括扣减伤害的乘区）均累加";
+            textAnnotation2.X = 50D;
+            textAnnotation2.Y = 1D;
+            textAnnotation3.Name = "TextAnnotation3";
+            textAnnotation3.Text = "当前：扣减伤害的乘区会表现为负数";
+            textAnnotation3.Visible = false;
+            textAnnotation3.X = 61D;
+            textAnnotation3.Y = 1D;
+            this.ComChart.Annotations.Add(textAnnotation1);
+            this.ComChart.Annotations.Add(textAnnotation2);
+            this.ComChart.Annotations.Add(textAnnotation3);
             this.ComChart.BackColor = System.Drawing.SystemColors.Control;
-            chartArea2.Area3DStyle.Inclination = 3;
-            chartArea2.Area3DStyle.Rotation = 10;
-            chartArea2.Area3DStyle.WallWidth = 2;
-            chartArea2.BackColor = System.Drawing.SystemColors.Control;
-            chartArea2.BackSecondaryColor = System.Drawing.SystemColors.ControlDark;
-            chartArea2.Name = "ChartArea1";
-            chartArea2.Position.Auto = false;
-            chartArea2.Position.Height = 75F;
-            chartArea2.Position.Width = 75F;
-            chartArea2.Position.Y = 10F;
-            this.ComChart.ChartAreas.Add(chartArea2);
-            legend2.AutoFitMinFontSize = 9;
-            legend2.BackColor = System.Drawing.SystemColors.Control;
-            legendCellColumn3.ColumnType = System.Windows.Forms.DataVisualization.Charting.LegendCellColumnType.SeriesSymbol;
-            legendCellColumn3.Name = "Column1";
-            legendCellColumn4.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
-            legendCellColumn4.Name = "Column2";
-            legendCellColumn4.Text = "#VALX : #PERCENT";
-            legend2.CellColumns.Add(legendCellColumn3);
-            legend2.CellColumns.Add(legendCellColumn4);
-            legend2.Name = "Legend1";
-            legend2.Position.Auto = false;
-            legend2.Position.Height = 45F;
-            legend2.Position.Width = 30F;
-            legend2.Position.X = 70F;
-            legend2.Position.Y = 50F;
-            legend2.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
-            this.ComChart.Legends.Add(legend2);
+            chartArea1.Area3DStyle.Inclination = 3;
+            chartArea1.Area3DStyle.Rotation = 10;
+            chartArea1.Area3DStyle.WallWidth = 2;
+            chartArea1.BackColor = System.Drawing.SystemColors.Control;
+            chartArea1.BackSecondaryColor = System.Drawing.SystemColors.ControlDark;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 75F;
+            chartArea1.Position.Width = 75F;
+            chartArea1.Position.Y = 10F;
+            this.ComChart.ChartAreas.Add(chartArea1);
+            legend1.AutoFitMinFontSize = 9;
+            legend1.BackColor = System.Drawing.SystemColors.Control;
+            legendCellColumn1.ColumnType = System.Windows.Forms.DataVisualization.Charting.LegendCellColumnType.SeriesSymbol;
+            legendCellColumn1.Name = "Column1";
+            legendCellColumn2.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            legendCellColumn2.Name = "Column2";
+            legendCellColumn2.Text = "#VALX : #PERCENT";
+            legend1.CellColumns.Add(legendCellColumn1);
+            legend1.CellColumns.Add(legendCellColumn2);
+            legend1.Name = "Legend1";
+            legend1.Position.Auto = false;
+            legend1.Position.Height = 45F;
+            legend1.Position.Width = 30F;
+            legend1.Position.X = 70F;
+            legend1.Position.Y = 50F;
+            legend1.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
+            this.ComChart.Legends.Add(legend1);
             this.ComChart.Location = new System.Drawing.Point(364, 3);
             this.ComChart.Name = "ComChart";
             this.ComChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
@@ -1180,22 +1180,22 @@ namespace Genshin_Calc
         System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(185)))), ((int)(((byte)(255))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(255)))), ((int)(((byte)(222)))))};
-            series2.BackSecondaryColor = System.Drawing.SystemColors.HighlightText;
-            series2.BorderColor = System.Drawing.SystemColors.ControlDark;
-            series2.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.Color = System.Drawing.SystemColors.AppWorkspace;
-            series2.CustomProperties = "DoughnutRadius=30, MinimumRelativePieSize=50, PieLabelStyle=Outside, PieLineColor" +
+            series1.BackSecondaryColor = System.Drawing.SystemColors.HighlightText;
+            series1.BorderColor = System.Drawing.SystemColors.ControlDark;
+            series1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Color = System.Drawing.SystemColors.AppWorkspace;
+            series1.CustomProperties = "DoughnutRadius=30, MinimumRelativePieSize=50, PieLabelStyle=Outside, PieLineColor" +
     "=ControlDark";
-            series2.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            series2.LabelForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            series2.Legend = "Legend1";
-            series2.MarkerBorderColor = System.Drawing.SystemColors.ControlDark;
-            series2.MarkerColor = System.Drawing.SystemColors.ControlDark;
-            series2.Name = "Series1";
-            series2.YValuesPerPoint = 4;
-            this.ComChart.Series.Add(series2);
+            series1.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            series1.LabelForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            series1.Legend = "Legend1";
+            series1.MarkerBorderColor = System.Drawing.SystemColors.ControlDark;
+            series1.MarkerColor = System.Drawing.SystemColors.ControlDark;
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 4;
+            this.ComChart.Series.Add(series1);
             this.ComChart.Size = new System.Drawing.Size(545, 325);
             this.ComChart.TabIndex = 1;
             this.ComChart.Text = "chart1";

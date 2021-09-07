@@ -289,7 +289,7 @@ namespace Genshin_Calc
                     / (Level_Player.Current + 100 + (1 + (float)Defence_Debuff.Current / 1000) * (Level_Enemy.Current + 100));
             ATKLC = ATK_Basic.Current + ATK_Added.Current   // 攻击力
                     + ATKBuff_Static.Current                // 攻击力加成
-                    + ATKBuff_Percent.Current / 1000        // 攻击力加成 
+                    + ATK_Basic.Current*ATKBuff_Percent.Current / 1000        // 攻击力加成 
                     + DEF2ATK
                     + HP2ATK
                     + ATKBuff_Stack_Percent.Current / 1000 * ATK_Basic.Current * ATKBuff_Stack_Count.Current;// 攻击力加成(层数)
@@ -343,6 +343,7 @@ namespace Genshin_Calc
             else
                 e.Effect = DragDropEffects.None;
             ReadFromFile(File.ReadAllText(((Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString()));
+            Text = string.Format("原神计算器{0} - [{1}] ", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(), (((Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString()));
         }
         private void DragComplete(object sender, DragEventArgs e)
         {
@@ -362,6 +363,7 @@ namespace Genshin_Calc
             try
             {
                 ReadFromFile(File.ReadAllText(OpenFile.FileName));
+                
             }
             catch (Exception)
             {
@@ -420,6 +422,7 @@ namespace Genshin_Calc
             }
             toolStrips.Visible = true;
             toolStrips.Text = ContentDisplay("[备注]");
+
         }
         private string ContentDisplay(string name)
         {
