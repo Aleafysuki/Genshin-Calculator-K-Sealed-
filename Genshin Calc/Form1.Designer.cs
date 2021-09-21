@@ -543,7 +543,7 @@ namespace Genshin_Calc
             this.Crit_Rate.Location = new System.Drawing.Point(9, 172);
             this.Crit_Rate.Margin = new System.Windows.Forms.Padding(6);
             this.Crit_Rate.Maximum = 1000;
-            this.Crit_Rate.Minimum = 50;
+            this.Crit_Rate.Minimum = 0;
             this.Crit_Rate.Name = "Crit_Rate";
             this.Crit_Rate.PercentShownOrNot = true;
             this.Crit_Rate.Size = new System.Drawing.Size(891, 45);
