@@ -5,6 +5,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
+using DocumentFormat.OpenXml.Office.CustomDocumentInformationPanel;
 
 namespace Genshin_Calc
 {
@@ -72,7 +73,20 @@ namespace Genshin_Calc
         public ArtifactsLoad()
         {
             InitializeComponent();
-            InitializeJson();
+            jsonfile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Genshin Calculator\" + "Artifacts.json";
+            JsonFileLocation.Text = jsonfile;
+            if(File.Exists(jsonfile)) LoadFile(JsonFileLocation.Text);
+        }
+        private void LoadFile(string Loc)
+        {
+            foreach (Control xItem in Controls)
+            {
+                if (xItem is TextBox && !xItem.Name.Contains("Json"))
+                {
+                    xItem.Text = "";
+                }
+            }
+            InitializeJson(Loc);
             radioButton1.Checked = true;
             InputButton.Enabled = false;
             for (int i = 1; i <= 5; i++)
@@ -96,7 +110,8 @@ namespace Genshin_Calc
         public void JsonReader(int p)
         {
             var ArtifactType = "";
-            var list = List_Flower;
+            ListBox list = List_Flower;
+
             switch (p)
             {                                                                  // 在之前的版本中，类型名分别为：
                 case 1: list = List_Flower; ArtifactType = "flower"; break;    // “flower”
@@ -105,12 +120,14 @@ namespace Genshin_Calc
                 case 4: list = List_Goblet; ArtifactType = "cup"; break;       // “goblet”
                 case 5: list = List_Circlet; ArtifactType = "head"; break;     // “circlet”
             }
+            list.Items.Clear();
             try
             {
                 for (int i = 0; i < 1000; i++)
                 {
                     var Ap = Artifact[i];
                     Ap.ArtifactName = Readjson(ArtifactType, "detailName", i);
+                    if (Ap.ArtifactName == null) break;
                     Ap.Level = Convert.ToInt32(Readjson(ArtifactType, "level", i));
                     Ap.Maintag = Readjson(ArtifactType, "mainTag", i, 0);
                     Ap.MaintagValue = Convert.ToDouble(Readjson(ArtifactType, "mainTag", i, 1));
@@ -132,7 +149,7 @@ namespace Genshin_Calc
                     list.Items.Add(string.Format("(+{0}) " + Ap.ArtifactName, Ap.Level));
                     Ap.Hash = list.Items[i].GetHashCode() + i;
                     Artifact[i] = Ap;
-                    if (Ap.ArtifactName == null) break;
+
                     switch (p)
                     {
                         case 1: List1_Artifact.Add(Ap); break;
@@ -202,20 +219,23 @@ namespace Genshin_Calc
         /// <summary>
         /// 初始化json文件的读取
         /// </summary>
-        private void InitializeJson()
+        private void InitializeJson(string Location)
         {
-            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Genshin Calculator\" + "Artifacts.json"))
+            if (File.Exists(Location))
             {
-                jsonfile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Genshin Calculator\" + "Artifacts.json";
+                StreamReader file = File.OpenText(Location);
+                JsonTextReader reader = new JsonTextReader(file);
+                jsonObject = (JObject)JToken.ReadFrom(reader);
+            }
+            else if (Location != "")
+            {
+                MessageBox.Show("Json文件的路径填写有误，或不存在此Json文件。");
             }
             else
             {
-                MessageBox.Show("数据文件夹中并未发现Artifacts.json文件。\n请回到主窗口，打开数据存放文件夹，并建立或拷贝相应的json文件后再试试。");
-                Close();
+                MessageBox.Show("请填写Json文件所在的路径，支持直接拖入Json文件至文本框内。");
             }
-            StreamReader file = File.OpenText(jsonfile);
-            JsonTextReader reader = new JsonTextReader(file);
-            jsonObject = (JObject)JToken.ReadFrom(reader);
+
         }
         /// <summary>
         /// 对解析到的圣遗物属性进行信息拼接
@@ -560,6 +580,31 @@ namespace Genshin_Calc
         #endregion
 
         #region 点击事件的处理
+        private void OpenFileButton_Click(object sender, EventArgs e)
+        {
+            if(File.Exists(JsonFileLocation.Text))LoadFile(JsonFileLocation.Text);
+        }
+        private void SelectFileButton_Click(object sender, EventArgs e)
+        {
+            SelectJsonFile.ShowDialog();
+            try
+            {
+                JsonFileLocation.Text = SelectJsonFile.FileName;
+                LoadFile(SelectJsonFile.FileName);
+            }
+            catch(Exception Exc)
+            {
+                MessageBox.Show("文件读取失败。\n" + Exc);
+            }
+        }
+        private void JsonFileLocation_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.All;
+            else
+                e.Effect = DragDropEffects.None;
+            JsonFileLocation.Text = ((Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
+        }
         private void ListClick_1(object sender, EventArgs e)
         {
             SetText(List_Flower, FlowerPreview);
@@ -679,8 +724,15 @@ namespace Genshin_Calc
                 IgnoreMainTags.Checked = true;
             }
         }
+
+
+
+
         #endregion
 
-
+        private void JsonFileLocation_Leave(object sender, EventArgs e)
+        {
+            JsonFileLocation.Text = jsonfile;
+        }
     }
 }

@@ -75,6 +75,11 @@
             this.TotalEntriesCount = new System.Windows.Forms.Label();
             this.BasicLife = new System.Windows.Forms.TextBox();
             this.BasicDefence = new System.Windows.Forms.TextBox();
+            this.JsonFileLocation = new System.Windows.Forms.TextBox();
+            this.JsonFileLabel = new System.Windows.Forms.Label();
+            this.OpenFileButton = new System.Windows.Forms.Button();
+            this.SelectFileButton = new System.Windows.Forms.Button();
+            this.SelectJsonFile = new System.Windows.Forms.OpenFileDialog();
             this.Flower.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.Plume.SuspendLayout();
@@ -92,7 +97,7 @@
             // Flower
             // 
             this.Flower.Controls.Add(this.tableLayoutPanel1);
-            this.Flower.Location = new System.Drawing.Point(7, 10);
+            this.Flower.Location = new System.Drawing.Point(7, 54);
             this.Flower.Margin = new System.Windows.Forms.Padding(1);
             this.Flower.Name = "Flower";
             this.Flower.Size = new System.Drawing.Size(200, 528);
@@ -160,7 +165,7 @@
             // Plume
             // 
             this.Plume.Controls.Add(this.tableLayoutPanel2);
-            this.Plume.Location = new System.Drawing.Point(209, 10);
+            this.Plume.Location = new System.Drawing.Point(209, 54);
             this.Plume.Margin = new System.Windows.Forms.Padding(1);
             this.Plume.Name = "Plume";
             this.Plume.Size = new System.Drawing.Size(200, 528);
@@ -228,7 +233,7 @@
             // Sands
             // 
             this.Sands.Controls.Add(this.tableLayoutPanel3);
-            this.Sands.Location = new System.Drawing.Point(411, 10);
+            this.Sands.Location = new System.Drawing.Point(411, 54);
             this.Sands.Margin = new System.Windows.Forms.Padding(1);
             this.Sands.Name = "Sands";
             this.Sands.Size = new System.Drawing.Size(200, 528);
@@ -296,7 +301,7 @@
             // Goblet
             // 
             this.Goblet.Controls.Add(this.tableLayoutPanel4);
-            this.Goblet.Location = new System.Drawing.Point(613, 10);
+            this.Goblet.Location = new System.Drawing.Point(613, 54);
             this.Goblet.Margin = new System.Windows.Forms.Padding(1);
             this.Goblet.Name = "Goblet";
             this.Goblet.Size = new System.Drawing.Size(200, 528);
@@ -364,7 +369,7 @@
             // Circlet
             // 
             this.Circlet.Controls.Add(this.tableLayoutPanel5);
-            this.Circlet.Location = new System.Drawing.Point(815, 10);
+            this.Circlet.Location = new System.Drawing.Point(815, 54);
             this.Circlet.Margin = new System.Windows.Forms.Padding(1);
             this.Circlet.Name = "Circlet";
             this.Circlet.Size = new System.Drawing.Size(200, 528);
@@ -442,7 +447,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ArtifactResult.Controls.Add(this.IgnoreMainTags);
             this.ArtifactResult.Controls.Add(this.ResultList);
-            this.ArtifactResult.Location = new System.Drawing.Point(1020, 10);
+            this.ArtifactResult.Location = new System.Drawing.Point(1020, 54);
             this.ArtifactResult.Name = "ArtifactResult";
             this.ArtifactResult.Size = new System.Drawing.Size(274, 449);
             this.ArtifactResult.TabIndex = 4;
@@ -501,7 +506,7 @@
             // 
             this.InputButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.InputButton.Location = new System.Drawing.Point(1023, 465);
+            this.InputButton.Location = new System.Drawing.Point(1023, 509);
             this.InputButton.Name = "InputButton";
             this.InputButton.Size = new System.Drawing.Size(274, 31);
             this.InputButton.TabIndex = 5;
@@ -515,7 +520,7 @@
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.BasicATK_Manual);
-            this.groupBox1.Location = new System.Drawing.Point(7, 542);
+            this.groupBox1.Location = new System.Drawing.Point(7, 586);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(520, 69);
             this.groupBox1.TabIndex = 6;
@@ -571,7 +576,7 @@
             this.ArtifactCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ArtifactCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.ArtifactCancelButton.Location = new System.Drawing.Point(1023, 502);
+            this.ArtifactCancelButton.Location = new System.Drawing.Point(1023, 546);
             this.ArtifactCancelButton.Name = "ArtifactCancelButton";
             this.ArtifactCancelButton.Size = new System.Drawing.Size(274, 31);
             this.ArtifactCancelButton.TabIndex = 7;
@@ -580,7 +585,7 @@
             // 
             // OtherAttributesLabel
             // 
-            this.OtherAttributesLabel.Location = new System.Drawing.Point(533, 546);
+            this.OtherAttributesLabel.Location = new System.Drawing.Point(533, 590);
             this.OtherAttributesLabel.Name = "OtherAttributesLabel";
             this.OtherAttributesLabel.Size = new System.Drawing.Size(407, 24);
             this.OtherAttributesLabel.TabIndex = 8;
@@ -589,7 +594,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(533, 578);
+            this.label1.Location = new System.Drawing.Point(533, 622);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 24);
             this.label1.TabIndex = 9;
@@ -598,7 +603,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(768, 578);
+            this.label2.Location = new System.Drawing.Point(768, 622);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 24);
             this.label2.TabIndex = 10;
@@ -608,7 +613,7 @@
             // WhoTao_Check
             // 
             this.WhoTao_Check.AutoSize = true;
-            this.WhoTao_Check.Location = new System.Drawing.Point(1018, 542);
+            this.WhoTao_Check.Location = new System.Drawing.Point(1018, 586);
             this.WhoTao_Check.Name = "WhoTao_Check";
             this.WhoTao_Check.Size = new System.Drawing.Size(245, 28);
             this.WhoTao_Check.TabIndex = 11;
@@ -620,7 +625,7 @@
             // 
             this.TotalEntriesCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalEntriesCount.Location = new System.Drawing.Point(1014, 577);
+            this.TotalEntriesCount.Location = new System.Drawing.Point(1014, 621);
             this.TotalEntriesCount.Name = "TotalEntriesCount";
             this.TotalEntriesCount.Size = new System.Drawing.Size(283, 24);
             this.TotalEntriesCount.TabIndex = 12;
@@ -629,7 +634,7 @@
             // 
             // BasicLife
             // 
-            this.BasicLife.Location = new System.Drawing.Point(634, 575);
+            this.BasicLife.Location = new System.Drawing.Point(634, 619);
             this.BasicLife.Name = "BasicLife";
             this.BasicLife.Size = new System.Drawing.Size(128, 30);
             this.BasicLife.TabIndex = 15;
@@ -637,17 +642,68 @@
             // 
             // BasicDefence
             // 
-            this.BasicDefence.Location = new System.Drawing.Point(870, 575);
+            this.BasicDefence.Location = new System.Drawing.Point(870, 619);
             this.BasicDefence.Name = "BasicDefence";
             this.BasicDefence.Size = new System.Drawing.Size(128, 30);
             this.BasicDefence.TabIndex = 16;
             this.BasicDefence.TextChanged += new System.EventHandler(this.BasicATK_Manual_TextChanged);
             // 
+            // JsonFileLocation
+            // 
+            this.JsonFileLocation.AllowDrop = true;
+            this.JsonFileLocation.Location = new System.Drawing.Point(152, 13);
+            this.JsonFileLocation.Name = "JsonFileLocation";
+            this.JsonFileLocation.Size = new System.Drawing.Size(857, 30);
+            this.JsonFileLocation.TabIndex = 17;
+            this.JsonFileLocation.WordWrap = false;
+            this.JsonFileLocation.DragDrop += new System.Windows.Forms.DragEventHandler(this.JsonFileLocation_DragDrop);
+            this.JsonFileLocation.DragEnter += new System.Windows.Forms.DragEventHandler(this.JsonFileLocation_DragDrop);
+            this.JsonFileLocation.Leave += new System.EventHandler(this.JsonFileLocation_Leave);
+            // 
+            // JsonFileLabel
+            // 
+            this.JsonFileLabel.AutoSize = true;
+            this.JsonFileLabel.Location = new System.Drawing.Point(9, 16);
+            this.JsonFileLabel.Name = "JsonFileLabel";
+            this.JsonFileLabel.Size = new System.Drawing.Size(137, 24);
+            this.JsonFileLabel.TabIndex = 18;
+            this.JsonFileLabel.Text = "Json文件路径：";
+            // 
+            // OpenFileButton
+            // 
+            this.OpenFileButton.Location = new System.Drawing.Point(1015, 13);
+            this.OpenFileButton.Name = "OpenFileButton";
+            this.OpenFileButton.Size = new System.Drawing.Size(138, 30);
+            this.OpenFileButton.TabIndex = 19;
+            this.OpenFileButton.Text = "读取路径";
+            this.OpenFileButton.UseVisualStyleBackColor = true;
+            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
+            // 
+            // SelectFileButton
+            // 
+            this.SelectFileButton.Location = new System.Drawing.Point(1159, 13);
+            this.SelectFileButton.Name = "SelectFileButton";
+            this.SelectFileButton.Size = new System.Drawing.Size(138, 30);
+            this.SelectFileButton.TabIndex = 20;
+            this.SelectFileButton.Text = "手动选择";
+            this.SelectFileButton.UseVisualStyleBackColor = true;
+            this.SelectFileButton.Click += new System.EventHandler(this.SelectFileButton_Click);
+            // 
+            // SelectJsonFile
+            // 
+            this.SelectJsonFile.DefaultExt = "json";
+            this.SelectJsonFile.Filter = "Json文件|*.json|文本文件|*.txt|所有文件|*.*";
+            this.SelectJsonFile.Title = "选择Json文件";
+            // 
             // ArtifactsLoad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1304, 618);
+            this.ClientSize = new System.Drawing.Size(1304, 662);
+            this.Controls.Add(this.SelectFileButton);
+            this.Controls.Add(this.OpenFileButton);
+            this.Controls.Add(this.JsonFileLabel);
+            this.Controls.Add(this.JsonFileLocation);
             this.Controls.Add(this.BasicDefence);
             this.Controls.Add(this.BasicLife);
             this.Controls.Add(this.TotalEntriesCount);
@@ -741,5 +797,10 @@
         private System.Windows.Forms.ComboBox Goblet_Filter;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.ComboBox Circlet_Filter;
+        private System.Windows.Forms.TextBox JsonFileLocation;
+        private System.Windows.Forms.Label JsonFileLabel;
+        private System.Windows.Forms.Button OpenFileButton;
+        private System.Windows.Forms.Button SelectFileButton;
+        private System.Windows.Forms.OpenFileDialog SelectJsonFile;
     }
 }
