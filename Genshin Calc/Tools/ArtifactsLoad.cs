@@ -55,23 +55,30 @@ namespace Genshin_Calc
         public bool ValueChange = false;
         JObject jsonObject;
         string jsonfile = "";   // JSON文件路径
+        string SetTable = "";   // 套装名与圣遗物名称的对照表
+        string[] subs;
+        int ArtifactCount=1;
         readonly string[] rawJsonAttributions = {
             "lifeStatic",       "lifePercentage",   "defendStatic",
             "defendPercentage", "attackStatic",     "attackPercentage",
             "elementalMastery", "critical",         "criticalDamage",
             "recharge",         "windBonus",        "thunderBonus",
             "fireBonus",        "iceBonus",         "waterBonus",
-            "rockBonus",        "grassBonus",       "physicsBonus"};
+            "rockBonus",        "grassBonus",       "physicalBonus",
+            "cureEffect"};
         readonly string[] translatedJsonAttributes = {
             "生命值\t",         "生命值\t",         "防御力\t",
             "防御力\t",         "攻击力\t",         "攻击力\t",
             "元素精通\t",       "暴击率\t",         "暴击伤害\t",
             "充能效率\t",       "风伤加成\t",       "雷伤加成\t",
             "火伤加成\t",       "冰伤加成\t",       "水伤加成\t",
-            "岩伤加成\t",       "草伤加成\t",       "物伤加成\t"};
+            "岩伤加成\t",       "草伤加成\t",       "物伤加成\t",
+            "治疗加成\t"};
 
         public ArtifactsLoad()
         {
+            SetTable = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Genshin Calculator\" + "Artifacts.txt";
+            subs = File.ReadAllText(SetTable).ToLower().Replace("\t\t","\t").Split(new char[] { '\t', '\n', '\r'});
             InitializeComponent();
             jsonfile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Genshin Calculator\" + "Artifacts.json";
             JsonFileLocation.Text = jsonfile;
@@ -86,6 +93,12 @@ namespace Genshin_Calc
                     xItem.Text = "";
                 }
             }
+            var ItemsMatch = from word
+                             in File.ReadAllText(Loc).Split(new char[] { '{', '\"', ' ', '}', ':', ',' }, StringSplitOptions.RemoveEmptyEntries)
+                             where word.ToLowerInvariant().Contains("maintag")
+                             select word;
+            ArtifactCount = ItemsMatch.Count();
+            Artifact = new Artifacts[ArtifactCount];
             InitializeJson(Loc);
             radioButton1.Checked = true;
             InputButton.Enabled = false;
@@ -93,13 +106,25 @@ namespace Genshin_Calc
             {
                 JsonReader(i);
             }
+            FilteredList1_Artifact = List1_Artifact;
+            FilteredList2_Artifact = List2_Artifact;
+            FilteredList3_Artifact = List3_Artifact;
+            FilteredList4_Artifact = List4_Artifact;
+            FilteredList5_Artifact = List5_Artifact;
+
         }
-        private Artifacts[] Artifact = new Artifacts[1000];
+        private Artifacts[] Artifact ;
+        //private List<Artifacts> Artifact = new List<Artifacts>(1);
         private List<Artifacts> List1_Artifact = new List<Artifacts>(1);
         private List<Artifacts> List2_Artifact = new List<Artifacts>(1);
         private List<Artifacts> List3_Artifact = new List<Artifacts>(1);
         private List<Artifacts> List4_Artifact = new List<Artifacts>(1);
         private List<Artifacts> List5_Artifact = new List<Artifacts>(1);
+        private List<Artifacts> FilteredList1_Artifact = new List<Artifacts>(1);
+        private List<Artifacts> FilteredList2_Artifact = new List<Artifacts>(1);
+        private List<Artifacts> FilteredList3_Artifact = new List<Artifacts>(1);
+        private List<Artifacts> FilteredList4_Artifact = new List<Artifacts>(1);
+        private List<Artifacts> FilteredList5_Artifact = new List<Artifacts>(1);
         private Artifacts[] SelectedArtifacts = new Artifacts[5];
         private List<SummariedItem> summariedItems = new List<SummariedItem>(1);
         /// <summary>
@@ -111,22 +136,27 @@ namespace Genshin_Calc
         {
             var ArtifactType = "";
             ListBox list = List_Flower;
-
+            ComboBox Filter = Flower_Filter;
             switch (p)
-            {                                                                  // 在之前的版本中，类型名分别为：
-                case 1: list = List_Flower; ArtifactType = "flower"; break;    // “flower”
-                case 2: list = List_Plume; ArtifactType = "feather"; break;    // “plume”
-                case 3: list = List_Sands; ArtifactType = "sand"; break;       // “sands”
-                case 4: list = List_Goblet; ArtifactType = "cup"; break;       // “goblet”
-                case 5: list = List_Circlet; ArtifactType = "head"; break;     // “circlet”
+            {                                                                                         // 在之前的版本中，类型名分别为：
+                case 1: list = List_Flower; Filter= Flower_Filter;   ArtifactType = "flower"; break;  // “flower”
+                case 2: list = List_Plume;  Filter= Plume_Filter;    ArtifactType = "feather"; break; // “plume”
+                case 3: list = List_Sands;  Filter= Sands_Filter;    ArtifactType = "sand"; break;    // “sands”
+                case 4: list = List_Goblet; Filter= Goblet_Filter;   ArtifactType = "cup"; break;     // “goblet”
+                case 5: list = List_Circlet;Filter= Circlet_Filter;  ArtifactType = "head"; break;    // “circlet”
             }
+            Filter.Items.Clear();
+            Filter.Items.Add("全部");
+            Filter.SelectedIndex = 0;
             list.Items.Clear();
+            //Artifact.Clear();
             try
             {
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < ArtifactCount; i++)
                 {
                     var Ap = Artifact[i];
-                    Ap.ArtifactName = Readjson(ArtifactType, "detailName", i);
+                    Ap.ArtifactSetName = Readjson(ArtifactType, "setName", i);
+                    Ap.ArtifactName = ReadArtifactName(Ap.ArtifactSetName, ArtifactType).Trim('\"');//Readjson(ArtifactType, "detailName", i);
                     if (Ap.ArtifactName == null) break;
                     Ap.Level = Convert.ToInt32(Readjson(ArtifactType, "level", i));
                     Ap.Maintag = Readjson(ArtifactType, "mainTag", i, 0);
@@ -139,16 +169,20 @@ namespace Genshin_Calc
                         + string.Format("\r\n主属性 —————————")
                         + string.Format("\r\n            {0}", Translate(Ap.Maintag, Ap.MaintagValue, 0))
                         + string.Format("\r\n副属性 —————————");
-                    Ap.ArtifactSetName = Readjson(ArtifactType, "setName", i);
                     for (int t = 0; t < 4; t++)
                     {
-                        Ap.Subtag[t] = Readjson(ArtifactType, "normalTags", i, t + 2);
-                        Ap.SubtagValue[t] = Convert.ToDouble(Readjson(ArtifactType, "normalTags", i, t + 6));
-                        Ap.Info += string.Format("\r\n            {0}", Translate(Ap.Subtag[t], Ap.SubtagValue[t], 0));
+                        try
+                        {
+                            Ap.Subtag[t] = Readjson(ArtifactType, "normalTags", i, t + 2);
+                            Ap.SubtagValue[t] = Convert.ToDouble(Readjson(ArtifactType, "normalTags", i, t + 6));
+                            Ap.Info += string.Format("\r\n            {0}", Translate(Ap.Subtag[t], Ap.SubtagValue[t], 0));
+                        }
+                        catch (Exception)
+                        { }
                     }
                     list.Items.Add(string.Format("(+{0}) " + Ap.ArtifactName, Ap.Level));
                     Ap.Hash = list.Items[i].GetHashCode() + i;
-                    Artifact[i] = Ap;
+                    //Artifact.Add(Ap);
 
                     switch (p)
                     {
@@ -157,6 +191,10 @@ namespace Genshin_Calc
                         case 3: List3_Artifact.Add(Ap); break;
                         case 4: List4_Artifact.Add(Ap); break;
                         case 5: List5_Artifact.Add(Ap); break;
+                    }
+                    if (!Filter.Items.Contains(ReadArtifactName(Ap.ArtifactSetName,"set")))
+                    {
+                        Filter.Items.Add(ReadArtifactName(Ap.ArtifactSetName, "set"));
                     }
                 }
             }
@@ -176,9 +214,28 @@ namespace Genshin_Calc
         /// <returns>相应Key对应的值</returns>
         public string Readjson(string Mainkey, string key, int i)
         {
-            return jsonObject[Mainkey].ToList()[i][key].ToString();//得到11
+            return jsonObject[Mainkey].ToList()[i][key].ToString();//得到11    
         }
-
+        /// <summary>
+        /// 读取圣遗物的名称
+        /// </summary>
+        /// <param name="SetName">套装名字</param>
+        /// <param name="LocName">圣遗物所在位置</param>
+        /// <returns></returns>
+        private string ReadArtifactName(string SetName,string LocName)
+        {
+            string set = SetName.ToLower();
+            switch (LocName)
+            {
+                case "flower":  return subs[Array.IndexOf(subs, set) + 1];
+                case "feather": return subs[Array.IndexOf(subs, set) + 2];
+                case "sand":    return subs[Array.IndexOf(subs, set) + 3];
+                case "cup":     return subs[Array.IndexOf(subs, set) + 4];
+                case "head":    return subs[Array.IndexOf(subs, set) + 5];
+                case "set":     return subs[Array.IndexOf(subs, set) + 6];
+            }
+            return "";
+        }
         /// <summary>
         /// 读取JSON文件
         /// </summary>
@@ -246,9 +303,14 @@ namespace Genshin_Calc
         /// <returns>拼接完成后的信息</returns>
         public string Translate(string en, double num, int sw)
         {
-            var textNum = en.Contains("Static") || en.Contains("Mastery") ? num.ToString() : (num * 100).ToString() + "%";
-            var matchnum = SearchArray(en, rawJsonAttributions);
-            string translated = translatedJsonAttributes[matchnum];
+            string textNum="";
+            string translated = "";
+            if (en != null)
+            {
+                textNum = en.Contains("Static") || en.Contains("Mastery") ? num.ToString() : (num * 100).ToString() + "%";
+                var matchnum = Array.IndexOf(rawJsonAttributions, en);
+                translated = translatedJsonAttributes[matchnum];
+            }
             switch (sw)
             {
                 case 0: return translated + "  " + textNum;
@@ -261,7 +323,7 @@ namespace Genshin_Calc
         }
         public string Translate(string cn, string val)
         {
-            var matchnum = SearchArray(cn, translatedJsonAttributes);
+            var matchnum = Array.IndexOf(translatedJsonAttributes, cn);
             if (val.Contains("%") && matchnum < 6)
             {
                 matchnum++;
@@ -340,18 +402,7 @@ namespace Genshin_Calc
             }
             return entries.ToString();
         }
-        private int SearchArray(string en, string[] array)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] == null) continue;
-                if (array[i].Contains(en))
-                {
-                    return i;
-                }
-            }
-            return array.Length - 1;
-        }
+
         private string SearchArray_IgnoreATKZero(string en, string[] array)
         {
             for (int i = 0; i < array.Length; i++)
@@ -398,6 +449,7 @@ namespace Genshin_Calc
                         }
                         for (int t = 0; t < SelectedArtifacts[i].Subtag.Length; t++)
                         {
+                            if (SelectedArtifacts[i].Subtag[t] == null) break;
                             item.tag = SelectedArtifacts[i].Subtag[t];
                             item.tagValue = SelectedArtifacts[i].SubtagValue[t];
                             AddItem(item);
@@ -631,32 +683,32 @@ namespace Genshin_Calc
             {
                 case "List_Flower":
                     {
-                        txt.Text = List1_Artifact[list.SelectedIndex].Info;
-                        SelectedArtifacts[0] = List1_Artifact[list.SelectedIndex];
+                        txt.Text = FilteredList1_Artifact[list.SelectedIndex].Info;
+                        SelectedArtifacts[0] = FilteredList1_Artifact[list.SelectedIndex];
                         break;
                     }
                 case "List_Plume":
                     {
-                        txt.Text = List2_Artifact[list.SelectedIndex].Info;
-                        SelectedArtifacts[1] = List2_Artifact[list.SelectedIndex];
+                        txt.Text = FilteredList2_Artifact[list.SelectedIndex].Info;
+                        SelectedArtifacts[1] = FilteredList2_Artifact[list.SelectedIndex];
                         break;
                     }
                 case "List_Sands":
                     {
-                        txt.Text = List3_Artifact[list.SelectedIndex].Info;
-                        SelectedArtifacts[2] = List3_Artifact[list.SelectedIndex];
+                        txt.Text = FilteredList3_Artifact[list.SelectedIndex].Info;
+                        SelectedArtifacts[2] = FilteredList3_Artifact[list.SelectedIndex];
                         break;
                     }
                 case "List_Goblet":
                     {
-                        txt.Text = List4_Artifact[list.SelectedIndex].Info;
-                        SelectedArtifacts[3] = List4_Artifact[list.SelectedIndex];
+                        txt.Text = FilteredList4_Artifact[list.SelectedIndex].Info;
+                        SelectedArtifacts[3] = FilteredList4_Artifact[list.SelectedIndex];
                         break;
                     }
                 case "List_Circlet":
                     {
-                        txt.Text = List5_Artifact[list.SelectedIndex].Info;
-                        SelectedArtifacts[4] = List5_Artifact[list.SelectedIndex];
+                        txt.Text = FilteredList5_Artifact[list.SelectedIndex].Info;
+                        SelectedArtifacts[4] = FilteredList5_Artifact[list.SelectedIndex];
                         break;
                     }
             }
@@ -724,15 +776,52 @@ namespace Genshin_Calc
                 IgnoreMainTags.Checked = true;
             }
         }
-
-
-
-
         #endregion
 
         private void JsonFileLocation_Leave(object sender, EventArgs e)
-        {
+        {  
             JsonFileLocation.Text = jsonfile;
         }
+        #region 筛选圣遗物
+        private void FilterCheck(object sender, EventArgs e)
+        {
+            List<Artifacts> ArtifactList = List1_Artifact;
+            ListBox List = List_Flower;
+            ComboBox Listx = sender as ComboBox;
+            List<Artifacts> FilteredList= new List<Artifacts>(1);
+
+            if (Listx.SelectedIndex == -1) Listx.SelectedIndex = 0;
+            switch (Listx.Name)
+            {
+                case "Flower_Filter":   ArtifactList = List1_Artifact; List = List_Flower; break;
+                case "Plume_Filter":    ArtifactList = List2_Artifact; List = List_Plume; break;
+                case "Sands_Filter":    ArtifactList = List3_Artifact; List = List_Sands; break;
+                case "Goblet_Filter":   ArtifactList = List4_Artifact; List = List_Goblet; break;
+                case "Circlet_Filter":  ArtifactList = List5_Artifact;  List = List_Circlet; break;
+            }
+            FilteredList.Clear();
+            List.Items.Clear();
+            foreach (Artifacts Item in ArtifactList)
+            {
+                if (ReadArtifactName(Item.ArtifactSetName,"set") == Listx.SelectedItem.ToString() || Listx.SelectedItem.ToString()=="全部")
+                {
+                    FilteredList.Add(Item);
+                    List.Items.Add(string.Format("(+{0}) " + Item.ArtifactName, Item.Level));
+                }
+                
+            }
+            switch (Listx.Name)
+            {
+                case "Flower_Filter": FilteredList1_Artifact = FilteredList; break;
+                case "Plume_Filter": FilteredList2_Artifact = FilteredList; break;
+                case "Sands_Filter": FilteredList3_Artifact = FilteredList; break;
+                case "Goblet_Filter": FilteredList4_Artifact = FilteredList; break;
+                case "Circlet_Filter": FilteredList5_Artifact = FilteredList; break;
+            }
+            //txt.Text = FilteredList[List.SelectedIndex].Info;
+            //SelectedArtifacts[0] = FilteredList[List.SelectedIndex];
+
+        }
+        #endregion
     }
 }

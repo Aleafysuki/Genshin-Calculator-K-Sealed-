@@ -127,17 +127,16 @@
             // 
             this.Flower_Filter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Flower_Filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Flower_Filter.Enabled = false;
-            this.Flower_Filter.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Flower_Filter.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.Flower_Filter.FormattingEnabled = true;
             this.Flower_Filter.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.Flower_Filter.Items.AddRange(new object[] {
             "全部"});
             this.Flower_Filter.Location = new System.Drawing.Point(3, 3);
             this.Flower_Filter.Name = "Flower_Filter";
-            this.Flower_Filter.Size = new System.Drawing.Size(188, 33);
+            this.Flower_Filter.Size = new System.Drawing.Size(188, 29);
             this.Flower_Filter.TabIndex = 71;
-            this.Flower_Filter.Visible = false;
+            this.Flower_Filter.SelectedIndexChanged += new System.EventHandler(this.FilterCheck);
             // 
             // FlowerPreview
             // 
@@ -153,12 +152,13 @@
             // 
             // List_Flower
             // 
-            this.List_Flower.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.List_Flower.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.List_Flower.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.List_Flower.FormattingEnabled = true;
-            this.List_Flower.ItemHeight = 23;
-            this.List_Flower.Location = new System.Drawing.Point(3, 3);
+            this.List_Flower.ItemHeight = 21;
+            this.List_Flower.Location = new System.Drawing.Point(3, 30);
             this.List_Flower.Name = "List_Flower";
-            this.List_Flower.Size = new System.Drawing.Size(188, 325);
+            this.List_Flower.Size = new System.Drawing.Size(188, 298);
             this.List_Flower.TabIndex = 5;
             this.List_Flower.SelectedIndexChanged += new System.EventHandler(this.ListClick_1);
             // 
@@ -195,17 +195,16 @@
             // 
             this.Plume_Filter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Plume_Filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Plume_Filter.Enabled = false;
-            this.Plume_Filter.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Plume_Filter.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.Plume_Filter.FormattingEnabled = true;
             this.Plume_Filter.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.Plume_Filter.Items.AddRange(new object[] {
             "全部"});
             this.Plume_Filter.Location = new System.Drawing.Point(3, 3);
             this.Plume_Filter.Name = "Plume_Filter";
-            this.Plume_Filter.Size = new System.Drawing.Size(188, 33);
+            this.Plume_Filter.Size = new System.Drawing.Size(188, 29);
             this.Plume_Filter.TabIndex = 72;
-            this.Plume_Filter.Visible = false;
+            this.Plume_Filter.SelectedIndexChanged += new System.EventHandler(this.FilterCheck);
             // 
             // PlumePreview
             // 
@@ -221,12 +220,13 @@
             // 
             // List_Plume
             // 
-            this.List_Plume.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.List_Plume.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.List_Plume.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.List_Plume.FormattingEnabled = true;
-            this.List_Plume.ItemHeight = 23;
-            this.List_Plume.Location = new System.Drawing.Point(3, 3);
+            this.List_Plume.ItemHeight = 21;
+            this.List_Plume.Location = new System.Drawing.Point(3, 30);
             this.List_Plume.Name = "List_Plume";
-            this.List_Plume.Size = new System.Drawing.Size(188, 325);
+            this.List_Plume.Size = new System.Drawing.Size(188, 298);
             this.List_Plume.TabIndex = 0;
             this.List_Plume.SelectedIndexChanged += new System.EventHandler(this.ListClick_2);
             // 
@@ -263,17 +263,16 @@
             // 
             this.Sands_Filter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Sands_Filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Sands_Filter.Enabled = false;
-            this.Sands_Filter.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Sands_Filter.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.Sands_Filter.FormattingEnabled = true;
             this.Sands_Filter.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.Sands_Filter.Items.AddRange(new object[] {
             "全部"});
             this.Sands_Filter.Location = new System.Drawing.Point(3, 3);
             this.Sands_Filter.Name = "Sands_Filter";
-            this.Sands_Filter.Size = new System.Drawing.Size(188, 33);
+            this.Sands_Filter.Size = new System.Drawing.Size(188, 29);
             this.Sands_Filter.TabIndex = 72;
-            this.Sands_Filter.Visible = false;
+            this.Sands_Filter.SelectedIndexChanged += new System.EventHandler(this.FilterCheck);
             // 
             // SandsPreview
             // 
@@ -289,12 +288,13 @@
             // 
             // List_Sands
             // 
-            this.List_Sands.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.List_Sands.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.List_Sands.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.List_Sands.FormattingEnabled = true;
-            this.List_Sands.ItemHeight = 23;
-            this.List_Sands.Location = new System.Drawing.Point(3, 3);
+            this.List_Sands.ItemHeight = 21;
+            this.List_Sands.Location = new System.Drawing.Point(3, 30);
             this.List_Sands.Name = "List_Sands";
-            this.List_Sands.Size = new System.Drawing.Size(188, 325);
+            this.List_Sands.Size = new System.Drawing.Size(188, 298);
             this.List_Sands.TabIndex = 1;
             this.List_Sands.SelectedIndexChanged += new System.EventHandler(this.ListClick_3);
             // 
@@ -331,17 +331,16 @@
             // 
             this.Goblet_Filter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Goblet_Filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Goblet_Filter.Enabled = false;
-            this.Goblet_Filter.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Goblet_Filter.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.Goblet_Filter.FormattingEnabled = true;
             this.Goblet_Filter.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.Goblet_Filter.Items.AddRange(new object[] {
             "全部"});
             this.Goblet_Filter.Location = new System.Drawing.Point(3, 3);
             this.Goblet_Filter.Name = "Goblet_Filter";
-            this.Goblet_Filter.Size = new System.Drawing.Size(188, 33);
+            this.Goblet_Filter.Size = new System.Drawing.Size(188, 29);
             this.Goblet_Filter.TabIndex = 72;
-            this.Goblet_Filter.Visible = false;
+            this.Goblet_Filter.SelectedIndexChanged += new System.EventHandler(this.FilterCheck);
             // 
             // GobletPreview
             // 
@@ -357,12 +356,13 @@
             // 
             // List_Goblet
             // 
-            this.List_Goblet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.List_Goblet.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.List_Goblet.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.List_Goblet.FormattingEnabled = true;
-            this.List_Goblet.ItemHeight = 23;
-            this.List_Goblet.Location = new System.Drawing.Point(3, 3);
+            this.List_Goblet.ItemHeight = 21;
+            this.List_Goblet.Location = new System.Drawing.Point(3, 30);
             this.List_Goblet.Name = "List_Goblet";
-            this.List_Goblet.Size = new System.Drawing.Size(188, 325);
+            this.List_Goblet.Size = new System.Drawing.Size(188, 298);
             this.List_Goblet.TabIndex = 1;
             this.List_Goblet.SelectedIndexChanged += new System.EventHandler(this.ListClick_4);
             // 
@@ -399,17 +399,16 @@
             // 
             this.Circlet_Filter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Circlet_Filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Circlet_Filter.Enabled = false;
-            this.Circlet_Filter.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Circlet_Filter.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.Circlet_Filter.FormattingEnabled = true;
             this.Circlet_Filter.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.Circlet_Filter.Items.AddRange(new object[] {
             "全部"});
             this.Circlet_Filter.Location = new System.Drawing.Point(3, 3);
             this.Circlet_Filter.Name = "Circlet_Filter";
-            this.Circlet_Filter.Size = new System.Drawing.Size(188, 33);
+            this.Circlet_Filter.Size = new System.Drawing.Size(188, 29);
             this.Circlet_Filter.TabIndex = 72;
-            this.Circlet_Filter.Visible = false;
+            this.Circlet_Filter.SelectedIndexChanged += new System.EventHandler(this.FilterCheck);
             // 
             // CircletPreview
             // 
@@ -425,12 +424,13 @@
             // 
             // List_Circlet
             // 
-            this.List_Circlet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.List_Circlet.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.List_Circlet.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.List_Circlet.FormattingEnabled = true;
-            this.List_Circlet.ItemHeight = 23;
-            this.List_Circlet.Location = new System.Drawing.Point(3, 3);
+            this.List_Circlet.ItemHeight = 21;
+            this.List_Circlet.Location = new System.Drawing.Point(3, 30);
             this.List_Circlet.Name = "List_Circlet";
-            this.List_Circlet.Size = new System.Drawing.Size(188, 325);
+            this.List_Circlet.Size = new System.Drawing.Size(188, 298);
             this.List_Circlet.TabIndex = 1;
             this.List_Circlet.SelectedIndexChanged += new System.EventHandler(this.ListClick_5);
             // 
