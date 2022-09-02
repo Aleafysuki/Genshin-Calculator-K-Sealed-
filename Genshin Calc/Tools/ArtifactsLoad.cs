@@ -5,6 +5,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
+using System.Threading;
 using DocumentFormat.OpenXml.Office.CustomDocumentInformationPanel;
 
 namespace Genshin_Calc
@@ -44,6 +45,12 @@ namespace Genshin_Calc
         /// 圣遗物的套装名（未经处理）
         /// </summary>
         public string ArtifactSetName;
+        /// <summary>
+        /// 圣遗物被谁佩戴（角色名）
+        /// </summary>
+        public string EquippedBy;
+
+        public float TagCount;
     }
     public struct SummariedItem
     {
@@ -102,8 +109,10 @@ namespace Genshin_Calc
             InitializeJson(Loc);
             radioButton1.Checked = true;
             InputButton.Enabled = false;
+            //Thread[] ReaderThreads =new Thread[5];
             for (int i = 1; i <= 5; i++)
             {
+                //ReaderThreads[i - 1] = new Thread(new ThreadStart(JsonReader));
                 JsonReader(i);
             }
             FilteredList1_Artifact = List1_Artifact;
@@ -605,6 +614,7 @@ namespace Genshin_Calc
                     else outputInfo += string.Format("\t\t{0}\n", outtipText[i]);
                 }
             }
+            //这里记得增加套装效果计算//outputInfo
             DialogResult Tip = MessageBox.Show(outputInfo + "注意！由于各圣遗物的套装效果触发情况不一，请在主窗口手动填入【圣遗物套装效果】与【武器属性特效】。", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.None);
             if (Tip == DialogResult.Yes)
             {
@@ -797,7 +807,7 @@ namespace Genshin_Calc
                 case "Plume_Filter":    ArtifactList = List2_Artifact; List = List_Plume; break;
                 case "Sands_Filter":    ArtifactList = List3_Artifact; List = List_Sands; break;
                 case "Goblet_Filter":   ArtifactList = List4_Artifact; List = List_Goblet; break;
-                case "Circlet_Filter":  ArtifactList = List5_Artifact;  List = List_Circlet; break;
+                case "Circlet_Filter":  ArtifactList = List5_Artifact; List = List_Circlet; break;
             }
             FilteredList.Clear();
             List.Items.Clear();
@@ -820,7 +830,6 @@ namespace Genshin_Calc
             }
             //txt.Text = FilteredList[List.SelectedIndex].Info;
             //SelectedArtifacts[0] = FilteredList[List.SelectedIndex];
-
         }
         #endregion
     }

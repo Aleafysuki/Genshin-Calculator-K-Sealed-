@@ -7,7 +7,7 @@
     <ProjectGuid>{672D277B-158A-4F46-B106-41C87C57BD88}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Genshin_Calc</RootNamespace>
-    <AssemblyName>Genshin Calc</AssemblyName>
+    <AssemblyName>Genshin Calc Sealed Version</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
